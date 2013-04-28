@@ -63,15 +63,15 @@ class DATABASE_CONFIG {
 		'datasource' => 'Database/Mysql',
 		'persistent' => false,
 		'host' => 'localhost',
-		'port' => '/Applications/MAMP/tmp/mysql/mysql.sock', // here is the key !
-		'login' => 'openassembly',
-		'password' => 'TzfCrEQuFW3mru9T',
+		'port' => '', // here is the key !
+		'login' => 'root',
+		'password' => '',
 		//'password' => '',
-		'database' => 'openassembly',
+		'database' => 'jingo',
 		'prefix' => '',
 		//'encoding' => 'utf8',
 	);
-	
+	/*
 	public $mongo = array(
 		'datasource' => 'Mongodb.mongodbSource',
 		'database' => 'openassembly',
