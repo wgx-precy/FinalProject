@@ -43,7 +43,7 @@ class PagesController extends AppController {
  *
  * @var array
  */
-	public $uses = array();
+	public $uses = array('User');
 
 /**
  * Displays a view
@@ -53,6 +53,11 @@ class PagesController extends AppController {
  */
 	public function display() {
 		$path = func_get_args();
+		//print_r("hello");exit();
+		$conditions = array('users.password'=>"123");
+		//$result = $this->User->find('all',array('conditions'=>$conditions));
+		$result = $this->User->query("select * from users where password = '123' ");
+		print_r($result);exit();
 
 		$count = count($path);
 		if (!$count) {
