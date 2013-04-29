@@ -59,7 +59,7 @@ class PagesController extends AppController {
 		//$result = $this->User->find('all',array('conditions'=>$conditions));
 		//$result = $this->User->query("select * from users where password = '123' ");
 		$result = $this->Tag->query("select * from tags where 1");
-		print_r($result);exit();
+		//print_r($result);exit();
 
 		$count = count($path);
 		if (!$count) {
@@ -78,5 +78,9 @@ class PagesController extends AppController {
 		}
 		$this->set(compact('page', 'subpage', 'title_for_layout'));
 		$this->render(implode('/', $path));
+	}
+
+	function front(){
+		print "Hello World!";
 	}
 }
