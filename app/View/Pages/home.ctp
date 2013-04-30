@@ -22,7 +22,10 @@ endif;
 App::uses('Debugger', 'Utility');
 ?>
 <h5>xiehongquan,nimei</h5>
+<<<<<<< HEAD
+=======
 <a href="/FinalProject/pages/front">Front Page</a>
+>>>>>>> 2f09690178bbc00c4b98d15cf0953aee058c001c
 <h2><?php echo __d('cake_dev', 'Release Notes for CakePHP %s.', Configure::version()); ?></h2>
 <p>
 	<a href="http://cakephp.org/changelogs/<?php echo Configure::version(); ?>"><?php echo __d('cake_dev', 'Read the changelog'); ?> </a>

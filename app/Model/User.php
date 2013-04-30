@@ -18,7 +18,11 @@ class User extends AppModel {
 	// );
 	
 	public $hasMany = array(
+<<<<<<< HEAD
+		'CoursesUser',
+=======
 		'',
+>>>>>>> 2f09690178bbc00c4b98d15cf0953aee058c001c
 	);
 	
 	// public $hasAndBelongsToMany = array(
@@ -27,7 +31,11 @@ class User extends AppModel {
 	// 			'className' => 'UserRole',
 	// 		),
 	// );
+<<<<<<< HEAD
+	
+=======
 	/*
+>>>>>>> 2f09690178bbc00c4b98d15cf0953aee058c001c
     public $validate = array(
         'username' => array (
 			'correctLength' => array(
@@ -138,5 +146,8 @@ class User extends AppModel {
 			}
 		}
 	}
+<<<<<<< HEAD
+=======
 	*/
+>>>>>>> 2f09690178bbc00c4b98d15cf0953aee058c001c
 }

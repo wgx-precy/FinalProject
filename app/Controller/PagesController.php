@@ -43,8 +43,12 @@ class PagesController extends AppController {
  *
  * @var array
  */
+<<<<<<< HEAD
+	public $uses = array('User');
+=======
 	public $uses = array('User', 'Note','Tag');
 	public $helpers = array('Html');
+>>>>>>> 2f09690178bbc00c4b98d15cf0953aee058c001c
 
 /**
  * Displays a view
@@ -57,10 +61,6 @@ class PagesController extends AppController {
 		//print_r("hello");exit();
 		$conditions = array('users.password'=>"123");
 		//$result = $this->User->find('all',array('conditions'=>$conditions));
-		//$result = $this->User->query("select * from users where password = '123' ");
-		$result = $this->Tag->query("select * from tags where 1");
-		//print_r($result);exit();
-
 		$count = count($path);
 		if (!$count) {
 			$this->redirect('/');
