@@ -1,5 +1,5 @@
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<?php $this->Html->script('userlogin/login.js', array('inline' => false)); ?>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+<?#php $this->Html->script('userlogin/login.js', array('inline' => false)); ?>
 <?php $this->Html->css('style', null, array('inline' => false)); ?>
 <html>
 <head>
@@ -43,7 +43,7 @@ $(document).ready(function() {
     <!--END SLIDE-IN ICONS-->
 
 <!--LOGIN FORM-->
-<form name="login-form" class="login-form" action="" method="post">
+<form name="login-form" class="login-form" action="/FinalProject/Users/welcome" method="post">
 
 	<!--HEADER-->
     <div class="header">
@@ -55,7 +55,7 @@ $(document).ready(function() {
 	<!--CONTENT-->
     <div class="content">
 	<!--USERNAME-->
-	<input name="username" type="text" class="input username" id="username_input" value="Username" onfocus="this.value=''" />
+	<input name="username" type="text" class="input username" id="username_input" value="jfjfjjf" onfocus="this.value=''" />
 	<!--END USERNAME-->
     <!--PASSWORD-->
     <input name="password" type="password" class="input password" id="password_input" value="Password" onfocus="this.value=''" />

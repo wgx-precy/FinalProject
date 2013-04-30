@@ -1,4 +1,6 @@
 <?php
+    	//}
+    	//else{
 /** 
  * @file 
  * Open Assembly Users controller.
@@ -10,25 +12,30 @@ class UsersController extends AppController {
 	var $component = array('RequestHandlerComponent');
 	var $uses = array('User');
 
-function beforeFilter() {
+//function beforeFilter() {
 	// after finish the login part, cancel this comment
-    $this->Auth->allow('login', 'logout');
+    //$this->Auth->allow('login', 'logout');
     //$this->Auth->allow();
-    $this->Auth->autoRedirect = false;
-    parent::beforeFilter();
-}
+    //$this->Auth->autoRedirect = false;
+   // parent::beforeFilter();
+//}
 
 	public function login() {
 		//if($this->Auth->User()) {
-        	//$this->redirect(array('action'=>'welcome'), null, true);
-    	//}
-    	//else{
     		//$this->redirect(array('controller'=>'Pages','action'=>'front'));
     	//}
-	}
-	public function welcome() {
+    	//echo "hey you";
+    	//$username=$this->request->data('username');
+    	//print_r($username);
 
 	}
+	public function welcome(){
+		$username=$this->request->data('username');
+		echo "welocme";
+		#$this->redirect(array('controller'=>'Pages','action'=>'front'));
+		redirect('/FinalProject/welocme');
+	}
+
 
 
 /*	

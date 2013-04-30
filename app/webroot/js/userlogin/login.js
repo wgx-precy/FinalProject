@@ -1,4 +1,4 @@
-;$(document).ready(function() {
+$(document).ready(function() {
 
 	$('#login_button').live('click', function(e){
 			e.preventDefault();

@@ -33,7 +33,7 @@ App::uses('Controller', 'Controller');
  */
 class AppController extends Controller {
 	public $helpers = array('Html', 'Js', 'Session', 'Form');
-
+/*
 	var $components = array(
 		'Session',
 		'Auth' => array(
@@ -43,7 +43,8 @@ class AppController extends Controller {
 			'authorize' => array('Controller'),
 		)
 	);
-		
+*/
+/*		
 	public function isAuthorized() {
 		return true;
 	}
@@ -68,4 +69,5 @@ class AppController extends Controller {
 	//	$grav_url="/user_files".$this->Auth->user('thumbnail');
 	//	$this->set( 'grav_img', $grav_url ); 
 	}
+	*/
 }
