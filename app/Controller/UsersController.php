@@ -12,20 +12,25 @@ class UsersController extends AppController {
 	var $component = array('RequestHandlerComponent');
 	var $uses = array('User');
 
-function beforeFilter() {
+//function beforeFilter() {
 	// after finish the login part, cancel this comment
-    $this->Auth->allow('login', 'logout');
+    //$this->Auth->allow('login', 'logout');
     //$this->Auth->allow();
-    $this->Auth->autoRedirect = false;
-    parent::beforeFilter();
-}
+    //$this->Auth->autoRedirect = false;
+   // parent::beforeFilter();
+//}
 
 	public function login() {
 		//if($this->Auth->User()) {
+
         	//$th
     		//$this->redirect(array('controller'=>'Pages','action'=>'front'));
     	//}
-    	echo "hey you";
+    	//echo "hey you";
+    		//$this->redirect(array('controller'=>'Pages','action'=>'front'));
+    	//}
+    	//echo "hey you";
+
     	//$username=$this->request->data('username');
     	//print_r($username);
 
