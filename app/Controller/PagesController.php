@@ -43,12 +43,8 @@ class PagesController extends AppController {
  *
  * @var array
  */
-<<<<<<< HEAD
-	public $uses = array('User');
-=======
 	public $uses = array('User', 'Note','Tag');
 	public $helpers = array('Html');
->>>>>>> 2f09690178bbc00c4b98d15cf0953aee058c001c
 
 /**
  * Displays a view

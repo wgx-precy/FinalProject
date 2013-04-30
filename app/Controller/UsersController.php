@@ -1,4 +1,6 @@
 <?php
+    	//}
+    	//else{
 /** 
  * @file 
  * Open Assembly Users controller.
@@ -20,15 +22,21 @@ function beforeFilter() {
 
 	public function login() {
 		//if($this->Auth->User()) {
-        	//$this->redirect(array('action'=>'welcome'), null, true);
-    	//}
-    	//else{
+        	//$th
     		//$this->redirect(array('controller'=>'Pages','action'=>'front'));
     	//}
-	}
-	public function welcome() {
+    	echo "hey you";
+    	//$username=$this->request->data('username');
+    	//print_r($username);
 
 	}
+	public function welcome(){
+		$username=$this->request->data('username');
+		echo "welocme";
+		#$this->redirect(array('controller'=>'Pages','action'=>'front'));
+		redirect('/FinalProject/welocme');
+	}
+
 
 
 /*	
