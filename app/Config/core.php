@@ -52,7 +52,7 @@
  */
 	Configure::write('Error', array(
 		'handler' => 'ErrorHandler::handleError',
-		'level' => E_ALL & ~E_DEPRECATED,
+		'level' => E_ALL & ~E_DEPRECATED & ~E_STRICT,
 		'trace' => true
 	));
 
@@ -243,7 +243,7 @@
  * Uncomment this line and correct your server timezone to fix
  * any date & time related errors.
  */
-	//date_default_timezone_set('UTC');
+	date_default_timezone_set('UTC');
 
 /**
  *
@@ -350,3 +350,6 @@ Cache::config('_cake_model_', array(
 	'serialize' => ($engine === 'File'),
 	'duration' => $duration
 ));
+/* TODO: Find out if there is a better solution for this.
+Possibly somewhere we can change at build time based on the env. */
+Configure::write('upload_path', getcwd() . '/user_files/user_');
