@@ -80,7 +80,7 @@ class PagesController extends AppController {
 		$this->render(implode('/', $path));
 	}
 
-	function front(){
+	public function front(){
 		print "Hello World!";
 	}
 }

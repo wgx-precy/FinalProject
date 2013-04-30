@@ -8,17 +8,30 @@
 class UsersController extends AppController {
 	var $name = 'Users';
 	var $component = array('RequestHandlerComponent');
-	var $uses = array('User','Course','CoursesUser','OpenLibraryImport','Module','Topic','ModulesContentItem','TopicsContentItem');
+	var $uses = array('User');
 
-	public function beforeFilter() {
-		parent::beforeFilter();
-		$this->Auth->allow('login','jsonLogin','register','jsonRegister','user_confirm','resendConfirm','jsonUserConfirm','forgot_password','view','verification');
-	}
+function beforeFilter() {
+	// after finish the login part, cancel this comment
+    //$this->Auth->allow('login', 'logout');
+    $this->Auth->allow( );
+    $this->Auth->autoRedirect = false;
+    parent::beforeFilter();
+}
 
 	public function login() {
+		if($this->Auth->User()) {
+        	$this->redirect(array('action'=>'welcome'), null, true);
+    	}
+    	//else{
+    	//	$this->redirect(array('controller'=>'Pages','action'=>'front'));
+    	//}
+	}
+	public function welcome() {
 
 	}
-	
+
+
+/*	
 	function jsonRegister() {
 		$errors = array();
 		$registration_output_array = array(
@@ -414,4 +427,5 @@ class UsersController extends AppController {
 		
         $this->set('message', $message);
     }
+    */
 }

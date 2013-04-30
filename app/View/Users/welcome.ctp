@@ -1,6 +1,5 @@
-<?php 
-echo "login:";
+<?php
+	echo "welcome";
 ?>
-<br>
 <a href="/FinalProject/pages/home">home</a>
 <a href="/FinalProject/pages/front">front</a>
