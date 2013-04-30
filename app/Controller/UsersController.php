@@ -12,18 +12,18 @@ class UsersController extends AppController {
 
 function beforeFilter() {
 	// after finish the login part, cancel this comment
-    //$this->Auth->allow('login', 'logout');
-    $this->Auth->allow( );
+    $this->Auth->allow('login', 'logout');
+    //$this->Auth->allow();
     $this->Auth->autoRedirect = false;
     parent::beforeFilter();
 }
 
 	public function login() {
-		if($this->Auth->User()) {
-        	$this->redirect(array('action'=>'welcome'), null, true);
-    	}
+		//if($this->Auth->User()) {
+        	//$this->redirect(array('action'=>'welcome'), null, true);
+    	//}
     	//else{
-    	//	$this->redirect(array('controller'=>'Pages','action'=>'front'));
+    		//$this->redirect(array('controller'=>'Pages','action'=>'front'));
     	//}
 	}
 	public function welcome() {
