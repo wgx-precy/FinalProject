@@ -1,16 +1,10 @@
 <?php
-    	//}
-    	//else{
-/** 
- * @file 
- * Open Assembly Users controller.
- *
- * Defines the functionality for the User model.
- */
+
+
 class UsersController extends AppController {
-	var $name = 'Users';
-	var $component = array('RequestHandlerComponent');
-	var $uses = array('User');
+	public $name = 'Users';
+	public $component = array('RequestHandlerComponent');
+	public $uses = array('User');
 
 //function beforeFilter() {
 	// after finish the login part, cancel this comment
@@ -21,19 +15,49 @@ class UsersController extends AppController {
 //}
 
 	public function login() {
-		//if($this->Auth->User()) {
-    		//$this->redirect(array('controller'=>'Pages','action'=>'front'));
-    	//}
-    	//echo "hey you";
-    	//$username=$this->request->data('username');
-    	//print_r($username);
 
 	}
+	public function login_process(){
+		$username =$this->request->data('username');
+		$password =$this->request->data('password');
+		$conditions = array('user.username'=>$username);
+		$user_info = $this->User->find('first',array('conditions'=>$conditions));
+		if($user_info['User']['password']==$password){
+			$this->redirect(array('controller'=>'Users','action'=>'welcome'));
+		}
+		else{
+			$this->redirect(array('controller'=>'Users','action'=>'incorrect_login'));
+		}
+
+	}
+	public function register(){
+
+	}
+	public function register_process(){
+		if($this->request->is('post')){
+			$username =$this->request->data('username');
+			$password1 =$this->request->data('password1');
+			$password2 =$this->request->data('password2');
+			if($password1!=$password2){
+				$this->redirect(array('controller'=>'Users','action'=>'incorrect_password'));
+			}
+			else{
+				//save profile
+
+				$this->redirect(array('controller'=>'Users','action'=>'welcome'));
+			}
+
+
+		}
+	}
 	public function welcome(){
-		$username=$this->request->data('username');
-		echo "welocme";
-		#$this->redirect(array('controller'=>'Pages','action'=>'front'));
-		redirect('/FinalProject/welocme');
+
+	}
+	public function incorrect_login(){
+
+	}
+	public function incorrect_password(){
+
 	}
 
 

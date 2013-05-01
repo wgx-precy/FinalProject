@@ -1,6 +1,6 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
 <?php $this->Html->script('userlogin/login.js', array('inline' => false)); ?>
-<?php $this->Html->css('style', null, array('inline' => false)); ?>
+<?php $this->Html->css('style1', null, array('inline' => false)); ?>
 <html>
 <head>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -8,7 +8,6 @@
 <title>Login Form</title>
 
 <!--STYLESHEETS-->
-<link href="css/style.css" rel="stylesheet" type="text/css" />
 
 <!--SCRIPTS-->
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js"></script>
@@ -22,12 +21,19 @@ $(document).ready(function() {
 		$(".user-icon").css("left","0px");
 	});
 	
-	$(".password").focus(function() {
+	$("#password_input_1").focus(function() {
 		$(".pass-icon").css("left","-48px");
 	});
-	$(".password").blur(function() {
+	$("#password_input_1").blur(function() {
 		$(".pass-icon").css("left","0px");
 	});
+
+    $("#password_input_2").focus(function() {
+        $(".pass-icon2").css("left","-48px");
+    });
+    $("#password_input_2").blur(function() {
+        $(".pass-icon2").css("left","0px");
+    });
 });
 </script>
 
@@ -40,18 +46,19 @@ $(document).ready(function() {
 	<!--SLIDE-IN ICONS-->
     <div class="user-icon"></div>
     <div class="pass-icon"></div>
+    <div class="pass-icon2"></div>
     <!--END SLIDE-IN ICONS-->
 
 <!--LOGIN FORM-->
-<form name="login-form" class="login-form" action="/FinalProject/Users/login_process" method="post">
+<form name="login-form" class="login-form" action="/FinalProject/Users/register_process" method="post">
 
 	<!--HEADER-->
     <div class="header">
     <!--TITLE-->
-    <h1>Login Form</h1>
+    <h1>User Register</h1>
     <!--END TITLE-->
     <!--DESCRIPTION-->
-    <span>Fill out the form below to login JINGO!</span>
+    <span>Fill out the form below to register for JINGO!</span>
     <!--END DESCRIPTION-->
     </div>
     <!--END HEADER-->
@@ -62,7 +69,8 @@ $(document).ready(function() {
 	<input name="username" type="text" class="input username" id="username_input" value="username" onfocus="this.value=''" />
 	<!--END USERNAME-->
     <!--PASSWORD-->
-    <input name="password" type="password" class="input password" id="password_input" value="password" onfocus="this.value=''" />
+    <input name="password1" type="password" class="input password_1" id="password_input_1" value="password" onfocus="this.value=''" />
+    <input name="password2" type="password" class="input password_2" id="password_input_2" value="password" onfocus="this.value=''" />
     <!--END PASSWORD-->
     </div>
     <!--END CONTENT-->
@@ -70,7 +78,7 @@ $(document).ready(function() {
     <!--FOOTER-->
     <div class="footer">
     <!--LOGIN BUTTON-->
-    <input type="submit" name="submit" value="Login" class="button" id="login_button"/>
+    <input type="submit" name="submit" value="Register" class="button" id="register_button"/>
     <!--END LOGIN BUTTON-->
     <!--REGISTER BUTTON-->
     <!--
@@ -86,7 +94,9 @@ $(document).ready(function() {
 </div>
 <!--END WRAPPER-->
 
-<!--GRADIENT--><div class="gradient"></div><!--END GRADIENT-->
+<!--GRADIENT-->
+<div class="gradient"></div>
+<!--END GRADIENT-->
 
 </body>
 </html>

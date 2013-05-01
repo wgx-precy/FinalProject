@@ -54,9 +54,8 @@ class PagesController extends AppController {
  */
 	public function display() {
 		$path = func_get_args();
-		//print_r("hello");exit();
-		$conditions = array('users.password'=>"123");
-		//$result = $this->User->find('all',array('conditions'=>$conditions));
+		$conditions = array('user.password'=>"123");
+		$result = $this->User->find('all',array('conditions'=>$conditions));
 		$count = count($path);
 		if (!$count) {
 			$this->redirect('/');
@@ -77,6 +76,6 @@ class PagesController extends AppController {
 	}
 
 	public function front(){
-		print "Hello World!";
+		
 	}
 }
