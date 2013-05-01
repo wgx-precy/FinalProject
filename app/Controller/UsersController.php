@@ -38,8 +38,8 @@ class UsersController extends AppController {
 	public function welcome(){
 		$username=$this->request->data('username');
 		echo "welocme";
-		#$this->redirect(array('controller'=>'Pages','action'=>'front'));
-		redirect('/FinalProject/welocme');
+		$this->redirect(array('controller'=>'Pages','action'=>'front'));
+	
 	}
 
 
