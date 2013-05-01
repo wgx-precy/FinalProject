@@ -52,7 +52,6 @@ function beforeFilter() {
 					'last_name' => $last_name,
 				));
 				$this->User->save(null,false);
-
 				$this->redirect(array('controller'=>'Users','action'=>'register_success'));
 			}
 		}

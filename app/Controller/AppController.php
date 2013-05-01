@@ -33,7 +33,7 @@ App::uses('Controller', 'Controller');
  */
 class AppController extends Controller {
 	public $helpers = array('Html', 'Js', 'Session', 'Form');
-
+/*
 	var $components = array(
 		'Session',
 		'Auth' => array(
@@ -49,4 +49,5 @@ class AppController extends Controller {
 	public function beforeFilter() {
 		$this->Auth->allow('login','register');
 	}
+	*/
 }

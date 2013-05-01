@@ -78,4 +78,7 @@ class PagesController extends AppController {
 	public function front(){
 		
 	}
+	public function index(){
+		
+	}
 }
