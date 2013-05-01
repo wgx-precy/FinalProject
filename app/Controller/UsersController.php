@@ -1,45 +1,76 @@
 <?php
-    	//}
-    	//else{
-/** 
- * @file 
- * Open Assembly Users controller.
- *
- * Defines the functionality for the User model.
- */
+
+
 class UsersController extends AppController {
-	var $name = 'Users';
-	var $component = array('RequestHandlerComponent');
-	var $uses = array('User');
-
-//function beforeFilter() {
-	// after finish the login part, cancel this comment
-    //$this->Auth->allow('login', 'logout');
-    //$this->Auth->allow();
-    //$this->Auth->autoRedirect = false;
-   // parent::beforeFilter();
-//}
-
+	public $name = 'Users';
+	public $component = array('RequestHandlerComponent');
+	public $uses = array('User');
+/*
+function beforeFilter() {
+    $this->Auth->allow('login', 'logout','login_process','register_process','register_success','incorrect_login','incorrect_password');
+    $this->Auth->autoRedirect = false;
+   	parent::beforeFilter();
+}
+*/
 	public function login() {
-		//if($this->Auth->User()) {
 
-        	//$th
-    		//$this->redirect(array('controller'=>'Pages','action'=>'front'));
-    	//}
-    	//echo "hey you";
-    		//$this->redirect(array('controller'=>'Pages','action'=>'front'));
-    	//}
-    	//echo "hey you";
+	}
+	public function login_process(){
+		$username =$this->request->data('username');
+		$password =$this->request->data('password');
+		$conditions = array('user.username'=>$username);
+		$user_info = $this->User->find('first',array('conditions'=>$conditions));
+		$id=$user_info['User']['uid'];
+		if($user_info['User']['password']==$password){
+			$this->redirect(array('controller'=>'Users','action'=>'welcome'));
+		}
+		else{
+			$this->Session->write('Auth', $this->User->read(null, $id));
+			$this->redirect(array('controller'=>'Users','action'=>'incorrect_login'));
+		}
 
-    	//$username=$this->request->data('username');
-    	//print_r($username);
+	}
+	public function register(){
+
+	}
+	public function register_process(){
+		if($this->request->is('post')){
+			$username =$this->request->data('username');
+			$password1 =$this->request->data('password1');
+			$password2 =$this->request->data('password2');
+			$first_name =$this->request->data('firstname');
+			$last_name =$this->request->data('lastname');
+			if($password1!=$password2){
+				$this->redirect(array('controller'=>'Users','action'=>'incorrect_password'));
+			}
+			else{
+				$this->User->set(array(
+					'username' => $username,
+					'uemail' => $username,
+					'password' => $password1,
+					'first_name' => $first_name,
+					'last_name' => $last_name,
+				));
+				$this->User->save(null,false);
+
+				$this->redirect(array('controller'=>'Users','action'=>'register_success'));
+			}
+		}
+	}
+	public function register_success(){
 
 	}
 	public function welcome(){
-		$username=$this->request->data('username');
-		echo "welocme";
-		$this->redirect(array('controller'=>'Pages','action'=>'front'));
-	
+
+	}
+	public function incorrect_login(){
+
+	}
+	public function incorrect_password(){
+
+	}
+	public function logout(){
+
 	}
 
 

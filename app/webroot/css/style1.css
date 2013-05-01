@@ -1,8 +1,3 @@
-/*******************
-LOGIN FORM STYLESHEET
-by: Amit Jakhu
-www.amitjakhu.com
-*******************/
 
 /*******************
 FONTS
@@ -34,7 +29,7 @@ BODY STYLING
 }
 
 body {
-	background: url(/FinalProject/img/bg.png) repeat;
+	background: url(/FinalProject/img//bg.png) repeat;
 	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 	font-weight:300;
 	text-align: left;
@@ -161,7 +156,11 @@ CONTENT
 }
 
 /* Second input field */
-.login-form .content .password, .login-form .content .pass-icon {
+.login-form .content .password_1, .login-form .content .pass-icon, .login-form .content .pass-icon2 {
+	margin-top: 25px;
+}
+
+.login-form .content .password_2, .login-form .content .pass-icon, .login-form .content .pass-icon2 {
 	margin-top: 25px;
 }
 
@@ -179,7 +178,7 @@ CONTENT
 	-webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.25);
 }
 
-.user-icon, .pass-icon {
+.user-icon, .pass-icon, .pass-icon2 {
 	width: 46px;
 	height: 47px;
 	display: block;
@@ -204,8 +203,13 @@ CONTENT
 	background: rgba(65,72,72,0.75) url(/FinalProject/img/pass-icon.png) no-repeat center;
 }
 
+.pass-icon2 {
+	top:295px;
+	background: rgba(65,72,72,0.75) url(/FinalProject/img/pass-icon.png) no-repeat center;
+}
+
 /* Animation */
-.input, .user-icon, .pass-icon, .button, .register {
+.input, .user-icon, .pass-icon, .pass-icon2, .button, .register {
 	transition: all 0.5s;
 	-moz-transition: all 0.5s;
 	-webkit-transition: all 0.5s;
