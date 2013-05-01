@@ -1,4 +1,6 @@
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js"></script>
+<script language="javascript" type="text/javascript" src="js/jquery-1.3.2.min.js"></script>
 <?php $this->Html->script('userlogin/login.js', array('inline' => false)); ?>
 <?php $this->Html->css('style', null, array('inline' => false)); ?>
 <html>
@@ -11,7 +13,7 @@
 <link href="css/style.css" rel="stylesheet" type="text/css" />
 
 <!--SCRIPTS-->
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js"></script>
+
 <!--Slider-in icons-->
 <script type="text/javascript">
 $(document).ready(function() {

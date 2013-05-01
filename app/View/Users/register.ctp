@@ -6,9 +6,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Login Form</title>
-
 <!--STYLESHEETS-->
-
 <!--SCRIPTS-->
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js"></script>
 <!--Slider-in icons-->
@@ -71,6 +69,8 @@ $(document).ready(function() {
     <!--PASSWORD-->
     <input name="password1" type="password" class="input password_1" id="password_input_1" value="password" onfocus="this.value=''" />
     <input name="password2" type="password" class="input password_2" id="password_input_2" value="password" onfocus="this.value=''" />
+     <input name="firstname" type="text" class="input password_2" id="first_name_input" value="first name" onfocus="this.value=''" />
+    <input name="lastname" type="text" class="input password_2" id="last_name_input" value="last_name" onfocus="this.value=''" />
     <!--END PASSWORD-->
     </div>
     <!--END CONTENT-->
@@ -90,13 +90,10 @@ $(document).ready(function() {
 
 </form>
 <!--END LOGIN FORM-->
-
 </div>
 <!--END WRAPPER-->
-
 <!--GRADIENT-->
 <div class="gradient"></div>
 <!--END GRADIENT-->
-
 </body>
 </html>

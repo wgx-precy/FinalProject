@@ -1,6 +1,7 @@
-$(document).ready(function() {
+;(function($) {
+	$(document).ready(function() {
 
-	$('#login_button').live('click', function(e){
+		$('#login_button').live('click', function(e){
 			e.preventDefault();
 			stopexec = false;
 			var this_username = $('#username_input').val();
@@ -11,4 +12,6 @@ $(document).ready(function() {
 	        }
 		});
 
+	});
+	
 })(jQuery);
