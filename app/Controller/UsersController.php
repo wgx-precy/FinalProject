@@ -16,6 +16,20 @@ class UsersController extends AppController {
 
 	public function login() {
 
+		//if($this->Auth->User()) {
+
+        	//$th
+    		//$this->redirect(array('controller'=>'Pages','action'=>'front'));
+    	//}
+    	//echo "hey you";
+    		//$this->redirect(array('controller'=>'Pages','action'=>'front'));
+    	//}
+    	//echo "hey you";
+
+    	//$username=$this->request->data('username');
+    	//print_r($username);
+
+
 	}
 	public function login_process(){
 		$username =$this->request->data('username');
