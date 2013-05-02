@@ -1,16 +1,10 @@
 <?php
-
-
 class UsersController extends AppController {
 	public $name = 'Users';
 	public $component = array('RequestHandlerComponent');
 	public $uses = array('User');
-/*
-function beforeFilter() {
-	parent::beforeFilter();
-    $this->Auth->allow('login', 'logout','login_process','register_process','register_success','incorrect_login','incorrect_password');   	
-}
-*/
+
+
 	public function login() {
 
 	}
@@ -19,17 +13,13 @@ function beforeFilter() {
 		$password =$this->request->data('password');
 		$conditions = array('user.username'=>$username);
 		$user_info = $this->User->find('first',array('conditions'=>$conditions));
-		$id=$user_info['User']['uid'];
+		$id=$user_info['User']['id'];
 		if($user_info['User']['password']==$password){
-			$_session['user'] = array(
-					'login' => 'yes',
-					'id' => $id
-				);
-			print_r($_session['user']);exit();
+			$this->Session->write('user.id', $id);
+			$this->Session->write('user.login','true');
 			$this->redirect(array('controller'=>'Users','action'=>'welcome'));
 		}
 		else{
-			$this->Session->write('Auth', $this->User->read(null, $id));
 			$this->redirect(array('controller'=>'Users','action'=>'incorrect_login'));
 		}
 
@@ -65,7 +55,11 @@ function beforeFilter() {
 
 	}
 	public function welcome(){
-
+		$id = $this->Session->read('user.id');
+		$login = $this->Session->read('user.login');
+		if($login != 'true'){
+			$this->redirect(array('controller'=>'Users','action'=>'login'));
+		}
 	}
 	public function incorrect_login(){
 
