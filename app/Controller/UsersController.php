@@ -7,9 +7,8 @@ class UsersController extends AppController {
 	public $uses = array('User');
 /*
 function beforeFilter() {
-    $this->Auth->allow('login', 'logout','login_process','register_process','register_success','incorrect_login','incorrect_password');
-    $this->Auth->autoRedirect = false;
-   	parent::beforeFilter();
+	parent::beforeFilter();
+    $this->Auth->allow('login', 'logout','login_process','register_process','register_success','incorrect_login','incorrect_password');   	
 }
 */
 	public function login() {
@@ -22,6 +21,11 @@ function beforeFilter() {
 		$user_info = $this->User->find('first',array('conditions'=>$conditions));
 		$id=$user_info['User']['uid'];
 		if($user_info['User']['password']==$password){
+			$_session['user'] = array(
+					'login' => 'yes',
+					'id' => $id
+				);
+			print_r($_session['user']);exit();
 			$this->redirect(array('controller'=>'Users','action'=>'welcome'));
 		}
 		else{
@@ -70,6 +74,12 @@ function beforeFilter() {
 
 	}
 	public function logout(){
+
+	}
+	public function geoname(){
+
+	}
+	public function googlemap(){
 
 	}
 

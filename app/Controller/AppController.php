@@ -33,12 +33,12 @@ App::uses('Controller', 'Controller');
  */
 class AppController extends Controller {
 	public $helpers = array('Html', 'Js', 'Session', 'Form');
-
+/*
 	var $components = array(
 		'Session',
 		'Auth' => array(
 			'loginRedirect' => array('controller' => 'Users', 'action' => 'welcome'),
-			'logoutRedirect' => array('controller' => 'Pages', 'action' => 'home'),
+			'logoutRedirect' => array('controller' => 'Pages', 'action' => 'index','display','front'),
 		)
 	);
 
@@ -46,7 +46,9 @@ class AppController extends Controller {
 	public function isAuthorized() {
 		return true;
 	}	
+	*/
 	public function beforeFilter() {
-		$this->Auth->allow('login','register');
+		//$this->Auth->allow('index','register','login','front');
+		session_start();
 	}
 }
