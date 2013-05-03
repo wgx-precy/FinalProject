@@ -23,7 +23,7 @@ App::uses('Debugger', 'Utility');
 ?>
 <h5>xiehongquan,nimei</h5>
 
-<a href="/FinalProject/pages/front">Front Page</a>
+<a href="/FinalProject/Users/login">Login</a>
 
 <h2><?php echo __d('cake_dev', 'Release Notes for CakePHP %s.', Configure::version()); ?></h2>
 <p>

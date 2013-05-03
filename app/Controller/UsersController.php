@@ -73,6 +73,16 @@ class UsersController extends AppController {
 
 	}
 	public function googlemap(){
+		$id = $this->Session->read('user.id');
+		$login = $this->Session->read('user.login');
+		if($login != 'true'){
+			$this->redirect(array('controller'=>'Users','action'=>'login'));
+		}
+	}
+	public function getlocation(){
+
+	}
+	public function googletest(){
 
 	}
 
