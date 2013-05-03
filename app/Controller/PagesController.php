@@ -84,4 +84,7 @@ function beforeFilter() {
 	public function front(){
 		
 	}
+	public function index(){
+		
+	}
 }
