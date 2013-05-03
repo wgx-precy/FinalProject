@@ -16,7 +16,7 @@
 
 <body align = "center">
 	<em><big><strong>
-		Welcome to<br/>Jingo;
+		Welcome to<br/>Jingo
 	</strong></big></em>
 
 
