@@ -1,0 +1,72 @@
+/*
+.col1, .col2, .col3, .cols {float:left}
+.col1 {width:575px}
+.col2 {width:240px; padding-top:40px}
+.col3 {width:240px}
+.cols {width:265px}
+#page1 .body2 {background:url(../images/bg1.jpg) top center no-repeat}
+#page1 header {padding:0 10px 27px}
+#page1 h1 {height:275px; padding-top:63px}
+#page5 .col2 .cols {width:81px}
+
+
+.main {margin:0 auto;	width:900px;padding:0 10px}
+*/
+#menu {float:left;padding-top:50px;margin-left:-5px}
+#menu li {float:left;padding-right:30px;background:url(../images/menu_line.gif) right no-repeat;margin-right:31px}
+#menu .bg_none {background:none}
+#menu li a {display:block;font-size:24px;color:#363636;text-decoration:none;line-height:37px}
+#menu li a:hover, #menu #menu_active a {color:#3d9125}
+
+/*--profile--*/
+#userInfor {
+	position: absolute;
+	top:150px;
+	left:300px;
+	height:1000px;
+	width:1000px;
+	font-size:16px;
+	font-style: italic;
+	font-weight: bold;
+	}
+
+/*--about filter--*/
+#filter {
+	position:absolute;
+	top:180px;
+	left:100px;
+	height:1000px;
+	width:1000px;
+	font-size:16px;
+	font-style: italic;
+	font-weight: bold;
+	}
+
+#AddFilterButton {
+	position: absolute;
+	top: 150px;
+	right: 500px;
+	}
+
+#newFilter {
+	position:absolute;
+	top:150px;
+	left:300px;
+	height:1000px;
+	width:1000px;
+	font-size:16px;
+	font-style: italic;
+	font-weight: bold;
+	}
+
+/*--about search--*/
+#search {
+	position:absolute;
+	top:150px;
+	left:300px;
+	height:1000px;
+	width:1000px;
+	font-size:16px;
+	font-style: italic;
+	font-weight: bold;
+	}
