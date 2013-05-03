@@ -1,3 +1,4 @@
+<?php $this->Html->css('default', null, array('inline' => false)); ?>
 <?php
 	echo "welcome";
 ?>

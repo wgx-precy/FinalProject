@@ -52,6 +52,12 @@ class PagesController extends AppController {
  * @param mixed What page to display
  * @return void
  */
+/*
+function beforeFilter() {
+	parent::beforeFilter();
+    //$this->Auth->allow('login', 'logout','login_process','front','register_success','incorrect_login','incorrect_password');   	
+}
+*/
 	public function display() {
 		$path = func_get_args();
 		$conditions = array('user.password'=>"123");

@@ -1,10 +1,11 @@
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js"></script>
-<script language="javascript" type="text/javascript" src="js/jquery-1.3.2.min.js"></script>
-<?php $this->Html->script('userlogin/login.js', array('inline' => false)); ?>
-<?php $this->Html->css('style', null, array('inline' => false)); ?>
 <html>
 <head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js"></script>
+<!--<script type="text/javascript" src="/FinalProject/app/webroot/js/userlogin/login.js"></script>-->
+<script language="javascript" type="text/javascript" src="jquery-1.3.2.min.js"></script>
+<?php $this->Html->css('style', null, array('inline' => false)); ?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Login Form</title>
