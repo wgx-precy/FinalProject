@@ -57,8 +57,7 @@ $(document).ready(function() {
     <span>Fill out the form below to login JINGO!</span>
     <!--END DESCRIPTION-->
     </div>
-    <!--END HEADER-->
-	
+    <!--END HEADER-->	
 	<!--CONTENT-->
     <div class="content">
 	<!--USERNAME-->
