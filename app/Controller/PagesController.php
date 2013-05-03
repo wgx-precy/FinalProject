@@ -87,4 +87,23 @@ function beforeFilter() {
 	public function index(){
 		
 	}
+
+	//user profile pages
+	public function profile(){
+
+	}
+
+	public function filter(){
+
+	}
+
+	public function addfilter(){
+
+	}
+
+	public function search(){
+
+	}
+
+
 }
