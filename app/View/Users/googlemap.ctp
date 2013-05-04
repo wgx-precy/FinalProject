@@ -12,7 +12,7 @@
 	$note_lng = -73.997684;
 	$num = 3;
 	?>
-<input type="submit" name="submit" value="Login" class="button" id="Show_Note"/>
+<input type="submit" name="submit" value="Show Note" class="button" id="ShowNote"/>
 <?php
 	echo $this->Form->input('lat', array('type' => 'hidden', 'id' => 'note_lat','value' => $note_lat));
 	echo $this->Form->input('lng', array('type' => 'hidden', 'id' => 'note_lng','value' => $note_lng));
@@ -20,7 +20,7 @@
 <script type="text/javascript">
 google.maps.event.addDomListener(window, 'load', function() {
 	var mapdiv = document.getElementById('user_gmap');
-	$('#Show_Note').click(function(e){
+	$('#ShowNote').click(function(e){
 		var note_lat = Number($('#note_lat').val());
 		var note_lng = Number($('#note_lng').val());
 		//control the number of bubble
