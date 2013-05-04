@@ -43,6 +43,7 @@
 					</tr>
 		<tbody>		
 		<?php
+		echo $user_filters['0']['users_filters']['id'];
 			foreach($openlib as $content_item) :
 		?>
 					<tr>

@@ -43,7 +43,7 @@ class PagesController extends AppController {
  *
  * @var array
  */
-	public $uses = array('User', 'Note','Tag');
+	public $uses = array('User', 'Note','Tag','UserFilter');
 	public $helpers = array('Html');
 
 /**
@@ -99,7 +99,16 @@ function beforeFilter() {
 	}
 
 	public function filter(){
-
+		$id = $this->Session->read('user.id');
+		$login = $this->Session->read('user.login');
+		if($login != 'true'){
+			$this->redirect(array('controller'=>'Users','action'=>'login'));
+		}
+		$conditions = array('userfilter.uid'=>$id);
+		//$user_filters = $this->UserFilter->find('all',array('conditions'=>$conditions));
+		$user_filters =$this->UserFilter->query("SELECT * FROM `users_filters` WHERE uid = $id");
+		print_r($user_filters);
+		$this->set('user_filters',$user_filters);
 	}
 
 	public function addfilter(){
