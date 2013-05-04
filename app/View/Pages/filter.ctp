@@ -1,6 +1,7 @@
 <head>
 	<title>Profile</title>
-	<link rel="stylesheet" href="css/style_tagPages.css" type="text/css" media="all">
+
+	<?php $this->Html->css('style_tagPages',null,array('inline'=>false));?>
 	<script src="/tagPage/timeForm.js"></script>
 </head>
 
@@ -24,7 +25,7 @@
 	<a href="addfilter"><input type="submit" name="AddFilter" value="AddFilter" id="AddFilterButton"></a>
 
 	<div id="filter">
-		These are all filters you have:
+		<p>These are all filters you have:</p>
 		<form>
 			<pre>|StartDay	|EndDay		|StartTime	|EndTime	|Filter State	|Location<pre>
 			<!--Should insert the selection result of filter in database-->

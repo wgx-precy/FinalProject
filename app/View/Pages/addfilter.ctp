@@ -1,6 +1,7 @@
 <head>
 	<title>Profile</title>
-	<link rel="stylesheet" href="css/style_tagPages.css" type="text/css" media="all">
+
+	<?php $this->Html->css('style_tagPages',null,array('inline'=>false));?>
 	<script src="/tagPage/timeForm.js"></script>
 </head>
 
@@ -25,7 +26,7 @@
 		<form action="submitfilter" method="post">
 			<pre>Location: <input type="text" name="filterLocation" id="filterLocation"></pre>
 						
-			</br>State: &nbsp
+			<b>State: &nbsp</b>
 			<form>
 				<select name="state">
 					<option value="atHome">at home</option>
@@ -35,7 +36,7 @@
 					</select>
 			</form>
 			<pre>Tags: <input type="text" name="filterTags" id="filterTags"></pre>
-			<pre>Time: <input type="radio" name="filterTimeType" value="date" id="filterTimeType">by date	<input type="radio" name="filterTimeType" value="week" id="filterTimeType">by week   (This option is to make sure the time rule is based on date or week.)</pre>
+			<pre>Time: <div><input type="radio" name="filterTimeType" value="date" id="filterTimeType">by date</div><div><input type="radio" name="filterTimeType" value="week" id="filterTimeType">by week</div>   (This option is to make sure the time rule is based on date or week.)</pre>
 
 			<input type="submit" name="filterSubmit" id="filterSubmit">
 

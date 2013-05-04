@@ -33,8 +33,8 @@ CREATE TABLE IF NOT EXISTS `addresses` (
   `a_state` text,
   `a_line1` text NOT NULL,
   `a_line2` text NOT NULL,
-  `a_x` int(6) NOT NULL,
-  `a_y` int(6) NOT NULL,
+  `a_x` float NOT NULL,
+  `a_y` float NOT NULL,
   `zip` int(6) DEFAULT NULL,
   PRIMARY KEY (`aid`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
@@ -376,8 +376,8 @@ INSERT INTO `users_filters` (`fid`, `uid`, `datestart`, `dateend`, `repeat1`, `w
 
 CREATE TABLE IF NOT EXISTS `users_locations` (
   `uid` int(10) unsigned NOT NULL,
-  `location_x` int(6) NOT NULL,
-  `location_y` int(6) NOT NULL,
+  `location_x` float NOT NULL,
+  `location_y` float NOT NULL,
   `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   KEY `uid` (`uid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -409,10 +409,10 @@ INSERT INTO `users_locations` (`uid`, `location_x`, `location_y`, `time`) VALUES
 CREATE TABLE IF NOT EXISTS `zips` (
   `zip` int(6) NOT NULL,
   `district` text NOT NULL,
-  `z_x1` int(10) NOT NULL,
-  `z_x2` int(10) NOT NULL,
-  `z_y1` int(10) NOT NULL,
-  `z_y2` int(10) NOT NULL,
+  `z_x1` float NOT NULL,
+  `z_x2` float NOT NULL,
+  `z_y1` float NOT NULL,
+  `z_y2` float NOT NULL,
   PRIMARY KEY (`zip`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
