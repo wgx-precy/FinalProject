@@ -30,7 +30,7 @@
 		<h4>User Filter</h4>
 		<table id="filter_table" class="tablesorter" border="5" cellpadding="5" cellspacing="5">	
 					<tr style="pending:1px">
-						<td style=" text-align=center"> Filter ID</td>
+						<td style=" text-align=center">ID</td>
 						<td style=" align:center">Start Day</td>
 						<td style=" text-align:center">End Day</td>
 						<td style=" align:center">Start Week</td>
@@ -44,19 +44,6 @@
 		<tbody>		
 		<?php
 			foreach($openlib as $content_item) :
-				for ($i=0; $i < $length; $i++) { 
-					if ($counting[$i]['0']['content_items']['id']==$content_item['ContentItem']['id']) 
-						{
-						$i++;
-						$No=$i;
-						}
-			}
-		?>
-
-		<?php	if ($content_item['ContentItem']['id']!=null):
-		//print_r($content_item['ContentItem']['openlibrary']);
-					if($content_item['ContentItem']['openlibrary'] != "open"):
-						if($content_item['ContentItem']['openlibrary'] != "local"):
 		?>
 					<tr>
 						<td>
@@ -138,9 +125,6 @@
 						</div>
 							</td>		
 					</tr>
-					<?php endif;?>
-					<?php endif;?>
-				<?php endif;?>
 	<?php endforeach;?>
 				</tbody>
 			</table>		
