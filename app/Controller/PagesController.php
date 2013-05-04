@@ -109,6 +109,7 @@ function beforeFilter() {
 		$user_filters =$this->UserFilter->query("SELECT * FROM `users_filters` WHERE uid = $id");
 		print_r($user_filters);
 		$this->set('user_filters',$user_filters);
+
 	}
 
 	public function addfilter(){
@@ -124,7 +125,15 @@ function beforeFilter() {
 	}
 
 	public function postnote(){
-
+		$id = $this->Session->read('user.id');
+		$login = $this->Session->read('user.login');
+		if($login != 'true'){
+			$this->redirect(array('controller'=>'Users','action'=>'login'));
+		}
+		$latitude = $this->Session->read('user.latitude');
+		$longitude = $this->Session->read('user.longitude');
+		$this->set('latitude',$latitude);
+		$this->set('longitude',$longitude);
 	}
 
 	public function friends(){
