@@ -77,6 +77,9 @@ class UsersController extends AppController {
 					'location_y' => $ulng,
 				));
 			$this->UserLocation->save(null,false);
+			$this->Session->write('user.latitude',$ulat);
+			$this->Session->write('user.longitude',$ulng);
+			$this->redirect(array('controller'=>'Pages','action'=>'profile'));
 		}
 	}
 	public function incorrect_login(){

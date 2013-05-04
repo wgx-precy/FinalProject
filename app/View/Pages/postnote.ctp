@@ -26,7 +26,7 @@
 			<p>Wanna share your idear with other people?</p>
 			<p>Just post what you wanna show up here!</p>
 
-			<p>Your current location is:</p>
+			<p>Your current location is: latitude:<?=$latitude;?> longitude:<?=$longitude;?></p>
 			
 			</br>State:&nbsp
 			<form>
