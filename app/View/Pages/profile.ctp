@@ -1,7 +1,6 @@
 <?php $this->Html->css('default', null, array('inline' => false)); ?>
 <head>
 	<title>Profile</title>
-	<link rel="stylesheet" href="css/style_tagPages.css" type="text/css" media="all">
 	<?php $this->Html->css('style_tagPages',null,array('inline'=>false));?>
 </head>
 

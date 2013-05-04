@@ -1,7 +1,8 @@
 <?php $this->Html->css('default', null, array('inline' => false)); ?>
 <head>
 	<title>Profile</title>
-	<link rel="stylesheet" href="css/style_tagPages.css" type="text/css" media="all">
+
+	<?php $this->Html->css('style_tagPages',null,array('inline'=>false));?>
 	<script src="/tagPage/timeForm.js"></script>
 </head>
 
@@ -26,7 +27,7 @@
 		<form action="submitSearch" method="post">
 			<pre>Location: <input type="text" name="searchLocation"></pre>
 			
-			State:&nbsp
+			<b>State:&nbsp</b>
 			<form>
 				<select name="state">
 					<option value="atHome">at home</option>

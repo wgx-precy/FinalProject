@@ -12,8 +12,8 @@
 
 .main {margin:0 auto;	width:900px;padding:0 10px}
 */
-#menu {float:left;padding-top:50px;margin-left:-5px}
-#menu li {float:left;padding-right:30px;background:url(../images/menu_line.gif) right no-repeat;margin-right:25px}
+#menu {float:left;padding-top:50px;margin-left:5%}
+#menu li {float:left;padding-right:30px;background:url(/FinalProject/img/menu_line.gif) right no-repeat;margin-right:31px}
 #menu .bg_none {background:none}
 #menu li a {display:block;font-size:24px;color:#363636;text-decoration:none;line-height:37px}
 #menu li a:hover, #menu #menu_active a {color:#3d9125}
@@ -21,8 +21,8 @@
 /*--profile--*/
 #userInfor {
 	position: absolute;
-	top:150px;
-	left:300px;
+	top:30%;
+	left:12%;
 	height:1000px;
 	width:1000px;
 	font-size:16px;
@@ -33,40 +33,52 @@
 /*--about filter--*/
 #filter {
 	position:absolute;
-	top:180px;
-	left:100px;
+	top:30%;
+	left:12%;
 	height:1000px;
 	width:1000px;
 	font-size:16px;
 	font-style: italic;
 	font-weight: bold;
+	}
+
+
+#filter p {
+	color:white;
 	}
 
 #AddFilterButton {
 	position: absolute;
-	top: 150px;
-	right: 500px;
+	top: 27%;
+	right: 25%;
 	}
 
 #newFilter {
 	position:absolute;
-	top:150px;
-	left:300px;
+	top:30%;
+	left:12%;
 	height:1000px;
 	width:1000px;
 	font-size:16px;
 	font-style: italic;
 	font-weight: bold;
+	}
+#newFilter b {
+	color:white;
 	}
 
 /*--about search--*/
 #search {
 	position:absolute;
-	top:150px;
-	left:300px;
+	top:30%;
+	left:12%;
 	height:1000px;
 	width:1000px;
 	font-size:16px;
 	font-style: italic;
 	font-weight: bold;
+	}
+
+#search b {
+	color: white;
 	}
