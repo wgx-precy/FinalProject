@@ -2,7 +2,7 @@
 class UsersController extends AppController {
 	public $name = 'Users';
 	public $component = array('RequestHandlerComponent');
-	public $uses = array('User');
+	public $uses = array('User','UserLocation');
 
 
 	public function login() {
@@ -59,6 +59,21 @@ class UsersController extends AppController {
 		if($login != 'true'){
 			$this->redirect(array('controller'=>'Users','action'=>'login'));
 		}
+		$this->set('id',$id);
+
+	}
+	public function welcome_process(){
+		if($this->request->is('post')){
+			$uid =$this->request->data('uid');
+			$ulat =$this->request->data('ulat');
+			$ulng =$this->request->data('ulng');
+				$this->UserLocation->set(array(
+					'uid' => $username,
+					'location_x' => $username,
+					'location_y' => $password1,
+				));
+			$this->UserLocation->save(null,false);
+		}
 	}
 	public function incorrect_login(){
 
@@ -80,6 +95,11 @@ class UsersController extends AppController {
 		}
 	}
 	public function getlocation(){
+		$id = $this->Session->read('user.id');
+		$login = $this->Session->read('user.login');
+		if($login != 'true'){
+			$this->redirect(array('controller'=>'Users','action'=>'login'));
+		}
 
 	}
 	public function googletest(){
@@ -87,7 +107,7 @@ class UsersController extends AppController {
 	}
 
 
-/*---TestSession---CH---*/
+/*
 
     public function beforeFilter() {
         parent::beforeFilter();

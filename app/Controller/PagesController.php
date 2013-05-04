@@ -90,6 +90,12 @@ function beforeFilter() {
 
 	//user profile pages
 	public function profile(){
+		$id = $this->Session->read('user.id');
+		$login = $this->Session->read('user.login');
+		if($login != 'true'){
+			$this->redirect(array('controller'=>'Users','action'=>'login'));
+		}
+		
 
 	}
 
