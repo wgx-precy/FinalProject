@@ -110,5 +110,26 @@ function beforeFilter() {
 
 	}
 
+	public function touchmap(){
+
+	}
+
+	public function postnote(){
+
+	}
+
+	public function friends(){
+
+	}
+
+	public function addfriend(){
+
+	}
+
+	public function requests(){
+		
+	}
+
+//	public function 
 
 }

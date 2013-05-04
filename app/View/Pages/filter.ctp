@@ -1,6 +1,6 @@
 <?php $this->Html->css('default', null, array('inline' => false)); ?>
 <head>
-	<title>Profile</title>
+	<title>Filter</title>
 
 	<?php $this->Html->css('style_tagPages',null,array('inline'=>false));?>
 	<script src="/tagPage/timeForm.js"></script>
@@ -23,7 +23,7 @@
 		</header>
 	</div>
 
-	<a href="addfilter"><input type="submit" name="AddFilter" value="AddFilter" id="AddFilterButton"></a>
+	<a href="addfilter"><input type="submit" name="AddFilter" value="AddFilter" id="addFilterButton"></a>
 
 	<div id="filter">
 		<form>
