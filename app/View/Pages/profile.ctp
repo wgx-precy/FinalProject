@@ -22,9 +22,11 @@
 	</div>
 
 	<div id="userInfor">
-		<pre>Username: </pre>
-		<pre>email: </pre>
-		<pre>credit: </pre>
+		<pre>First name: <?php echo $user_profile['0']['User']['first_name'];?></pre>
+		<pre>Last name: <?php echo $user_profile['0']['User']['last_name'];?></pre>
+		<pre>Username: <?php echo $user_profile['0']['User']['username'];?></pre>
+		<pre>Email: <?php echo $user_profile['0']['User']['uemail'];?></pre>
+		<pre>Credit: <?php echo $user_profile['0']['User']['credit'];?></pre>
 	</div>
 	
 </body>

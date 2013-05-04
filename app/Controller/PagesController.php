@@ -60,8 +60,6 @@ function beforeFilter() {
 */
 	public function display() {
 		$path = func_get_args();
-		$conditions = array('user.password'=>"123");
-		$result = $this->User->find('all',array('conditions'=>$conditions));
 		$count = count($path);
 		if (!$count) {
 			$this->redirect('/');
@@ -95,8 +93,9 @@ function beforeFilter() {
 		if($login != 'true'){
 			$this->redirect(array('controller'=>'Users','action'=>'login'));
 		}
-		
-
+		$conditions = array('user.id'=>$id);
+		$user_profile = $this->User->find('all',array('conditions'=>$conditions));
+		$this->set('user_profile',$user_profile);
 	}
 
 	public function filter(){

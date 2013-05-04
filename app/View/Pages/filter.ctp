@@ -26,12 +26,24 @@
 	<a href="addfilter"><input type="submit" name="AddFilter" value="AddFilter" id="AddFilterButton"></a>
 
 	<div id="filter">
-		<p>These are all filters you have:</p>
 		<form>
-			<pre>|StartDay	|EndDay		|StartTime	|EndTime	|Filter State	|Location<pre>
-			<!--Should insert the selection result of filter in database-->
-				
+		<h4>User Filter</h4>
+		<table id="filter_table" class="tablesorter" border="5" cellpadding="5" cellspacing="5">	
+					<tr style="pending:1px">
+						<td style=" text-align=center"> Filter ID</td>
+						<td style=" align:center">Start Day</td>
+						<td style=" text-align:center">End Day</td>
+						<td style=" align:center">Start Week</td>
+						<td style=" align:center">End Week</td>
+						<td style=" align:center">Start Time </td>
+						<td style=" align:center">End Time </td>
+						<td style=" text-align:center">State </td>
+						<td style=" align:center">Location </td>
+						<td style=" align:center">Tag </td>	
+					</tr>	
+		
 		</form>
+
 	</div>
 	
 

@@ -1,1 +1,4 @@
-<?php echo json_encode($json_output); ?>
+<?php 
+echo $_COOKIE['userlat'];
+echo $_COOKIE['userlng'];
+?>

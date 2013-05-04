@@ -19,7 +19,6 @@
 	var this_longitude;
 	function getLocation()
 	{
-	  	alert(this_id);
 	  if (navigator.geolocation)
 		    {
 		    navigator.geolocation.watchPosition(showPosition);
@@ -39,11 +38,14 @@
 	  		ulng : this_longitude
 	  	}},function(data){
 
-	  	},
-	  	'json');
+	  	});
 
  	 x.innerHTML="Latitude: " + position.coords.latitude + 
   	"<br>Longitude: " + position.coords.longitude; 
+  	var name="userlat",value=this_latitude;
+	document.cookie="userlat"+"="+value+";";
+	var name="userlng",value=this_longitude;
+	document.cookie="userlng"+"="+value+";";
 	  }
 </script>
 </body>
