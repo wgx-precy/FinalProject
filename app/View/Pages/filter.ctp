@@ -43,6 +43,7 @@
 					</tr>
 		<tbody>		
 		<?php
+		echo $user_filters['0']['users_filters']['id'];
 			foreach($openlib as $content_item) :
 				for ($i=0; $i < $length; $i++) { 
 					if ($counting[$i]['0']['content_items']['id']==$content_item['ContentItem']['id']) 

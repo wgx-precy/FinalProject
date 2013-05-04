@@ -7,15 +7,8 @@
  */
  
 class UserFilter extends AppModel {
-	var $name = 'UserFilters';
+	var $name = 'UsersFilters';
 	var $useDbConfig = 'default';
-	
-	// public $hasOne = array(
-	// 	'UserProfile' =>
-	// 		array(
-	// 			'className' => 'UserProfile',
-	// 		),
-	// );
 	
 	public $hasMany = array(
 		'User',
