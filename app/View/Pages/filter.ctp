@@ -23,7 +23,7 @@
 		</header>
 	</div>
 
-	<a href="addfilter"><input type="submit" name="AddFilter" value="AddFilter" id="AddFilterButton"></a>
+	<a href="addfilter"><input type="submit" name="AddFilter" value="AddFilter" id="addFilterButton"></a>
 
 	<div id="filter">
 		<form>

@@ -47,7 +47,7 @@
 	color:white;
 	}
 
-#AddFilterButton {
+#addFilterButton {
 	position: absolute;
 	top: 27%;
 	right: 25%;
@@ -81,4 +81,61 @@
 
 #search b {
 	color: white;
+	}
+
+/*about touchmap*/
+#map {
+	position:absolute;
+	top:30%;
+	left:12%;
+	height:1000px;
+	width:1000px;
+	font-size:16px;
+	font-style: italic;
+	font-weight: bold;
+	}
+
+/*about note*/
+#newNote {
+	position:absolute;
+	top:30%;
+	left:12%;
+	height:1000px;
+	width:1000px;
+	font-size:16px;
+	font-style: italic;
+	font-weight: bold;
+	}
+#range {
+	width: 500px;
+	}
+
+/*about friend*/
+#friendList {
+	position: absolute;
+	top:30%;
+	left:12%;
+	height:1000px;
+	width:1000px;
+	font-size:16px;
+	font-style: italic;
+	font-weight: bold;
+	}
+
+#addFriendButton {
+	position: absolute;
+	top:27%;
+	right:25%;
+	}
+
+/*about request*/
+#requestList {
+	position: absolute;
+	top:30%;
+	left:12%;
+	height:1000px;
+	width:1000px;
+	font-size:16px;
+	font-style: italic;
+	font-weight: bold;
 	}
