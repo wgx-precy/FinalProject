@@ -32,20 +32,11 @@
 	  {
 	  this_latitude = position.coords.latitude;
 	  this_longitude = position.coords.longitude;
-	   	$.post('/FinalProject/Users/welcome_process', {user_location:{
-	  		uid : this_id,
-	  		ulat : this_latitude,
-	  		ulng : this_longitude
-	  	}},function(data){
-
-	  	});
-
- 	 x.innerHTML="Latitude: " + position.coords.latitude + 
-  	"<br>Longitude: " + position.coords.longitude; 
   	var name="userlat",value=this_latitude;
 	document.cookie="userlat"+"="+value+";";
 	var name="userlng",value=this_longitude;
 	document.cookie="userlng"+"="+value+";";
+	window.location.href="http://www.project.com/FinalProject/Users/welcome_process";
 	  }
 </script>
 </body>
