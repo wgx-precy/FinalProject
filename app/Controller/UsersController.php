@@ -63,14 +63,18 @@ class UsersController extends AppController {
 
 	}
 	public function welcome_process(){
+		$id = $this->Session->read('user.id');
+		$login = $this->Session->read('user.login');
+		if($login != 'true'){
+			$this->redirect(array('controller'=>'Users','action'=>'login'));
+		}
 		if($this->request->is('post')){
-			$uid =$this->request->data('uid');
-			$ulat =$this->request->data('ulat');
-			$ulng =$this->request->data('ulng');
+			$ulat =$this->request->data('userlat');
+			$ulng =$this->request->data('userlng');
 				$this->UserLocation->set(array(
-					'uid' => $username,
-					'location_x' => $username,
-					'location_y' => $password1,
+					'uid' => $id,
+					'location_x' => $ulat,
+					'location_y' => $ulng,
 				));
 			$this->UserLocation->save(null,false);
 		}

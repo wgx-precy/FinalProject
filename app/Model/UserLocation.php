@@ -7,7 +7,7 @@
  */
  
 class UserLocation extends AppModel {
-	var $name = 'UserLocations';
+	var $name = 'UsersLocations';
 	var $useDbConfig = 'default';
 	
 	// public $hasOne = array(
