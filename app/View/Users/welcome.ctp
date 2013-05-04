@@ -36,7 +36,7 @@
 	document.cookie="userlat"+"="+value+";";
 	var name="userlng",value=this_longitude;
 	document.cookie="userlng"+"="+value+";";
-	window.location.href="http://www.project.com/FinalProject/Users/welcome_process";
+	window.location.href="/FinalProject/Users/welcome_process";
 	  }
 </script>
 </body>
