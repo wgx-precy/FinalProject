@@ -1,6 +1,6 @@
 <?php $this->Html->css('default', null, array('inline' => false)); ?>
 <head>
-	<title>Profile</title>
+	<title>Search</title>
 
 	<?php $this->Html->css('style_tagPages',null,array('inline'=>false));?>
 	<script src="/tagPage/timeForm.js"></script>
