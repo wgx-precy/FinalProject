@@ -43,7 +43,7 @@ class PagesController extends AppController {
  *
  * @var array
  */
-	public $uses = array('User', 'Note','Tag','UserFilter');
+	public $uses = array('User', 'Note','Tag','UserFilter','Request');
 	public $helpers = array('Html');
 
 /**
@@ -145,7 +145,14 @@ function beforeFilter() {
 	}
 
 	public function requests(){
-		
+		$id = $this->Session->read('user.id');
+		$login = $this->Session->read('user.login');
+		if($login != 'true'){
+			$this->redirect(array('controller'=>'Users','action'=>'login'));
+		}
+		$friend_request = $this->Request->query("select * from requests inner join users on requests.fid = users.id where requests.uid = $id");
+		print_r($friend_request);
+		$this->set('friend_request',$friend_request);	
 	}
 
 //	public function 

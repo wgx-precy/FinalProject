@@ -22,8 +22,41 @@
 	</div>
 
 	<div id="requestList">
-		<pre>These requests are waiting for you to confirm: </pre>
-		<!--insert the result of selection from request in DB-->
+	<pre>
+		These requests are waiting for you to confirm: 
+		<table border="1">
+				<tr>
+				<th>#</th>
+				<th>User Name</th>
+				<th>Last Name</th>
+				<th>First Name</th>
+				<th>Permit</th>
+				<th>Ignore</th>
+				</tr>
+			<tbody>
+			<?php 
+				$num = 1;
+				foreach($friend_request as $request):
+				echo $this->Form->create(null, array('url' => array('controller'=>'/Pages/','action' =>'reqquests')));
+				echo $this->Form->input('permit', array('name'=>'permit','type' => 'hidden','value' => $request['requests']['id']));
+			?>
+				<tr>
+				<td><?=$num;?></td>
+				<td><?=$request['users']['username']?></td>
+				<td><?=$request['users']['last_name']?></td>
+				<td><?=$request['users']['first_name']?></td>
+				<td><?php 
+				echo $this->Form->submit('permit', array('name'=>'permit','value' => 'permit'));?></td>
+				<td><?php echo $this->Form->submit('ignore', array('name'=>'ignore','value' => 'follow'));?></td>
+				</tr>
+			<?php 
+				echo $this->Form->end();
+				$num++;
+				endforeach;
+			?>
+			</tbody>
+		</table>
+	</pre>
 	</div>
 	
 </body>
