@@ -165,7 +165,6 @@ function beforeFilter() {
 					'fid' => $fid,
 				));
 			$this->Friend->save(null,false);
-
 		}
 	}
 
