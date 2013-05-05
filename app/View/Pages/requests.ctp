@@ -37,8 +37,9 @@
 			<?php 
 				$num = 1;
 				foreach($friend_request as $request):
-				echo $this->Form->create(null, array('url' => array('controller'=>'/Pages/','action' =>'reqquests')));
-				echo $this->Form->input('permit', array('name'=>'permit','type' => 'hidden','value' => $request['requests']['id']));
+				echo $this->Form->create(null, array('url' => array('controller'=>'/Pages/','action' =>'requests')));
+				echo $this->Form->input('requestid', array('name'=>'requestid','type' => 'hidden','value' => $request['requests']['id']));
+				echo $this->Form->input('fid', array('name'=>'fid','type' => 'hidden','value' => $request['requests']['fid']));
 			?>
 				<tr>
 				<td><?=$num;?></td>
@@ -46,7 +47,7 @@
 				<td><?=$request['users']['last_name']?></td>
 				<td><?=$request['users']['first_name']?></td>
 				<td><?php 
-				echo $this->Form->submit('permit', array('name'=>'permit','value' => 'permit'));?></td>
+				echo $this->Form->submit('permit', array('name'=>'permit','value' => 'friend'));?></td>
 				<td><?php echo $this->Form->submit('ignore', array('name'=>'ignore','value' => 'follow'));?></td>
 				</tr>
 			<?php 

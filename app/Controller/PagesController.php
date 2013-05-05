@@ -43,7 +43,7 @@ class PagesController extends AppController {
  *
  * @var array
  */
-	public $uses = array('User', 'Note','Tag','UserFilter','Request');
+	public $uses = array('User', 'Note','Tag','UserFilter','Request','Friend');
 	public $helpers = array('Html');
 
 /**
@@ -110,6 +110,7 @@ function beforeFilter() {
 		print_r($user_filters);
 		$this->set('user_filters',$user_filters);
 
+
 	}
 
 	public function addfilter(){
@@ -150,9 +151,22 @@ function beforeFilter() {
 		if($login != 'true'){
 			$this->redirect(array('controller'=>'Users','action'=>'login'));
 		}
-		$friend_request = $this->Request->query("select * from requests inner join users on requests.fid = users.id where requests.uid = $id");
-		print_r($friend_request);
+		$friend_request = $this->Request->query("select * from requests inner join users on requests.fid = users.id where requests.uid = $id and status = 'request'");
+		//print_r($friend_request);
 		$this->set('friend_request',$friend_request);	
+		if($this->request->is('post')){
+			$rid =$this->request->data('requestid');
+			$fid =$this->request->data('fid');
+			$permit =$this->request->data('permit');
+			$ignore =$this->request->data('ignore');
+			$this->Request->query("update requests set requests.status = 'friend' where requests.id = $rid");
+			$this->Friend->set(array(
+					'uid' => $id,
+					'fid' => $fid,
+				));
+			$this->Friend->save(null,false);
+
+		}
 	}
 
 //	public function 
