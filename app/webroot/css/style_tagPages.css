@@ -33,14 +33,15 @@
 /*--about filter--*/
 #filter {
 	position:absolute;
-	top:30%;
-	left:12%;
+	top:35%;
+	left:7%;
 	height:1000px;
-	width:1000px;
+	width:1300px;
 	font-size:16px;
 	font-style: italic;
 	font-weight: bold;
 	}
+
 
 
 #filter p {
@@ -49,8 +50,8 @@
 
 #addFilterButton {
 	position: absolute;
-	top: 27%;
-	right: 25%;
+	top: 30%;
+	right: 7%;
 	}
 
 #newFilter {
@@ -113,7 +114,7 @@
 /*about friend*/
 #friendList {
 	position: absolute;
-	top:30%;
+	top:32%;
 	left:12%;
 	height:1000px;
 	width:1000px;
@@ -125,7 +126,7 @@
 #addFriendButton {
 	position: absolute;
 	top:27%;
-	right:25%;
+	right:18%;
 	}
 
 /*about request*/
