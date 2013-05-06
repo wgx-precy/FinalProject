@@ -23,10 +23,10 @@
 	</div>
 
 	<div id="newFilter">
-		<form action="submitfilter" method="post">
+		<form name="add-friend-form" class="add-friend-form" action="/FinalProject/Pages/addfriend" method="post">
 			<pre>Input the email of the people you wanna add as friend</pre>
-			<pre>email:<input type="text" name="filterLocation" id="filterLocation"></pre>
-			<input type="submit" name="friendSubmit" id="friendSubmit">
+			<pre>email:<input name="useremail" type="text" class="input username" id="username_input" value="user email" onfocus="this.value=''" /></pre>
+			<input type="submit" name="submit" value="Add" class="button" id="add_friend_button"/>
 		</form>
 	</div>
 

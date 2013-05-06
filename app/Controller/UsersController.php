@@ -82,6 +82,9 @@ class UsersController extends AppController {
 			$this->redirect(array('controller'=>'Pages','action'=>'profile'));
 		}
 	}
+	public function comment(){
+		echo "comment here";
+	}
 	public function incorrect_login(){
 
 	}
