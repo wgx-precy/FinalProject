@@ -81,7 +81,8 @@ function beforeFilter() {
 	}
 
 	public function front(){
-		
+		$result = $this->Note->query("");
+		print_r($result);
 	}
 	public function index(){
 		
