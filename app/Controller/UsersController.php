@@ -2,7 +2,7 @@
 class UsersController extends AppController {
 	public $name = 'Users';
 	public $component = array('RequestHandlerComponent');
-	public $uses = array('User','UserLocation');
+	public $uses = array('User','UserLocation','Comment');
 
 
 	public function login() {
@@ -83,7 +83,27 @@ class UsersController extends AppController {
 		}
 	}
 	public function comment(){
-		echo "comment here";
+		$id = $this->Session->read('user.id');
+		$login = $this->Session->read('user.login');
+		if($login != 'true'){
+			$this->redirect(array('controller'=>'Users','action'=>'login'));
+		}
+		if(isset($_GET['flag'])){
+			print_r($_GET['flag']);
+			$this->set('nid',$_GET['flag']);
+		}
+		if($this->request->is('post')){
+			print_r('hello');
+			$comment =$this->request->data('username');
+				$this->Comment->set(array(
+					'cid' => '',
+					'nid' => $_GET['flag'],
+					'uid' => $id,
+					'ctime' => '',
+					'cnote' => $comment,
+				));
+			$this->Comment->save(null,false);
+		}
 	}
 	public function incorrect_login(){
 

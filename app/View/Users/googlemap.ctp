@@ -65,7 +65,7 @@ google.maps.event.addDomListener(window, 'load', function() {
   	function attachSecretMessage(marker, num) {
 		  var message = ['This', 'is', 'the', 'secret', 'message','xie','hong','quan','xie','xie','hong'];
 		  var infowindow = new google.maps.InfoWindow({
-		    content: '<strong>tag</strong><a href="comment">comment</a></br>'+message[num]
+		    content: '<strong>tag</strong><a href="comment/?flag=5">comment</a></br>'+message[num]
 		  });
 
 		  google.maps.event.addListener(marker, 'click', function() {
