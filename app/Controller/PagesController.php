@@ -152,6 +152,23 @@ function beforeFilter() {
 	}
 
 	public function addfriend(){
+		$id = $this->Session->read('user.id');
+		$login = $this->Session->read('user.login');
+		if($login != 'true'){
+			$this->redirect(array('controller'=>'Users','action'=>'login'));
+		}
+		if($this->request->is('post')){
+			$useremail = $this->request->data('useremail');
+			$userinfo = $this->User->query("select * from users where users.username = '$useremail'");
+			//print_r($userinfo);
+			$fid = $userinfo['0']['users']['id'];
+			$this->Request->set(array(
+					'uid' => $fid,
+					'fid' => $id,
+				));
+			$this->Request->save(null,false);
+
+		}
 
 	}
 
