@@ -17,7 +17,7 @@
  * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
 
-$cakeDescription = __d('cake_dev', 'Jingo: the rapid development php framework');
+$cakeDescription = __d('cake_dev', 'Jingo -- powered by Precy and Chuan He');
 ?>
 <!DOCTYPE html>
 <html>
@@ -42,12 +42,13 @@ $cakeDescription = __d('cake_dev', 'Jingo: the rapid development php framework')
 		<div id="header">
 			<h1><?php echo $this->Html->link($cakeDescription, 'http://www.project.com/FinalProject/'); ?></h1>
 		</div>
+		<!--
 		<div id="content">
-
 			<?php echo $this->Session->flash(); ?>
-
-			<?php echo $this->fetch('content'); ?>
 		</div>
+		-->
+		<?php echo $this->fetch('content'); ?>
+		
 		<div id="footer">
 		</div>
 	</div>
