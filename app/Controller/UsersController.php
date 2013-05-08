@@ -82,7 +82,7 @@ class UsersController extends AppController {
 			$this->redirect(array('controller'=>'Pages','action'=>'profile'));
 		}
 	}
-	public function comment(){
+	public function note_comment(){
 		$id = $this->Session->read('user.id');
 		$login = $this->Session->read('user.login');
 		if($login != 'true'){
@@ -103,7 +103,36 @@ class UsersController extends AppController {
 					'cnote' => $comment,
 				));
 			$this->Comment->save(null,false);
+			$this->redirect(array('controller'=>'Users','action'=>'note_comment'));
 		}
+	}
+	public function comment(){
+		$id = $this->Session->read('user.id');
+		$login = $this->Session->read('user.login');
+		if($login != 'true'){
+			$this->redirect(array('controller'=>'Users','action'=>'login'));
+		}
+		if(isset($_GET['flag'])){
+			$nid = $_GET['flag'];
+			$this->set('nid',$_GET['flag']);
+		}
+		$comments = $this->Comment->query("SELECT * FROM `comments`, `users` WHERE nid = $nid and comments.uid = users.id ");
+		$note = $this->Note->query("SELECT * FROM `notes`, `users` WHERE nid = $nid and notes.uid = users.id");
+		$this->set('comments',$comments);
+		$this->set('note',$note);
+		if($this->request->is('post')){
+			$comment =$this->request->data('username');
+				$this->Comment->set(array(
+					'cid' => '',
+					'nid' => $_GET['flag'],
+					'uid' => $id,
+					'ctime' => '',
+					'cnote' => $comment,
+				));
+			$this->Comment->save(null,false);
+			echo '<script>parent.window.location.reload(true);</script>';		
+		}
+
 	}
 	public function incorrect_login(){
 

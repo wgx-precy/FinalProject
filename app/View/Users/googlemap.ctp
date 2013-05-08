@@ -24,7 +24,7 @@ google.maps.event.addDomListener(window, 'load', function() {
 		var note_lat = Number($('#note_lat').val());
 		var note_lng = Number($('#note_lng').val());
 		//control the number of bubble
-		var num =3;		
+		var num =5;		
 	function initialize(){
 		var myOptions = {
 		zoom: 5,
@@ -65,14 +65,13 @@ google.maps.event.addDomListener(window, 'load', function() {
   	function attachSecretMessage(marker, num) {
 		  var message = ['This', 'is', 'the', 'secret', 'message','xie','hong','quan','xie','xie','hong'];
 		  var infowindow = new google.maps.InfoWindow({
-		    content: '<strong>tag</strong><a href="comment/?flag=5">comment</a></br>'+message[num]
+		    content:"<strong style='font-family:arial;color:black;font-size:15px;''>tag tag </strong><a href='comment/?flag=5'>comment</a></br>"+"<p style='font-family:arial;color:black;font-size:15px;'>"+message[num]+'</p>'
 		  });
-
 		  google.maps.event.addListener(marker, 'click', function() {
 		    infowindow.open(marker.get('map'), marker);
 		  });
 	}
-	//google.maps.event.addDomListener(window, 'load', initialize);
+	google.maps.event.addDomListener(window, 'load', initialize);
 		});
 });
 </script>

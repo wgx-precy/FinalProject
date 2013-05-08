@@ -1,59 +1,82 @@
-<html>
+<?php $this->Html->css('default', null, array('inline' => false)); ?>
 <head>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js"></script>
-<script language="javascript" type="text/javascript" src="jquery-1.3.2.min.js"></script>
-<?php $this->Html->css('style_comment', null, array('inline' => false)); ?>
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Login Form</title>
-<link href="css/style_comment.css" rel="stylesheet" type="text/css" />
-
-<script type="text/javascript">
-$(document).ready(function() {
-	$(".username").focus(function() {
-		$(".user-icon").css("left","-48px");
-	});
-	$(".username").blur(function() {
-		$(".user-icon").css("left","0px");
-	});
-	
-	$(".password").focus(function() {
-		$(".pass-icon").css("left","-48px");
-	});
-	$(".password").blur(function() {
-		$(".pass-icon").css("left","0px");
-	});
-});
-</script>
-
+	<title>Requests</title>
+	<?php $this->Html->css('style_tagPages',null,array('inline'=>false));?>
 </head>
 <body>
-
-<div id="wrapper">
-
-	<!--SLIDE-IN ICONS-->
-    <div class="user-icon"></div>
-    <div class="pass-icon"></div>
-    <!--END SLIDE-IN ICONS-->
-
-<form name="comment-form" class="comment-form" action="/FinalProject/Users/comment/?flag=<?=$nid?>" method="post">
-
-    <div class="header">
-    <h1>Comment Form</h1>
-    <span>Fill out the form below to make a comment!</span>
-    </div>
-    <div class="content">
-	<input name="username" type="textarea" class="input username" id="username_input" value="Type here to make a comment" onfocus="this.value=''" />
-    </div>
-    <div class="footer">
-    <input type="submit" name="submit" value="Submit" class="button" id="login_button"/>
-    </div>
-
-</form>
-
-</div>
-<div class="gradient"></div>
+	<div>
+		<header>
+			<nav>
+				<ul id="menu">
+					<li><a href="http://www.project.com/FinalProject/Pages/profile">Profile</a></li>
+					<li><a href="http://www.project.com/FinalProject/Pages/filter">Filter</a></li>
+					<li><a href="http://www.project.com/FinalProject/Pages/search">Search</a></li>
+					<li><a href="http://www.project.com/FinalProject/Pages/touchmap">TouchMap</a></li>
+					<li><a href="http://www.project.com/FinalProject/Pages/postnote">PostNote</a></li>
+					<li><a href="http://www.project.com/FinalProject/Pages/friends">Friends</a></li>
+					<li><a href="http://www.project.com/FinalProject/Pages/requests">Requests</a></li>
+				</ul>
+			</nav>
+		</header>
+	</div>
+	<div id="requestList">
+	<pre>
+		<table border="1">
+				<tr>
+				<th>#</th>
+				<th>User Name</th>
+				<th>Note</th>
+				<th>Post Time</th>
+				</tr>
+			<tbody>
+				<tr>
+				<td>Note</td>
+				<td><?=$note['0']['users']['username']?></td>
+				<td><?=$note['0']['notes']['note']?></td>
+				<td><?=$note['0']['notes']['time']?></td>
+				</tr>
+			</tbody>
+				<tr>
+				<th>#</th>
+				<th>User Name</th>
+				<th>Comments</th>
+				<th>Post Time</th>
+				</tr>
+			<tbody>
+			<?php 
+				$num = 1;
+				foreach($comments as $comment):
+				// echo $this->Form->create(null, array('url' => array('controller'=>'/Pages/','action' =>'requests')));
+				// echo $this->Form->input('requestid', array('name'=>'requestid','type' => 'hidden','value' => $request['requests']['id']));
+				// echo $this->Form->input('fid', array('name'=>'fid','type' => 'hidden','value' => $request['requests']['fid']));
+			?>
+				<tr>
+				<td><?=$num;?></td>
+				<td><?=$comment['users']['username']?></td>
+				<td><?=$comment['comments']['cnote']?></td>
+				<td><?=$comment['comments']['ctime']?></td>
+				</tr>
+			<?php 
+				//echo $this->Form->end();
+				$num++;
+				endforeach;
+			?>
+			<form name="comment-form" class="comment-form" action="/FinalProject/Users/comment/?flag=<?=$nid?>" method="post">
+				<tr>
+				<th></th>
+				<th></th>
+				<th></th>
+				<th></th>
+				</tr>
+				<tr>
+				<td>Comment</td>
+				<td></td>
+				<td><input name="username" type="textarea" class="input username" id="username_input" value="Type here to make comments" onfocus="this.value=''" /></td>
+				<td><center><input type="submit" name="submit" value="Submit" class="button" id="login_button"/></center></td>
+				</tr>
+			</tbody>
+		</table>
+	</pre>
+	</div>
+	
 </body>
-</html>

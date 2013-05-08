@@ -28,15 +28,12 @@
 			<pre>Location: <input type="text" name="searchLocation"></pre>
 			
 			<b>State:&nbsp</b>
-			<form>
 				<select name="state">
 					<option value="atHome">at home</option>
 					<option value="atWork">at work</option>
 					<option value="lunchTime">lunch time</option>
 					<option value="shopping">shopping</option>
 					</select>
-			</form>
-
 			<pre>Tags: <input type="text" name="searchTags"></pre>
 
 			<input type="submit" name="search" value="search" id="filterSubmit">

@@ -166,6 +166,7 @@ function beforeFilter() {
 					'fid' => $id,
 				));
 			$this->Request->save(null,false);
+			echo '<script>parent.window.location.reload(true);</script>';
 
 		}
 
@@ -191,6 +192,7 @@ function beforeFilter() {
 					'fid' => $fid,
 				));
 			$this->Friend->save(null,false);
+			echo '<script>parent.window.location.reload(true);</script>';
 		}
 	}
 
