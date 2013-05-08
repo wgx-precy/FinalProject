@@ -167,7 +167,6 @@ function beforeFilter() {
 				));
 			$this->Request->save(null,false);
 			echo '<script>parent.window.location.reload(true);</script>';
-
 		}
 
 	}

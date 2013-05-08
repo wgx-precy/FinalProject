@@ -156,7 +156,7 @@ class UsersController extends AppController {
 
 
 		$result = $this->Note->query("/*f-date,n-date*/
-select  distinct notes.nid, notes.uid, notes.time, notes.note, notes.like_value from users_filters, zips, filters_tags,notes,tags  
+select  distinct notes.nid, notes.uid, notes.time, notes.note, notes.like_value, notes.nloc_x, notes.nloc_y from users_filters, zips, filters_tags,notes,tags  
 where users_filters.uid = $id and  users_filters.district = zips.district and users_filters.fid = filters_tags.fid 
 and notes.nid = tags.nid and filters_tags.tag = tags.tag and users_filters.choice = 'date' 
 and month(users_filters.datestart)*100+day(users_filters.datestart) <= month(current_date())*100+day(current_date()) and month(users_filters.dateend)*100+day(users_filters.dateend) >= month(current_date())*100+day(current_date()) and notes.choice = 'date' 
@@ -165,7 +165,7 @@ and zips.z_x2>=notes.nloc_x and zips.z_y2<=notes.nloc_y and zips.z_y1>=notes.nlo
 and hour(users_filters.timeend)*100+minute(users_filters.timeend) >= hour(current_time())*100+minute(current_time()) and hour(notes.starttime)*100+minute(notes.starttime) <= hour(current_time())*100+minute(current_time()) and hour(notes.endtime)*100+minute(notes.endtime) >= hour(current_time())*100+minute(current_time()) and notes.ntype = 'public'
 union
 /*f-week, n-date*/
-select distinct notes.nid, notes.uid, notes.time, notes.note, notes.like_value from users_filters, zips, filters_tags,notes,tags  
+select distinct notes.nid, notes.uid, notes.time, notes.note, notes.like_value, notes.nloc_x, notes.nloc_y from users_filters, zips, filters_tags,notes,tags  
 where users_filters.uid = $id and  users_filters.district = zips.district and users_filters.fid = filters_tags.fid 
 and notes.nid = tags.nid and filters_tags.tag = tags.tag and users_filters.choice = 'week' 
 and users_filters.week1 <= dayofweek(current_date()) and users_filters.week2 >= dayofweek(current_date()) and notes.choice = 'date' 
@@ -174,7 +174,7 @@ and zips.z_x2>=notes.nloc_x and zips.z_y2<=notes.nloc_y and zips.z_y1>=notes.nlo
 and hour(users_filters.timeend)*100+minute(users_filters.timeend) >= hour(current_time())*100+minute(current_time()) and hour(notes.starttime)*100+minute(notes.starttime) <= hour(current_time())*100+minute(current_time()) and hour(notes.endtime)*100+minute(notes.endtime) >= hour(current_time())*100+minute(current_time()) and notes.ntype = 'public'
 union
 /*f-date, n-week*/
-select distinct notes.nid, notes.uid, notes.time, notes.note, notes.like_value from users_filters, zips, filters_tags,notes,tags  
+select distinct notes.nid, notes.uid, notes.time, notes.note, notes.like_value, notes.nloc_x, notes.nloc_y from users_filters, zips, filters_tags,notes,tags  
 where users_filters.uid  = $id and  users_filters.district = zips.district and users_filters.fid = filters_tags.fid 
 and notes.nid = tags.nid and filters_tags.tag = tags.tag and users_filters.choice = 'date'
 and month(users_filters.datestart)*100+day(users_filters.datestart) <= month(current_date())*100+day(current_date()) and month(users_filters.dateend)*100+day(users_filters.dateend) >= month(current_date())*100+day(current_date()) and notes.choice = 'week' 
@@ -183,7 +183,7 @@ and zips.z_x2>=notes.nloc_x and zips.z_y2<=notes.nloc_y and zips.z_y1>=notes.nlo
 and hour(users_filters.timeend)*100+minute(users_filters.timeend) >= hour(current_time())*100+minute(current_time()) and hour(notes.starttime)*100+minute(notes.starttime) <= hour(current_time())*100+minute(current_time()) and hour(notes.endtime)*100+minute(notes.endtime) >= hour(current_time())*100+minute(current_time()) and notes.ntype = 'public'
 union
 /*f-week,n-week*/
-select distinct notes.nid, notes.uid, notes.time, notes.note, notes.like_value from users_filters, zips, filters_tags,notes,tags  
+select distinct notes.nid, notes.uid, notes.time, notes.note, notes.like_value, notes.nloc_x, notes.nloc_y from users_filters, zips, filters_tags,notes,tags  
 where users_filters.uid  = $id and  users_filters.district = zips.district and users_filters.fid = filters_tags.fid 
 and notes.nid = tags.nid and filters_tags.tag = tags.tag and users_filters.choice = 'week' 
 and users_filters.week1 <= dayofweek(current_date()) and users_filters.week2 >= dayofweek(current_date()) and notes.choice = 'week' 
@@ -191,7 +191,24 @@ and notes.week1 <= dayofweek(current_date()) and notes.week2 >= dayofweek(curren
 and zips.z_x2>=notes.nloc_x and zips.z_y2<=notes.nloc_y and zips.z_y1>=notes.nloc_y and hour(users_filters.timestart)*100+minute(users_filters.timestart) <= hour(current_time())*100+minute(users_filters.timestart) 
 and hour(users_filters.timeend)*100+minute(users_filters.timeend) >= hour(current_time())*100+minute(current_time()) and hour(notes.starttime)*100+minute(notes.starttime) <= hour(current_time())*100+minute(current_time()) and hour(notes.endtime)*100+minute(notes.endtime) >= hour(current_time())*100+minute(current_time()) and notes.ntype = 'public'");
 		//echo date("Y/m/d");
+		$count = count($result);
+		$i = 0;
+		$note = null;
+		$latitude = null;
+		$longitude = null;
+		$com = '<$=>';
+		for($i=0; $i<$count; $i++){
+			$note = $note.$result[$i]['0']['note'].$com;
+			$latitude = $latitude.$result[$i]['0']['nloc_y'].$com;
+			$longitude = $longitude.$result[$i]['0']['nloc_x'].$com;
+		}
 		print_r($result);
+		print_r($note);
+		print_r($latitude);
+		$this->set('num',$count);
+		$this->set('message',$note);
+		$this->set('latitude',$latitude);
+		$this->set('longitude',$longitude);
 	}
 	public function getlocation(){
 		$id = $this->Session->read('user.id');
