@@ -108,7 +108,7 @@ function beforeFilter() {
 		$conditions = array('userfilter.uid'=>$id);
 		//$user_filters = $this->UserFilter->find('all',array('conditions'=>$conditions));
 		$user_filters =$this->UserFilter->query("SELECT * FROM `users_filters` WHERE uid = $id");
-	//	print_r($user_filters);
+		print_r("JINGO");
 		$this->set('user_filters',$user_filters);
 
 

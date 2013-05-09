@@ -202,9 +202,9 @@ and hour(users_filters.timeend)*100+minute(users_filters.timeend) >= hour(curren
 			$latitude = $latitude.$result[$i]['0']['nloc_y'].$com;
 			$longitude = $longitude.$result[$i]['0']['nloc_x'].$com;
 		}
-		print_r($result);
-		print_r($note);
-		print_r($latitude);
+		//print_r($result);
+		//print_r($note);
+		//print_r($latitude);
 		$this->set('num',$count);
 		$this->set('message',$note);
 		$this->set('latitude',$latitude);
