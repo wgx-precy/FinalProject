@@ -43,7 +43,7 @@ class PagesController extends AppController {
  *
  * @var array
  */
-	public $uses = array('User', 'Note','Tag','UserFilter','Request','Friend');
+	public $uses = array('User', 'Note','Tag','UserFilter','Request','Friend','FilterTag');
 
 	public $helpers = array('Html');
 
@@ -114,6 +114,7 @@ function beforeFilter() {
 		if($this->request->is('post')){
 			$fid = $this->request->data('filter_id');
 			$this->UserFilter->query("DELETE FROM `users_filters`WHERE users_filters.fid = $fid");
+			$this->FilterTag->query("DELETE FROM `filters_tags`WHERE filters_tags.fid = $fid");
 			echo '<script>parent.window.location.reload(true);</script>';
 		}
 
