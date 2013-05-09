@@ -55,6 +55,7 @@
 			foreach($user_filters as $content_item): 	
 		?>
 			<form name="delete-note-form" class="delete-note" action="/FinalProject/Pages/filter" method="post">
+				<input name="filter_id" type="hidden" value=<?=$content_item['users_filters']['fid']?>>
 					<tr>
 						<td><center><?=$filter_display_id;?></center></td>
 						<td><center>
@@ -124,6 +125,7 @@
 						<td><center></td>
 						<td><center><input name="deletenote" type="submit"id="delete_note" value="Delete"/></center></td>
 					</tr>
+				</form>
 		<?php 
 			$filter_display_id++;
 			endforeach;

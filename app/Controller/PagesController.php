@@ -108,8 +108,14 @@ function beforeFilter() {
 		$conditions = array('userfilter.uid'=>$id);
 		//$user_filters = $this->UserFilter->find('all',array('conditions'=>$conditions));
 		$user_filters =$this->UserFilter->query("SELECT * FROM `users_filters` WHERE uid = $id");
+		//print_r($user_filters);
 		print_r("JINGO");
 		$this->set('user_filters',$user_filters);
+		if($this->request->is('post')){
+			$fid = $this->request->data('filter_id');
+			$this->UserFilter->query("DELETE FROM `users_filters`WHERE users_filters.fid = $fid");
+			echo '<script>parent.window.location.reload(true);</script>';
+		}
 
 
 	}
