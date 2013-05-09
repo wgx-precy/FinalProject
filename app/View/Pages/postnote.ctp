@@ -46,8 +46,14 @@
 					<option value="public">public</option>
 					<option value="followed">followed</option>
 					<option value="friends">friends</option>
-					</select>
+				</select>
 			</form>
+			<b>Repeat method: &nbsp</b>
+			<select name="users" onchange="showUser(this.value)">
+			<option value="">Select a method:</option>
+			<option value="date">date</option>
+			<option value="week">week</option>
+			</select>
 			<pre>EffectiveRange: <input type="text" name="range" id="range">(meters)</pre>
 			
 			<input type="submit" name="noteSubmit" value="PostNote" id="noteSubmit">

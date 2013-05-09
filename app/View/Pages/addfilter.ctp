@@ -1,4 +1,5 @@
 <?php $this->Html->css('default', null, array('inline' => false)); ?>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 <head>
 	<title>AddFilter</title>
 
@@ -36,10 +37,10 @@ function HS_calender(){
 	var lis = "";
 	var style = "";
 	style +="<style type='text/css'>";
-	style +=".calender { width:170px; height:auto; font-size:12px; margin-right:14px; background:url(calenderbg.gif) no-repeat right center #fff; border:1px solid #397EAE; padding:1px}";
+	style +=".calender { width:270px; height:auto; font-size:12px; margin-right:14px; background:url(calenderbg.gif) no-repeat right center #fff; border:1px solid #397EAE; padding:1px;color:black}";
 	style +=".calender ul {list-style-type:none; margin:0; padding:0;}";
-	style +=".calender .day { background-color:#EDF5FF; height:20px;}";
-	style +=".calender .day li,.calender .date li{ float:left; width:14%; height:20px; line-height:20px; text-align:center}";
+	style +=".calender .day { background-color:#EDF5FF; height:20px;color:black}";
+	style +=".calender .day li,.calender .date li{ float:left; width:4%; height:20px; line-height:20px; text-align:center}";
 	style +=".calender li a { text-decoration:none; font-family:Tahoma; font-size:11px; color:#333}";
 	style +=".calender li a:hover { color:#f30; text-decoration:underline}";
 	style +=".calender li a.hasArticle {font-weight:bold; color:#f60 !important}";
@@ -99,7 +100,7 @@ function HS_calender(){
 
 	var CalenderTitle = "<a href='javascript:void(0)' class='NextMonth' onclick=HS_calender(HS_DateAdd('m',1,'"+now.getFullYear()+"-"+now.getMonth()+"-"+now.getDate()+"'),this) title='Next Month'>&raquo;</a>";
 	CalenderTitle += "<a href='javascript:void(0)' class='LastMonth' onclick=HS_calender(HS_DateAdd('m',-1,'"+now.getFullYear()+"-"+now.getMonth()+"-"+now.getDate()+"'),this) title='Previous Month'>&laquo;</a>";
-	CalenderTitle += "<span class='selectThisYear'><a href='javascript:void(0)' onclick='CalenderselectYear(this)' title='Click here to select other year' >"+now.getFullYear()+"</a></span>YEAR<span class='selectThisMonth'><a href='javascript:void(0)' onclick='CalenderselectMonth(this)' title='Click here to select other month'>"+(parseInt(now.getMonth())+1).toString()+"</a></span>MONTH"; 
+	CalenderTitle += "YEAR<span class='selectThisYear'><a href='javascript:void(0)' onclick='CalenderselectYear(this)' title='Click here to select other year' >"+now.getFullYear()+"</a></span>&nbspMONTH<span class='selectThisMonth'><a href='javascript:void(0)' onclick='CalenderselectMonth(this)' title='Click here to select other month'>"+(parseInt(now.getMonth())+1).toString()+"</a></span>"; 
 
 	if (arguments.length>1){
 		arguments[1].parentNode.parentNode.getElementsByTagName("ul")[1].innerHTML = lis;
@@ -162,6 +163,37 @@ function HS_setDate(inputObj){
 	inputObj.parentNode.insertBefore(calenderObj,inputObj.nextSibling);
 }
   </script>
+
+
+ <!--animation selection on date method-->
+<script>
+function showTimeChoice(str)
+{
+if (str=="")
+  {
+  document.getElementById("txtHint").innerHTML="";
+  return;
+  } 
+if (window.XMLHttpRequest)
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {// code for IE6, IE5
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+xmlhttp.onreadystatechange=function()
+  {
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+    document.getElementById("txtHint").innerHTML=xmlhttp.responseText;
+    }
+  }
+xmlhttp.open("GET","filterchoice?q="+str,true);
+xmlhttp.send();
+}
+</script>
+</head>
 <!--<style>
   body {font-size:12px}
   td {text-align:center}
@@ -169,10 +201,9 @@ function HS_setDate(inputObj){
   h4 {font-size:16px;}
   em {color:#999; margin:0 10px; font-size:11px; display:block}
 </style>
-<!--date script done-->
+    date script done-->
 
 
-</head>
 
 <body>
 	<div>
@@ -192,25 +223,161 @@ function HS_setDate(inputObj){
 	</div>
 
 	<div id="newFilter">
-		<form action="submitfilter" method="post">
-			<pre>Location: <input type="text" name="filterLocation" id="filterLocation"></pre>
-						
+		<form action="/FinalProject/Pages/addfilter" method="post">
+			<span>Location: &nbsp</span>
+			<!--	<input type="text" name="filterLocation" id="filterLocation"></pre>-->
+			<select name="filterLocation">
+				<option value="Soho">Soho</option>
+			</select>
+			<div>			
 			<b>State: &nbsp</b>
-			<form>
-				<select name="state">
-					<option value="atHome">at home</option>
-					<option value="atWork">at work</option>
-					<option value="lunchTime">lunch time</option>
-					<option value="shopping">shopping</option>
-					</select>
-			</form>
+		
+			<select name="state">
+				<option value="atHome">at home</option>
+				<option value="atWork">at work</option>
+				<option value="lunch break">lunch break</option>
+				<option value="shopping">shopping</option>
+			</select>
+			</div>
+	<!--
 			<pre>Tags: <input type="text" name="filterTags" id="filterTags"></pre>
 			<pre>Time: <div><input type="radio" name="filterTimeType" value="date" id="filterTimeType">by date</div><div><input type="radio" name="filterTimeType" value="week" id="filterTimeType">by week</div>   (This option is to make sure the time rule is based on date or week.)</pre>
 			
 			<pre>StartDate<input type="text" style="width:70px" onfocus="HS_setDate(this)"></pre>
+	-->
+	
+	<!--use scroll and js in iframe
+			<b>Repeat method: &nbsp</b>
+			<select name="timeChoice" id="showTimeChoice" onchange="showTimeChoice(this.value)">
+				<option value="">Select a method:</option>
+				<option value="date">date</option>
+				<option value="week">week</option>
+			</select>
+	-->		
+			<div>
+			<ul class="timeChoice">
+				<li><input type="radio" name="filterTimeType" value="date" id="filterTimeType1">by date</li>
+				<li><input type="radio" name="filterTimeType" value="week" id="filterTimeType2">by week</li>
+			</ul>
+			</div>		
 
+			<script>
+				$(document).ready(function(){
+					$("#filterTimeType1").click(function(){
+						$("#filterByDate").css("display","block");
+						$("#filterByWeek").css("display","none");
+						$("#filterTime").css("display","block");
+						$("#filterSubmit").css("display","block")
+					});
+					$("#filterTimeType2").click(function(){
+						$("#filterByDate").css("display","none");
+						$("#filterByWeek").css("display","block");
+						$("#filterTime").css("display","block");
+						$("#filterSubmit").css("display","block");
+					});
+				});
+			</script>
 
-			<input type="submit" name="filterSubmit" id="filterSubmit">
+			<div id='filterByDate' style='display:none'>		
+				<span>StartDate</span>		
+  				<input type="text" name="startDate" id="startDate" style="width:70px;font-size:12px" onfocus="HS_setDate(this)">
+  				<span>EndDate</span>
+  				<input type="text" name="endDate" id="endDate" style="width:70px;font-size:12px" onfocus="HS_setDate(this)">
+  			</div>
+
+			<div id='filterByWeek' style='display:none'>
+  				<span>StartDayofWeek</span>
+  				<select name="startWeek" id="startWeek">
+  					<option value="0">--</option>
+  					<option value="1">SUN</option>
+  					<option value="2">MON</option>
+  					<option value="3">TUE</option>
+  					<option value="4">WED</option>
+  					<option value="5">THU</option>
+  					<option value="6">FRI</option>
+  					<option value="7">SAT</option>
+  				</select>&nbsp&nbsp&nbsp
+				<span>EndDayOfWeek</span>
+				<select name="endWeek" id="endWeek">
+					<option value="0">--</option>
+  					<option value="1">SUN</option>
+  					<option value="2">MON</option>
+  					<option value="3">TUE</option>
+  					<option value="4">WED</option>
+  					<option value="5">THU</option>
+  					<option value="6">FRI</option>
+  					<option value="7">SAT</option>
+  				</select>
+			</div>
+
+			<div id='filterTime' style='display:none'>
+				<span>StartTime&nbsp</span></br>
+				hour:&nbsp
+				<select name="startHour" id="startHour">
+					<option value="01">01</option>
+					<option value="02">02</option>
+					<option value="03">03</option>
+					<option value="04">04</option>
+					<option value="05">05</option>
+					<option value="06">06</option>
+					<option value="07">07</option>
+					<option value="08">08</option>
+					<option value="09">09</option>
+					<option value="10">10</option>
+					<option value="11">11</option>
+					<option value="12">12</option>
+					<option value="13">13</option>
+					<option value="14">14</option>
+					<option value="15">15</option>
+					<option value="16">16</option>
+					<option value="17">17</option>
+					<option value="18">18</option>
+					<option value="19">19</option>
+					<option value="20">20</option>
+					<option value="21">21</option>
+					<option value="22">22</option>
+					<option value="23">23</option>
+					<option value="24">24</option>
+				</select>
+				minute:&nbsp
+				<input type="text" name="startMinute" id="startMinute" style="width:70px;font-size:12px"></br>
+				<span>EndTime</span></br>
+				hour:&nbsp
+				<select name="endHour" id="endHour">
+					<option value="01">01</option>
+					<option value="02">02</option>
+					<option value="03">03</option>
+					<option value="04">04</option>
+					<option value="05">05</option>
+					<option value="06">06</option>
+					<option value="07">07</option>
+					<option value="08">08</option>
+					<option value="09">09</option>
+					<option value="10">10</option>
+					<option value="11">11</option>
+					<option value="12">12</option>
+					<option value="13">13</option>
+					<option value="14">14</option>
+					<option value="15">15</option>
+					<option value="16">16</option>
+					<option value="17">17</option>
+					<option value="18">18</option>
+					<option value="19">19</option>
+					<option value="20">20</option>
+					<option value="21">21</option>
+					<option value="22">22</option>
+					<option value="23">23</option>
+					<option value="24">24</option>
+				</select>
+				minute:&nbsp
+				<input type="text" name="endMinute" id="endMinute" style="width:70px;font-size:12px">
+			</div>
+
+			</br>
+	<!--		<div id="txtHint"><b>info will be listed here.</b></div>
+	-->
+			<input type="submit" name="filterSubmit" id="filterSubmit" style='display:none'>
+
 
 		</form>
 	</div>
