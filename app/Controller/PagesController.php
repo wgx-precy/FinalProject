@@ -43,7 +43,7 @@ class PagesController extends AppController {
  *
  * @var array
  */
-	public $uses = array('User', 'Note','Tag','UserFilter','Request','Friend');
+	public $uses = array('User', 'Note','Tag','UserFilter','Request','Friend','FilterTag');
 
 	public $helpers = array('Html');
 
@@ -108,8 +108,15 @@ function beforeFilter() {
 		$conditions = array('userfilter.uid'=>$id);
 		//$user_filters = $this->UserFilter->find('all',array('conditions'=>$conditions));
 		$user_filters =$this->UserFilter->query("SELECT * FROM `users_filters` WHERE uid = $id");
-	//	print_r($user_filters);
+		//print_r($user_filters);
+		print_r("JINGO");
 		$this->set('user_filters',$user_filters);
+		if($this->request->is('post')){
+			$fid = $this->request->data('filter_id');
+			$this->UserFilter->query("DELETE FROM `users_filters`WHERE users_filters.fid = $fid");
+			$this->FilterTag->query("DELETE FROM `filters_tags`WHERE filters_tags.fid = $fid");
+			echo '<script>parent.window.location.reload(true);</script>';
+		}
 
 
 	}
@@ -184,9 +191,13 @@ function beforeFilter() {
 			$this->redirect(array('controller'=>'Users','action'=>'login'));
 		}
 		$conditions = array('userfilter.uid'=>$id);
-		//$user_filters = $this->UserFilter->find('all',array('conditions'=>$conditions));
 		$friends_list =$this->Friend->query("SELECT *  FROM  users inner join friends on friends.fid = users.id where friends.uid = $id");
 		$this->set('friends',$friends_list);
+		if($this->request->is('post')){
+			$fid = $this->request->data('friend_id');
+			$this->Friend->query("DELETE FROM `friends`WHERE friends.uid = $id and friends.fid =$fid ");
+			echo '<script>parent.window.location.reload(true);</script>';
+		}
 	}
 
 	public function addfriend(){
@@ -206,7 +217,6 @@ function beforeFilter() {
 				));
 			$this->Request->save(null,false);
 			echo '<script>parent.window.location.reload(true);</script>';
-
 		}
 
 	}

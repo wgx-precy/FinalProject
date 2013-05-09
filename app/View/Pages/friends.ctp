@@ -28,17 +28,22 @@
 						<td style=" text-align=center">First Name</td>
 						<td style=" text-align=center">Last Name</td>
 						<td style=" align:center">E-mail</td>
+						<td></td>
 					</tr>
 				<tbody>		
 		<?php
 
 			foreach($friends as $content_item): 	
 		?>
+				<form name="delete-friend-form" class="delete" action="/FinalProject/Pages/friends" method="post">
+				<input name="friend_id" type="hidden" value=<?=$content_item['users']['id']?>>
 					<tr>
 						<td><?=$content_item['users']['first_name'];?></td>
 						<td><?=$content_item['users']['last_name'];?></td>
 						<td><?=$content_item['users']['uemail'];?></td>
+						<td><input name="delete" type="submit"id="delete_note" value="Delete"/></td>
 					</tr>
+				</form>
 			<?php endforeach;?>
 				</tbody>
 			</table>

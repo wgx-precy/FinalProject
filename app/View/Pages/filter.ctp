@@ -35,19 +35,18 @@
 		
 		
 		<pre>
-			<pre>User Filter</pre>
+			<pre>User Filters</pre>
 			<table id="filter_table" class="tablesorter" border="5" cellpadding="5" cellspacing="5">	
 					<tr style="pending:1px">
-						<td style=" text-align=center">ID</td>
-						<td style=" align:center">Start Day</td>
-						<td style=" text-align:center">End Day</td>
-						<td style=" align:center">Start Week</td>
-						<td style=" align:center">End Week</td>
-						<td style=" align:center">Start Time </td>
-						<td style=" align:center">End Time </td>
-						<td style=" text-align:center">State </td>
-						<td style=" align:center">Location </td>
-						<td style=" align:center">Tag </td>	
+						<td><center>ID</center></td>
+						<td><center>Start Date</center></td>
+						<td><center>End Date</center></td>
+						<td><center>Start Time</center></td>
+						<td><center>End Time</center></td>
+						<td><center>State</center></td>
+						<td><center>Area</center></td>
+						<td><center>Tag</center></td>	
+						<td><center> </center></td>
 					</tr>
 			<tbody>		
 		<?php
@@ -55,18 +54,78 @@
 			$filter_display_id=1;	
 			foreach($user_filters as $content_item): 	
 		?>
+			<form name="delete-note-form" class="delete-note" action="/FinalProject/Pages/filter" method="post">
+				<input name="filter_id" type="hidden" value=<?=$content_item['users_filters']['fid']?>>
 					<tr>
-						<td><?=$filter_display_id;?></td>
-						<td><?=$content_item['users_filters']['datestart'];?></td>
-						<td><?=$content_item['users_filters']['dateend'];?></td>
-						<td><?=$content_item['users_filters']['week1'];?></td>
-						<td><?=$content_item['users_filters']['week2'];?></td>
-						<td><?=$content_item['users_filters']['timestart'];?></td>
-						<td><?=$content_item['users_filters']['timeend'];?></td>
-						<td><?=$content_item['users_filters']['state'];?></td>
-						<td><?=$content_item['users_filters']['district'];?></td>
-						<td></td>
+						<td><center><?=$filter_display_id;?></center></td>
+						<td><center>
+							<?php
+								if($content_item['users_filters']['datestart'] == '0000-00-00'){
+									if($content_item['users_filters']['week1'] == '1'){
+										echo 'Monday';
+									}
+									if($content_item['users_filters']['week1'] == '2'){
+										echo 'Tuesday';
+									}
+									if($content_item['users_filters']['week1'] == '3'){
+										echo 'Wednesday';
+									}
+									if($content_item['users_filters']['week1'] == '4'){
+										echo 'Thursday';
+									}
+									if($content_item['users_filters']['week1'] == '5'){
+										echo 'Friday';
+									}
+									if($content_item['users_filters']['week1'] == '6'){
+										echo 'Saturday';
+									}
+									if($content_item['users_filters']['week1'] == '7'){
+										echo 'Sunday';
+									}
+								}
+								else{
+									echo $content_item['users_filters']['datestart'];
+								}
+							?>
+						</center></td>
+						<td style=" align:center"><center>
+							<?php
+								if($content_item['users_filters']['dateend'] == '0000-00-00'){
+									if($content_item['users_filters']['week2'] == '1'){
+										echo 'Monday';
+									}
+									if($content_item['users_filters']['week2'] == '2'){
+										echo 'Tuesday';
+									}
+									if($content_item['users_filters']['week2'] == '3'){
+										echo 'Wednesday';
+									}
+									if($content_item['users_filters']['week2'] == '4'){
+										echo 'Thursday';
+									}
+									if($content_item['users_filters']['week2'] == '5'){
+										echo 'Friday';
+									}
+									if($content_item['users_filters']['week2'] == '6'){
+										echo 'Saturday';
+									}
+									if($content_item['users_filters']['week2'] == '7'){
+										echo 'Sunday';
+									}
+								}
+								else{
+									echo $content_item['users_filters']['dateend'];
+								}
+							?>
+						</center></td>
+						<td><center><?=$content_item['users_filters']['timestart'];?></center></td>
+						<td><center><?=$content_item['users_filters']['timeend'];?></center></td>
+						<td><center><?=$content_item['users_filters']['state'];?></center></td>
+						<td><center><?=$content_item['users_filters']['district'];?></center></td>
+						<td><center></td>
+						<td><center><input name="deletenote" type="submit"id="delete_note" value="Delete"/></center></td>
 					</tr>
+				</form>
 		<?php 
 			$filter_display_id++;
 			endforeach;

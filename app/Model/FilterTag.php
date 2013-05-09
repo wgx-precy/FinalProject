@@ -7,7 +7,7 @@
  */
  
 class FilterTag extends AppModel {
-	var $name = 'FilterTags';
+	var $name = 'FiltersTags';
 	var $useDbConfig = 'default';
 	
 	// public $hasOne = array(
