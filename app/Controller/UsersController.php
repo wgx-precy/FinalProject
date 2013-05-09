@@ -2,7 +2,7 @@
 class UsersController extends AppController {
 	public $name = 'Users';
 	public $component = array('RequestHandlerComponent');
-	public $uses = array('User','UserLocation','Comment','Note');
+	public $uses = array('User','UserLocation','Comment','Note','Tag');
 
 
 	public function login() {
@@ -152,8 +152,10 @@ class UsersController extends AppController {
 		if($login != 'true'){
 			$this->redirect(array('controller'=>'Users','action'=>'login'));
 		}
-
-
+		$this->Session->read('user.latitude');
+		$this->Session->read('user.longitude');
+		$this->set('mylatitude',$this->Session->read('user.latitude'));
+		$this->set('mylongitude',$this->Session->read('user.longitude'));
 
 		$result = $this->Note->query("/*f-date,n-date*/
 select  distinct notes.nid, notes.uid, notes.time, notes.note, notes.like_value, notes.nloc_x, notes.nloc_y from users_filters, zips, filters_tags,notes,tags  
@@ -202,11 +204,43 @@ and hour(users_filters.timeend)*100+minute(users_filters.timeend) >= hour(curren
 			$latitude = $latitude.$result[$i]['0']['nloc_y'].$com;
 			$longitude = $longitude.$result[$i]['0']['nloc_x'].$com;
 		}
+		$j = 0;
+		$m = 0;
+		// foreach($result as $note){
+		// 	$nid = $note['0']['nid'];
+		// 	$temp_tag[$j] = $this->Tag->query("SELECT * FROM `tags` WHERE tags.nid = $nid");
+		// 	$j++;
+		// }
+		for($j = 0;$j<$count;$j++){
+			$nid = $result[$j]['0']['nid'];
+			$temp_tag[$m] = $this->Tag->query("SELECT * FROM `tags` WHERE tags.nid = $nid");
+			$m++;			
+		}
+		$num_tag = count($temp_tag);
+		$k = 0;
+		$l = 0;
+		$flag = ',';
+		for($k=0;$k<$count;$k++){
+		 	$result[$k]['0']['tag'] = null;
+		 	for($l = 0;$l<$num_tag;$l++){
+		 		if($result[$k]['0']['nid'] == $temp_tag[$l]['0']['tags']['nid']){
+		 			foreach($temp_tag[$l] as $tag){
+		 				$result[$k]['0']['tag'] = $result[$k]['0']['tag'].$tag['tags']['tag'];
+		 			}
+		 		}
+		 	}
+		}
+		$l = 0;
+		$note_tag = null;
+		for($l = 0;$l<$num_tag;$l++){
+			$note_tag = $note_tag.$result[$l]['0']['tag'].$com;
+		}
 		//print_r($result);
-		//print_r($note);
-		//print_r($latitude);
+		//print_r($temp_tag);
+		//print_r($note_tag);
 		$this->set('num',$count);
 		$this->set('message',$note);
+		$this->set('message_tag',$note_tag);
 		$this->set('latitude',$latitude);
 		$this->set('longitude',$longitude);
 	}

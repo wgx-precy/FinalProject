@@ -6,16 +6,12 @@
 #user_gmap{ width:800px;height:500px; margin: 0px auto 0px; border:solid 1px #111; }
 #user_glink {width:600px; text-align:right; font-size:10px; font-weight:normal; padding:0px; height:20px; margin:0px auto;}
 </style>
-
-<?php
-	$note_lat = 40.730901;
-	$note_lng = -73.997684;
-	?>
 <input type="submit" name="submit" value="Show Note" class="button" id="ShowNote"/>
 <?php
-	echo $this->Form->input('lat', array('type' => 'hidden', 'id' => 'note_lat','value' => $note_lat));
-	echo $this->Form->input('lng', array('type' => 'hidden', 'id' => 'note_lng','value' => $note_lng));
+	echo $this->Form->input('lat', array('type' => 'hidden', 'id' => 'note_lat','value' => $mylatitude));
+	echo $this->Form->input('lng', array('type' => 'hidden', 'id' => 'note_lng','value' => $mylongitude));
 	echo $this->Form->input('message', array('type' => 'hidden', 'id' => 'note_message','value' =>$message));
+	echo $this->Form->input('message_tag', array('type' => 'hidden', 'id' => 'note_message_tag','value' =>$message_tag));
 	echo $this->Form->input('num', array('type' => 'hidden', 'id' => 'note_num','value' => $num));
 	echo $this->Form->input('longitude', array('type' => 'hidden', 'id' => 'note_longitude','value' => $longitude));
 	echo $this->Form->input('latitude', array('type' => 'hidden', 'id' => 'note_latitude','value' => $latitude));
@@ -27,14 +23,17 @@ google.maps.event.addDomListener(window, 'load', function() {
 		var note_lat = Number($('#note_lat').val());
 		var note_lng = Number($('#note_lng').val());
 		var note = $('#note_message').val();
+		var note_tag = $('#note_message_tag').val();
 		var num = Number($('#note_num').val());
 		var message = note.split("<$=>");
+		var message_tag = note_tag.split("<$=>");
 		var lng = $('#note_longitude').val();
 		var longitude = lng.split("<$=>");
 		var lat = $('#note_latitude').val();
 		var latitude = lat.split("<$=>");
 		//alert(Number(longitude[0]));
 		//control the number of bubble	
+		//alert(message);
 	function initialize(){
 		var myOptions = {
 		zoom: 5,
@@ -72,14 +71,15 @@ google.maps.event.addDomListener(window, 'load', function() {
 	    });
 
 	    marker.setTitle((i + 1).toString());
-	    attachSecretMessage(marker, i, message);
+	    attachSecretMessage(marker, i, message, message_tag);
   	}
 
-  	function attachSecretMessage(marker, num, note) {
+  	function attachSecretMessage(marker, num, note, note_tag) {
 		  //var message = ['This', 'is', 'the', 'secret', 'message','xie','hong','quan','xie','xie','hong'];
 		  var message = note;
+		  var message_tag = note_tag;
 		  var infowindow = new google.maps.InfoWindow({
-		    content:"<strong style='font-family:arial;color:black;font-size:15px;''>tag tag </strong><a href='comment/?flag=5'>comment</a></br>"+"<p style='font-family:arial;color:black;font-size:15px;'>"+message[num]+'</p>'
+		    content:"<strong style='font-family:arial;color:black;font-size:15px;''>"+message_tag[num]+"</strong><a href='comment/?flag=5'>comment</a></br>"+"<p style='font-family:arial;color:black;font-size:15px;'>"+message[num]+'</p>'
 		  });
 		  google.maps.event.addListener(marker, 'click', function() {
 		    infowindow.open(marker.get('map'), marker);

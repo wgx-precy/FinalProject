@@ -152,9 +152,13 @@ function beforeFilter() {
 			$this->redirect(array('controller'=>'Users','action'=>'login'));
 		}
 		$conditions = array('userfilter.uid'=>$id);
-		//$user_filters = $this->UserFilter->find('all',array('conditions'=>$conditions));
 		$friends_list =$this->Friend->query("SELECT *  FROM  users inner join friends on friends.fid = users.id where friends.uid = $id");
 		$this->set('friends',$friends_list);
+		if($this->request->is('post')){
+			$fid = $this->request->data('friend_id');
+			$this->Friend->query("DELETE FROM `friends`WHERE friends.uid = $id and friends.fid =$fid ");
+			echo '<script>parent.window.location.reload(true);</script>';
+		}
 	}
 
 	public function addfriend(){
