@@ -17,6 +17,7 @@
 #menu .bg_none {background:none}
 #menu li a {display:block;font-size:24px;color:#363636;text-decoration:none;line-height:37px}
 #menu li a:hover, #menu #menu_active a {color:#3d9125}
+.timeChoice li {float: left;}
 
 /*--profile--*/
 #userInfor {

@@ -122,6 +122,45 @@ function beforeFilter() {
 	}
 
 	public function addfilter(){
+		$id = $this->Session->read('user.id');
+		$login = $this->Session->read('user.login');
+		if($login != 'true'){
+			$this->redirect(array('controller'=>'Users','action'=>'login'));
+		}
+		if($this->request->is('post')){
+			$location = $this->request->data('filterLocation');
+			$state = $this->request->data('state');
+			$filterTimeType = $this->request->data('filterTimeType');
+			$startDate = $this->request->data('startDate');
+			if($startDate==null) $startDate = '0000-00-00';
+			$endDate = $this->request->data('endDate');
+			if($endDate==null) $endDate = '0000-00-00';
+			$startWeek = $this->request->data('startWeek');
+			$endWeek = $this->request->data('endWeek');
+			$startHour = $this->request->data('startHour');
+			$startMinute = $this->request->data('startMinute');
+			$endHour = $this->request->data('endHour');
+			$endMinute = $this->request->data('endMinute');
+			$starttime = $startHour.":".$startMinute.":00";
+			$endtime = $endHour.":".$endMinute.":00";
+			$this->UserFilter->set(array(
+					'uid' => $id,
+					'district' => $location,
+					'state' => $state,
+					'choice' => $filterTimeType,
+					'datestart' => $startDate,
+					'dateend' => $endDate,
+					'week1' => $startWeek,
+					'week2' => $endWeek,
+					'timestart' => $starttime,
+					'timeend' => $endtime
+			));
+			$this->UserFilter->save(null,false);
+			//print_r($startHour.":".$startMinute.":00");
+			//print_r($endHour.":".$endMinute.":00");exit();
+			echo '<script>parent.window.location.reload(true);</script>';
+
+		}
 
 	}
 
@@ -295,6 +334,11 @@ and hour(users_filters.timeend)*100+minute(users_filters.timeend) >= hour(curren
 			$this->Friend->save(null,false);
 			echo '<script>parent.window.location.reload(true);</script>';
 		}
+	}
+
+	public function filterchoice (){
+
+
 	}
 
 //	public function 
