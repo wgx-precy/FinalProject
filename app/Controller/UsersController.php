@@ -206,11 +206,6 @@ and hour(users_filters.timeend)*100+minute(users_filters.timeend) >= hour(curren
 		}
 		$j = 0;
 		$m = 0;
-		// foreach($result as $note){
-		// 	$nid = $note['0']['nid'];
-		// 	$temp_tag[$j] = $this->Tag->query("SELECT * FROM `tags` WHERE tags.nid = $nid");
-		// 	$j++;
-		// }
 		for($j = 0;$j<$count;$j++){
 			$nid = $result[$j]['0']['nid'];
 			$temp_tag[$m] = $this->Tag->query("SELECT * FROM `tags` WHERE tags.nid = $nid");
