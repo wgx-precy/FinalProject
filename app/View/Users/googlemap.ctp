@@ -31,9 +31,6 @@ google.maps.event.addDomListener(window, 'load', function() {
 		var longitude = lng.split("<$=>");
 		var lat = $('#note_latitude').val();
 		var latitude = lat.split("<$=>");
-		//alert(Number(longitude[0]));
-		//control the number of bubble	
-		//alert(message);
 	function initialize(){
 		var myOptions = {
 		zoom: 5,

@@ -43,7 +43,7 @@ class PagesController extends AppController {
  *
  * @var array
  */
-	public $uses = array('User', 'Note','Tag','UserFilter','Request','Friend','FilterTag');
+	public $uses = array('User', 'Note','Tag','UserFilter','Request','Friend','FilterTag','Comment');
 
 	public $helpers = array('Html');
 
@@ -216,8 +216,10 @@ and zips.z_x2>=notes.nloc_x and zips.z_y2<=notes.nloc_y and zips.z_y1>=notes.nlo
 and hour(users_filters.timeend)*100+minute(users_filters.timeend) >= hour(current_time())*100+minute(current_time()) and hour(notes.starttime)*100+minute(notes.starttime) <= hour(current_time())*100+minute(current_time()) and hour(notes.endtime)*100+minute(notes.endtime) >= hour(current_time())*100+minute(current_time()) and notes.ntype = 'public'");
 		//echo date("Y/m/d");
 		$count = count($result);
+		//print($count);
 		$i = 0;
 		$note = null;
+		$note_id = null;
 		$latitude = null;
 		$longitude = null;
 		$com = '<$=>';
@@ -225,6 +227,7 @@ and hour(users_filters.timeend)*100+minute(users_filters.timeend) >= hour(curren
 			$note = $note.$result[$i]['0']['note'].$com;
 			$latitude = $latitude.$result[$i]['0']['nloc_y'].$com;
 			$longitude = $longitude.$result[$i]['0']['nloc_x'].$com;
+			$note_id = $note_id.$result[$i]['0']['nid'].$com;
 		}
 		$j = 0;
 		$m = 0;
@@ -233,6 +236,7 @@ and hour(users_filters.timeend)*100+minute(users_filters.timeend) >= hour(curren
 			$temp_tag[$m] = $this->Tag->query("SELECT * FROM `tags` WHERE tags.nid = $nid");
 			$m++;			
 		}
+		//print_r($note_id);
 		$num_tag = count($temp_tag);
 		$k = 0;
 		$l = 0;
@@ -255,12 +259,40 @@ and hour(users_filters.timeend)*100+minute(users_filters.timeend) >= hour(curren
 		//print_r($result);
 		//print_r($temp_tag);
 		//print_r($note_tag);
+		$this->set('message_id',$note_id);
 		$this->set('num',$count);
 		$this->set('message',$note);
 		$this->set('message_tag',$note_tag);
 		$this->set('latitude',$latitude);
 		$this->set('longitude',$longitude);
 
+	}
+	public function comment(){
+		$id = $this->Session->read('user.id');
+		$login = $this->Session->read('user.login');
+		if($login != 'true'){
+			$this->redirect(array('controller'=>'Users','action'=>'login'));
+		}
+		if(isset($_GET['flag'])){
+			$nid = $_GET['flag'];
+			$this->set('nid',$_GET['flag']);
+		}
+		$comments = $this->Comment->query("SELECT * FROM `comments`, `users` WHERE nid = $nid and comments.uid = users.id ");
+		$note = $this->Note->query("SELECT * FROM `notes`, `users` WHERE nid = $nid and notes.uid = users.id");
+		$this->set('comments',$comments);
+		$this->set('note',$note);
+		if($this->request->is('post')){
+			$comment =$this->request->data('username');
+				$this->Comment->set(array(
+					'cid' => '',
+					'nid' => $_GET['flag'],
+					'uid' => $id,
+					'ctime' => '',
+					'cnote' => $comment,
+				));
+			$this->Comment->save(null,false);
+			echo '<script>parent.window.location.reload(true);</script>';		
+		}
 	}
 
 	public function postnote(){
