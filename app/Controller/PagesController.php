@@ -305,6 +305,65 @@ and hour(users_filters.timeend)*100+minute(users_filters.timeend) >= hour(curren
 		$longitude = $this->Session->read('user.longitude');
 		$this->set('latitude',$latitude);
 		$this->set('longitude',$longitude);
+
+		if($this->request->is('post')){
+			//$location = $this->request->data('filterLocation');
+			$noteContent = $this->request->data('noteContent');
+			$noteTags = $this->request->data('noteTags');
+			$visibility = $this->request->data('visibility');
+			$state = $this->request->data('state');
+			$range = $this->request->data('range');
+			$noteTimeType = $this->request->data('noteTimeType');
+			$startDate = $this->request->data('startDate');
+			if($startDate==null) $startDate = '0000-00-00';
+			$endDate = $this->request->data('endDate');
+			if($endDate==null) $endDate = '0000-00-00';
+			$startWeek = $this->request->data('startWeek');
+			$endWeek = $this->request->data('endWeek');
+			$startHour = $this->request->data('startHour');
+			$startMinute = $this->request->data('startMinute');
+			$endHour = $this->request->data('endHour');
+			$endMinute = $this->request->data('endMinute');
+			$starttime = $startHour.":".$startMinute.":00";
+			$endtime = $endHour.":".$endMinute.":00";
+			$this->Note->set(array(
+					'uid' => $id,
+					'nloc_x' => $longitude,
+					'nloc_y' => $latitude,
+					'state' => $state,
+					'note' => $noteContent,
+					'ntype' => $visibility,
+					'nradius' => $range,
+					'choice' => $noteTimeType,
+					'datestart' => $startDate,
+					'dateend' => $endDate,
+					'week1' => $startWeek,
+					'week2' => $endWeek,
+					'starttime' => $starttime,
+					'endtime' => $endtime
+			));
+			$this->Note->save(null,false);
+			//print_r($starttime.$endtime);exit();
+			$tag_nid = $this->Note->query("select max(notes.nid) from notes");
+			//print_r($tag_nid);exit();
+			$tagContent = $this->request->data('noteTags');
+			$tag_array = split(',', $tagContent);
+			$i = 0;
+			$tagnum = count($tag_array);
+			for($i=0;$i<$tagnum;$i++){
+			 	$this->Tag->set(array(
+			 		'nid' => $tag_nid['0']['0']['max(notes.nid)'],
+			 		'tag' => $tag_array[$i]
+			 		));
+			 	$this->Tag->save(null,false);
+			}
+			//print_r($tag_array);exit();
+			//$this->Tag->save->set(array('uid'));
+			//print_r($startHour.":".$startMinute.":00");
+			//print_r($endHour.":".$endMinute.":00");exit();
+			echo '<script>parent.window.location.reload(true);</script>';
+
+		}
 	}
 
 	public function friends(){
