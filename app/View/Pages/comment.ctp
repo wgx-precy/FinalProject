@@ -11,7 +11,8 @@
 					<li><a href="http://www.project.com/FinalProject/Pages/profile">Profile</a></li>
 					<li><a href="http://www.project.com/FinalProject/Pages/filter">Filter</a></li>
 					<li><a href="http://www.project.com/FinalProject/Pages/search">Search</a></li>
-					<li><a href="http://www.project.com/FinalProject/Pages/touchmap">TouchMap</a></li>
+					
+					<li><a href="http://www.project.com/FinalProject/Pages/note_map">NoteMap</a></li>
 					<li><a href="http://www.project.com/FinalProject/Pages/postnote">PostNote</a></li>
 					<li><a href="http://www.project.com/FinalProject/Pages/friends">Friends</a></li>
 					<li><a href="http://www.project.com/FinalProject/Pages/requests">Requests</a></li>
@@ -70,7 +71,7 @@
 				</tr>
 				<tr>
 				<td>Comment</td>
-				<td></td>
+				<td><?=$note['0']['notes']['like_value']?> people liked </br>this note, <a href="comment/?like=add&flag=5">like</a> it?</td>		
 				<td><input name="username" type="textarea" class="input username" id="username_input" value="Type here to make comments" onfocus="this.value=''" /></td>
 				<td><center><input type="submit" name="submit" value="Submit" class="button" id="login_button"/></center></td>
 				</tr>

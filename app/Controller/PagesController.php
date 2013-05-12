@@ -180,8 +180,8 @@ function beforeFilter() {
 		$this->set('mylongitude',$this->Session->read('user.longitude'));
 
 		$result = $this->Note->query("/*f-date,n-date*/
-select  distinct notes.nid, notes.uid, notes.time, notes.note, notes.like_value, notes.nloc_x, notes.nloc_y from users_filters, zips, filters_tags,notes,tags  
-where users_filters.uid = $id and  users_filters.district = zips.district and users_filters.fid = filters_tags.fid 
+select  distinct notes.nid, notes.uid, notes.time, notes.note, notes.like_value, notes.nloc_x, notes.nloc_y, users.first_name from users_filters, zips, filters_tags,notes,tags,users  
+where users_filters.uid = $id and  users_filters.district = zips.district and users_filters.fid = filters_tags.fid and users.id = notes.uid
 and notes.nid = tags.nid and filters_tags.tag = tags.tag and users_filters.choice = 'date' 
 and month(users_filters.datestart)*100+day(users_filters.datestart) <= month(current_date())*100+day(current_date()) and month(users_filters.dateend)*100+day(users_filters.dateend) >= month(current_date())*100+day(current_date()) and notes.choice = 'date' 
 and month(notes.startdate)*100+day(notes.startdate) <= month(current_date())*100+day(current_date()) and month(notes.enddate)*100+day(notes.enddate) >= month(current_date())*100+day(current_date) and users_filters.state = 'lunch break' and zips.z_x1<=notes.nloc_x
@@ -189,8 +189,8 @@ and zips.z_x2>=notes.nloc_x and zips.z_y2<=notes.nloc_y and zips.z_y1>=notes.nlo
 and hour(users_filters.timeend)*100+minute(users_filters.timeend) >= hour(current_time())*100+minute(current_time()) and hour(notes.starttime)*100+minute(notes.starttime) <= hour(current_time())*100+minute(current_time()) and hour(notes.endtime)*100+minute(notes.endtime) >= hour(current_time())*100+minute(current_time()) and notes.ntype = 'public'
 union
 /*f-week, n-date*/
-select distinct notes.nid, notes.uid, notes.time, notes.note, notes.like_value, notes.nloc_x, notes.nloc_y from users_filters, zips, filters_tags,notes,tags  
-where users_filters.uid = $id and  users_filters.district = zips.district and users_filters.fid = filters_tags.fid 
+select distinct notes.nid, notes.uid, notes.time, notes.note, notes.like_value, notes.nloc_x, notes.nloc_y, users.first_name from users_filters, zips, filters_tags,notes,tags,users 
+where users_filters.uid = $id and  users_filters.district = zips.district and users_filters.fid = filters_tags.fid and users.id = notes.uid
 and notes.nid = tags.nid and filters_tags.tag = tags.tag and users_filters.choice = 'week' 
 and users_filters.week1 <= dayofweek(current_date()) and users_filters.week2 >= dayofweek(current_date()) and notes.choice = 'date' 
 and month(notes.startdate)*100+day(notes.startdate) <= month(current_date())*100+day(current_date()) and month(notes.enddate)*100+day(notes.enddate) >= month(current_date())*100+day(current_date) and users_filters.state = 'lunch break' and zips.z_x1<=notes.nloc_x 
@@ -198,8 +198,8 @@ and zips.z_x2>=notes.nloc_x and zips.z_y2<=notes.nloc_y and zips.z_y1>=notes.nlo
 and hour(users_filters.timeend)*100+minute(users_filters.timeend) >= hour(current_time())*100+minute(current_time()) and hour(notes.starttime)*100+minute(notes.starttime) <= hour(current_time())*100+minute(current_time()) and hour(notes.endtime)*100+minute(notes.endtime) >= hour(current_time())*100+minute(current_time()) and notes.ntype = 'public'
 union
 /*f-date, n-week*/
-select distinct notes.nid, notes.uid, notes.time, notes.note, notes.like_value, notes.nloc_x, notes.nloc_y from users_filters, zips, filters_tags,notes,tags  
-where users_filters.uid  = $id and  users_filters.district = zips.district and users_filters.fid = filters_tags.fid 
+select distinct notes.nid, notes.uid, notes.time, notes.note, notes.like_value, notes.nloc_x, notes.nloc_y, users.first_name from users_filters, zips, filters_tags,notes,tags, users  
+where users_filters.uid  = $id and  users_filters.district = zips.district and users_filters.fid = filters_tags.fid and users.id = notes.uid
 and notes.nid = tags.nid and filters_tags.tag = tags.tag and users_filters.choice = 'date'
 and month(users_filters.datestart)*100+day(users_filters.datestart) <= month(current_date())*100+day(current_date()) and month(users_filters.dateend)*100+day(users_filters.dateend) >= month(current_date())*100+day(current_date()) and notes.choice = 'week' 
 and notes.week1 <= dayofweek(current_date()) and notes.week2 >= dayofweek(current_date()) and users_filters.state = 'lunch break' and zips.z_x1<=notes.nloc_x 
@@ -207,8 +207,8 @@ and zips.z_x2>=notes.nloc_x and zips.z_y2<=notes.nloc_y and zips.z_y1>=notes.nlo
 and hour(users_filters.timeend)*100+minute(users_filters.timeend) >= hour(current_time())*100+minute(current_time()) and hour(notes.starttime)*100+minute(notes.starttime) <= hour(current_time())*100+minute(current_time()) and hour(notes.endtime)*100+minute(notes.endtime) >= hour(current_time())*100+minute(current_time()) and notes.ntype = 'public'
 union
 /*f-week,n-week*/
-select distinct notes.nid, notes.uid, notes.time, notes.note, notes.like_value, notes.nloc_x, notes.nloc_y from users_filters, zips, filters_tags,notes,tags  
-where users_filters.uid  = $id and  users_filters.district = zips.district and users_filters.fid = filters_tags.fid 
+select distinct notes.nid, notes.uid, notes.time, notes.note, notes.like_value, notes.nloc_x, notes.nloc_y, users.first_name from users_filters, zips, filters_tags,notes,tags, users  
+where users_filters.uid  = $id and  users_filters.district = zips.district and users_filters.fid = filters_tags.fid and users.id = notes.uid
 and notes.nid = tags.nid and filters_tags.tag = tags.tag and users_filters.choice = 'week' 
 and users_filters.week1 <= dayofweek(current_date()) and users_filters.week2 >= dayofweek(current_date()) and notes.choice = 'week' 
 and notes.week1 <= dayofweek(current_date()) and notes.week2 >= dayofweek(current_date()) and users_filters.state = 'lunch break' and zips.z_x1<=notes.nloc_x 
@@ -222,12 +222,14 @@ and hour(users_filters.timeend)*100+minute(users_filters.timeend) >= hour(curren
 		$note_id = null;
 		$latitude = null;
 		$longitude = null;
+		$first_name = null;
 		$com = '<$=>';
 		for($i=0; $i<$count; $i++){
 			$note = $note.$result[$i]['0']['note'].$com;
 			$latitude = $latitude.$result[$i]['0']['nloc_y'].$com;
 			$longitude = $longitude.$result[$i]['0']['nloc_x'].$com;
 			$note_id = $note_id.$result[$i]['0']['nid'].$com;
+			$first_name = $first_name.$result[$i]['0']['first_name'].$com;
 		}
 		$j = 0;
 		$m = 0;
@@ -256,7 +258,7 @@ and hour(users_filters.timeend)*100+minute(users_filters.timeend) >= hour(curren
 		for($l = 0;$l<$num_tag;$l++){
 			$note_tag = $note_tag.$result[$l]['0']['tag'].$com;
 		}
-		//print_r($result);
+		print_r($result);
 		//print_r($temp_tag);
 		//print_r($note_tag);
 		$this->set('message_id',$note_id);
@@ -265,6 +267,7 @@ and hour(users_filters.timeend)*100+minute(users_filters.timeend) >= hour(curren
 		$this->set('message_tag',$note_tag);
 		$this->set('latitude',$latitude);
 		$this->set('longitude',$longitude);
+		$this->set('first_name',$first_name);
 
 	}
 	public function comment(){
@@ -273,14 +276,27 @@ and hour(users_filters.timeend)*100+minute(users_filters.timeend) >= hour(curren
 		if($login != 'true'){
 			$this->redirect(array('controller'=>'Users','action'=>'login'));
 		}
-		if(isset($_GET['flag'])){
+		if(isset($_GET['flag'])&& !isset($_GET['like'])){
+			$nid = $_GET['flag'];
+			$this->set('nid',$_GET['flag']);		
+			$comments = $this->Comment->query("SELECT * FROM `comments`, `users` WHERE nid = $nid and comments.uid = users.id ");
+			$note = $this->Note->query("SELECT * FROM `notes`, `users` WHERE nid = $nid and notes.uid = users.id");
+			//print_r($note);
+			$this->set('comments',$comments);
+			$this->set('note',$note);
+		}
+		if(isset($_GET['like'])){
 			$nid = $_GET['flag'];
 			$this->set('nid',$_GET['flag']);
+			$temp_note = $this->Note->query("SELECT * FROM `notes`, `users` WHERE nid = $nid and notes.uid = users.id");
+			$like = $temp_note['0']['notes']['like_value']+1;
+			$this->Note->query("UPDATE `notes` SET  `like_value` =  $like WHERE  notes.nid = $nid ");		
+			$comments = $this->Comment->query("SELECT * FROM `comments`, `users` WHERE nid = $nid and comments.uid = users.id ");
+			$note = $this->Note->query("SELECT * FROM `notes`, `users` WHERE nid = $nid and notes.uid = users.id");
+			$this->set('comments',$comments);
+			$this->set('note',$note);
+			echo "<script>location.href='http://www.project.com/FinalProject/Pages/comment/?flag=$nid'</script>"; 
 		}
-		$comments = $this->Comment->query("SELECT * FROM `comments`, `users` WHERE nid = $nid and comments.uid = users.id ");
-		$note = $this->Note->query("SELECT * FROM `notes`, `users` WHERE nid = $nid and notes.uid = users.id");
-		$this->set('comments',$comments);
-		$this->set('note',$note);
 		if($this->request->is('post')){
 			$comment =$this->request->data('username');
 				$this->Comment->set(array(
