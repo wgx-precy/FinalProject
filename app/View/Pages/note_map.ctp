@@ -18,6 +18,15 @@
 	echo $this->Form->input('longitude', array('type' => 'hidden', 'id' => 'note_longitude','value' => $longitude));
 	echo $this->Form->input('latitude', array('type' => 'hidden', 'id' => 'note_latitude','value' => $latitude));
 	echo $this->Form->input('first_name', array('type' => 'hidden', 'id' => 'first_name','value' => $first_name));
+
+
+	echo $this->Form->input('look_message_id', array('type' => 'hidden', 'id' => 'look_message_id','value' =>$look_message_id));
+	echo $this->Form->input('look_message', array('type' => 'hidden', 'id' => 'look_message','value' =>$look_message));
+	echo $this->Form->input('look_message_tag', array('type' => 'hidden', 'id' => 'look_message_tag','value' =>$look_message_tag));
+	echo $this->Form->input('num2', array('type' => 'hidden', 'id' => 'look_num','value' => $num2));
+	echo $this->Form->input('look_longitude', array('type' => 'hidden', 'id' => 'look_longitude','value' => $look_latitude));
+	echo $this->Form->input('look_latitude', array('type' => 'hidden', 'id' => 'look_latitude','value' => $look_longitude));
+	echo $this->Form->input('look_first_name', array('type' => 'hidden', 'id' => 'look_first_name','value' => $look_first_name));
 ?>
 <script type="text/javascript">
 google.maps.event.addDomListener(window, 'load', function() {
@@ -99,18 +108,18 @@ google.maps.event.addDomListener(window, 'load', function() {
 	$('#LookAround').click(function(e){
 		var note_lat = Number($('#note_lat').val());
 		var note_lng = Number($('#note_lng').val());
-		var note = $('#note_message').val();
-		var note_id = $('#note_message_id').val();
-		var note_tag = $('#note_message_tag').val();
-		var num = Number($('#note_num').val());
+		var note = $('#look_message').val();
+		var note_id = $('#look_message_id').val();
+		var note_tag = $('#look_message_tag').val();
+		var num = Number($('#look_num').val());
 		var message_id = note_id.split("<$=>");
 		var message = note.split("<$=>");
 		var message_tag = note_tag.split("<$=>");
-		var lng = $('#note_longitude').val();
+		var lng = $('#look_longitude').val();
 		var longitude = lng.split("<$=>");
-		var lat = $('#note_latitude').val();
+		var lat = $('#look_latitude').val();
 		var latitude = lat.split("<$=>");
-		var first_name = $('#first_name').val();
+		var first_name = $('#look_first_name').val();
 		var name = first_name.split("<$=>");
 		//alert(Number(longitude[0]));
 		//control the number of bubble	
@@ -141,9 +150,10 @@ google.maps.event.addDomListener(window, 'load', function() {
 		var latSpan = northEast.lat() - southWest.lat();
 
 		for (var i = 0; i < num; i++) {
+			//alert(longitude+latitude+num);
 		    var position = new google.maps.LatLng(
-		    	Number(latitude[i]),
-		    	Number(longitude[i])
+		    	Number(longitude[i]),
+		    	Number(latitude[i])
 		        //southWest.lat() + latSpan * Math.random(),
 		        //southWest.lng() + lngSpan * Math.random()
 		        );
