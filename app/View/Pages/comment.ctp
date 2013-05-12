@@ -10,8 +10,7 @@
 				<ul id="menu">
 					<li><a href="http://www.project.com/FinalProject/Pages/profile">Profile</a></li>
 					<li><a href="http://www.project.com/FinalProject/Pages/filter">Filter</a></li>
-					<li><a href="http://www.project.com/FinalProject/Pages/search">Search</a></li>
-					
+					<li><a href="http://www.project.com/FinalProject/Pages/search">Search</a></li>					
 					<li><a href="http://www.project.com/FinalProject/Pages/note_map">NoteMap</a></li>
 					<li><a href="http://www.project.com/FinalProject/Pages/postnote">PostNote</a></li>
 					<li><a href="http://www.project.com/FinalProject/Pages/friends">Friends</a></li>
