@@ -258,7 +258,7 @@ and hour(users_filters.timeend)*100+minute(users_filters.timeend) >= hour(curren
 		for($l = 0;$l<$num_tag;$l++){
 			$note_tag = $note_tag.$result[$l]['0']['tag'].$com;
 		}
-		print_r($result);
+		//print_r($result);
 		//print_r($temp_tag);
 		//print_r($note_tag);
 		$this->set('message_id',$note_id);
@@ -294,15 +294,6 @@ where 6 = Friends.uid and Friends.fid != Notes.uid and Notes.ntype = 'public' an
 		if($login != 'true'){
 			$this->redirect(array('controller'=>'Users','action'=>'login'));
 		}
-		if(isset($_GET['flag'])&& !isset($_GET['like'])){
-			$nid = $_GET['flag'];
-			$this->set('nid',$_GET['flag']);		
-			$comments = $this->Comment->query("SELECT * FROM `comments`, `users` WHERE nid = $nid and comments.uid = users.id ");
-			$note = $this->Note->query("SELECT * FROM `notes`, `users` WHERE nid = $nid and notes.uid = users.id");
-			//print_r($note);
-			$this->set('comments',$comments);
-			$this->set('note',$note);
-		}
 		if(isset($_GET['like'])){
 			$nid = $_GET['flag'];
 			$this->set('nid',$_GET['flag']);
@@ -315,6 +306,18 @@ where 6 = Friends.uid and Friends.fid != Notes.uid and Notes.ntype = 'public' an
 			$this->set('note',$note);
 			echo "<script>location.href='http://www.project.com/FinalProject/Pages/comment/?flag=$nid'</script>"; 
 		}
+		
+		if(isset($_GET['flag'])&& !isset($_GET['like'])){
+			$nid = $_GET['flag'];
+			$this->set('nid',$_GET['flag']);		
+			$comments = $this->Comment->query("SELECT * FROM `comments`, `users` WHERE nid = $nid and comments.uid = users.id ");
+			$note = $this->Note->query("SELECT * FROM `notes`, `users` WHERE nid = $nid and notes.uid = users.id");
+			//print_r($note);
+			$this->set('comments',$comments);
+			$this->set('note',$note);
+			//echo "<script>location.href='http://www.project.com/FinalProject/Pages/comment/?flag=$nid'</script>"; 
+		}
+
 		if($this->request->is('post')){
 			$comment =$this->request->data('username');
 				$this->Comment->set(array(
