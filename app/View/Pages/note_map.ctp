@@ -10,6 +10,7 @@
 <?php
 	echo $this->Form->input('lat', array('type' => 'hidden', 'id' => 'note_lat','value' => $mylatitude));
 	echo $this->Form->input('lng', array('type' => 'hidden', 'id' => 'note_lng','value' => $mylongitude));
+	echo $this->Form->input('message_id', array('type' => 'hidden', 'id' => 'note_message_id','value' =>$message_id));
 	echo $this->Form->input('message', array('type' => 'hidden', 'id' => 'note_message','value' =>$message));
 	echo $this->Form->input('message_tag', array('type' => 'hidden', 'id' => 'note_message_tag','value' =>$message_tag));
 	echo $this->Form->input('num', array('type' => 'hidden', 'id' => 'note_num','value' => $num));
@@ -23,8 +24,10 @@ google.maps.event.addDomListener(window, 'load', function() {
 		var note_lat = Number($('#note_lat').val());
 		var note_lng = Number($('#note_lng').val());
 		var note = $('#note_message').val();
+		var note_id = $('#note_message_id').val();
 		var note_tag = $('#note_message_tag').val();
 		var num = Number($('#note_num').val());
+		var message_id = note_id.split("<$=>");
 		var message = note.split("<$=>");
 		var message_tag = note_tag.split("<$=>");
 		var lng = $('#note_longitude').val();
@@ -33,7 +36,7 @@ google.maps.event.addDomListener(window, 'load', function() {
 		var latitude = lat.split("<$=>");
 		//alert(Number(longitude[0]));
 		//control the number of bubble	
-		//alert(message);
+		//alert(message_id);
 	function initialize(){
 		var myOptions = {
 		zoom: 5,
@@ -71,15 +74,16 @@ google.maps.event.addDomListener(window, 'load', function() {
 	    });
 
 	    marker.setTitle((i + 1).toString());
-	    attachSecretMessage(marker, i, message, message_tag);
+	    attachSecretMessage(marker, i, message, message_tag, message_id);
   	}
 
-  	function attachSecretMessage(marker, num, note, note_tag) {
+  	function attachSecretMessage(marker, num, note, note_tag, note_id) {
 		  //var message = ['This', 'is', 'the', 'secret', 'message','xie','hong','quan','xie','xie','hong'];
 		  var message = note;
 		  var message_tag = note_tag;
+		  var message_id = note_id;
 		  var infowindow = new google.maps.InfoWindow({
-		    content:"<strong style='font-family:arial;color:black;font-size:15px;''>"+message_tag[num]+"</strong><a href='comment/?flag=5'>comment</a></br>"+"<p style='font-family:arial;color:black;font-size:15px;'>"+message[num]+'</p>'
+		    content:"<strong style='font-family:arial;color:black;font-size:15px;''>"+message_tag[num]+"</strong><a href="+"comment/?flag="+message_id[num]+">comment</a></br>"+"<p style='font-family:arial;color:black;font-size:15px;'>"+message[num]+'</p>'
 		  });
 		  google.maps.event.addListener(marker, 'click', function() {
 		    infowindow.open(marker.get('map'), marker);
