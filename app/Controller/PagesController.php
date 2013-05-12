@@ -269,6 +269,7 @@ and hour(users_filters.timeend)*100+minute(users_filters.timeend) >= hour(curren
 		$this->set('longitude',$longitude);
 		$this->set('first_name',$first_name);
 
+
 		$long=floatval($this->Session->read('user.latitude'));
 		$lat=floatval($this->Session->read('user.longitude'));
 		$result2 = $this->Note->query("select * from Notes, Friends, Users
@@ -297,7 +298,7 @@ where 6 = Friends.uid and Friends.fid != Notes.uid and Notes.ntype = 'public' an
 and Notes.nloc_x <= $lat + (360*nradius)/(2*3.141592653589793*6371004*cos(Notes.nloc_y*2*3.141592653589793/360)) and Notes.nloc_y >= $long - (360*nradius)/(2*3.141592653589793*6371004) 
 and Notes.nloc_y <= $long + (360*nradius)/(2*3.141592653589793*6371004) and choice = 'week' and week1 <= dayofweek(current_date) and week2 >= dayofweek(current_date) 
 and hour(starttime)*100 + minute(starttime) <= hour(current_time)*100 + minute(current_time) and hour(endtime)*100 + minute(endtime) >= hour(current_time)*100 + minute(current_time) 
-and users.id = notes.uid") ;
+and users.id = notes.uid");
 		//print_r($result2);
 		$count2 = count($result2);
 		$i = 0;
