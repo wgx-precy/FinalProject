@@ -82,7 +82,6 @@ google.maps.event.addDomListener(window, 'load', function() {
   	}
 
   	function attachSecretMessage(marker, num, note, note_tag, note_id, name) {
-		  //var message = ['This', 'is', 'the', 'secret', 'message','xie','hong','quan','xie','xie','hong'];
 		  var message = note;
 		  var message_tag = note_tag;
 		  var message_id = note_id;
