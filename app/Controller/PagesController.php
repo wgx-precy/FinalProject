@@ -269,21 +269,88 @@ and hour(users_filters.timeend)*100+minute(users_filters.timeend) >= hour(curren
 		$this->set('longitude',$longitude);
 		$this->set('first_name',$first_name);
 
-		$lat=$this->Session->read('user.longitude');
-		$long=$this->Session->read('user.latitude');
-		//print_r($this->Session->read('user.latitude').$this->Session->read('user.longitude'));
 
-		$result2 = $this->Note->query("select * from Notes, Friends
-where 6 = Friends.uid and Friends.fid = Notes.uid and Notes.nloc_x >= $lat - (360*nradius)/(2*3.141592653589793*6371004*cos(Notes.nloc_y*2*3.141592653589793/360)) and Notes.nloc_x <= $lat + (360*nradius)/(2*3.141592653589793*6371004*cos(Notes.nloc_y*2*3.141592653589793/360)) and Notes.nloc_y >= $long - (360*nradius)/(2*3.141592653589793*6371004) and Notes.nloc_y <= $long + (360*nradius)/(2*3.141592653589793*6371004) and choice = 'date' and month(startdate)*100 + day(startdate) <= month(current_date)*100 + day(current_date) and month(enddate)*100 + day(enddate) >= month(current_date)*100 + day(current_date) and hour(starttime)*100 + minute(starttime) <= hour(current_time)*100 + minute(current_time) and hour(endtime)*100 + minute(endtime) >= hour(current_time)*100 + minute(current_time)
+		$long=floatval($this->Session->read('user.latitude'));
+		$lat=floatval($this->Session->read('user.longitude'));
+		$result2 = $this->Note->query("select * from Notes, Friends, Users
+where 6 = Friends.uid and Friends.fid = Notes.uid and Notes.nloc_x >= $lat - (360*nradius)/(2*3.141592653589793*6371004*cos(Notes.nloc_y*2*3.141592653589793/360)) 
+and Notes.nloc_x <= $lat + (360*nradius)/(2*3.141592653589793*6371004*cos(Notes.nloc_y*2*3.141592653589793/360)) and Notes.nloc_y >= $long - (360*nradius)/(2*3.141592653589793*6371004) 
+and Notes.nloc_y <= $long + (360*nradius)/(2*3.141592653589793*6371004) and choice = 'date' and month(startdate)*100 + day(startdate) <= month(current_date)*100 + day(current_date) 
+and month(enddate)*100 + day(enddate) >= month(current_date)*100 + day(current_date) and hour(starttime)*100 + minute(starttime) <= hour(current_time)*100 + minute(current_time) 
+and hour(endtime)*100 + minute(endtime) >= hour(current_time)*100 + minute(current_time) and users.id = notes.uid
 union
-select * from Notes, Friends
-where 6 = Friends.uid and Friends.fid = Notes.uid and Notes.nloc_x >= $lat - (360*nradius)/(2*3.141592653589793*6371004*cos(Notes.nloc_y*2*3.141592653589793/360)) and Notes.nloc_x <= $lat + (360*nradius)/(2*3.141592653589793*6371004*cos(Notes.nloc_y*2*3.141592653589793/360)) and Notes.nloc_y >= $long - (360*nradius)/(2*3.141592653589793*6371004) and Notes.nloc_y <= $long + (360*nradius)/(2*3.141592653589793*6371004) and choice = 'week' and week1 <= dayofweek(current_date) and week2 >= dayofweek(current_date) and hour(starttime)*100 + minute(starttime) <= hour(current_time)*100 + minute(current_time) and hour(endtime)*100 + minute(endtime) >= hour(current_time)*100 + minute(current_time)
+select * from Notes, Friends, Users
+where 6 = Friends.uid and Friends.fid = Notes.uid and Notes.nloc_x >= $lat - (360*nradius)/(2*3.141592653589793*6371004*cos(Notes.nloc_y*2*3.141592653589793/360)) 
+and Notes.nloc_x <= $lat + (360*nradius)/(2*3.141592653589793*6371004*cos(Notes.nloc_y*2*3.141592653589793/360)) and Notes.nloc_y >= $long - (360*nradius)/(2*3.141592653589793*6371004) 
+and Notes.nloc_y <= $long + (360*nradius)/(2*3.141592653589793*6371004) and choice = 'week' and week1 <= dayofweek(current_date) and week2 >= dayofweek(current_date) 
+and hour(starttime)*100 + minute(starttime) <= hour(current_time)*100 + minute(current_time) and hour(endtime)*100 + minute(endtime) >= hour(current_time)*100 + minute(current_time) 
+and users.id = notes.uid
 union 
-select * from Notes, Friends
-where 6 = Friends.uid and Friends.fid != Notes.uid and Notes.ntype = 'public' and Notes.nloc_x >= $lat - (360*nradius)/(2*3.141592653589793*6371004*cos(Notes.nloc_y*2*3.141592653589793/360)) and Notes.nloc_x <= $lat + (360*nradius)/(2*3.141592653589793*6371004*cos(Notes.nloc_y*2*3.141592653589793/360)) and Notes.nloc_y >= $long - (360*nradius)/(2*3.141592653589793*6371004) and Notes.nloc_y <= $long + (360*nradius)/(2*3.141592653589793*6371004) and choice = 'date' and month(startdate)*100 + day(startdate) <= month(current_date)*100 + day(current_date) and month(enddate)*100 + day(enddate) >= month(current_date)*100 + day(current_date) and hour(starttime)*100 + minute(starttime) <= hour(current_time)*100 + minute(current_time) and hour(endtime)*100 + minute(endtime) >= hour(current_time)*100 + minute(current_time)
+select * from Notes, Friends, Users
+where 6 = Friends.uid and Friends.fid != Notes.uid and Notes.ntype = 'public' and Notes.nloc_x >= $lat - (360*nradius)/(2*3.141592653589793*6371004*cos(Notes.nloc_y*2*3.141592653589793/360)) 
+and Notes.nloc_x <= $lat + (360*nradius)/(2*3.141592653589793*6371004*cos(Notes.nloc_y*2*3.141592653589793/360)) and Notes.nloc_y >= $long - (360*nradius)/(2*3.141592653589793*6371004) 
+and Notes.nloc_y <= $long + (360*nradius)/(2*3.141592653589793*6371004) and choice = 'date' and month(startdate)*100 + day(startdate) <= month(current_date)*100 + day(current_date) 
+and month(enddate)*100 + day(enddate) >= month(current_date)*100 + day(current_date) and hour(starttime)*100 + minute(starttime) <= hour(current_time)*100 + minute(current_time) 
+and hour(endtime)*100 + minute(endtime) >= hour(current_time)*100 + minute(current_time) and users.id = notes.uid
 union 
-select * from Notes, Friends
-where 6 = Friends.uid and Friends.fid != Notes.uid and Notes.ntype = 'public' and Notes.nloc_x >= $lat - (360*nradius)/(2*3.141592653589793*6371004*cos(Notes.nloc_y*2*3.141592653589793/360)) and Notes.nloc_x <= $lat + (360*nradius)/(2*3.141592653589793*6371004*cos(Notes.nloc_y*2*3.141592653589793/360)) and Notes.nloc_y >= $long - (360*nradius)/(2*3.141592653589793*6371004) and Notes.nloc_y <= $long + (360*nradius)/(2*3.141592653589793*6371004) and choice = 'week' and week1 <= dayofweek(current_date) and week2 >= dayofweek(current_date) and hour(starttime)*100 + minute(starttime) <= hour(current_time)*100 + minute(current_time) and hour(endtime)*100 + minute(endtime) >= hour(current_time)*100 + minute(current_time)");
+select * from Notes, Friends, Users
+where 6 = Friends.uid and Friends.fid != Notes.uid and Notes.ntype = 'public' and Notes.nloc_x >= $lat - (360*nradius)/(2*3.141592653589793*6371004*cos(Notes.nloc_y*2*3.141592653589793/360)) 
+and Notes.nloc_x <= $lat + (360*nradius)/(2*3.141592653589793*6371004*cos(Notes.nloc_y*2*3.141592653589793/360)) and Notes.nloc_y >= $long - (360*nradius)/(2*3.141592653589793*6371004) 
+and Notes.nloc_y <= $long + (360*nradius)/(2*3.141592653589793*6371004) and choice = 'week' and week1 <= dayofweek(current_date) and week2 >= dayofweek(current_date) 
+and hour(starttime)*100 + minute(starttime) <= hour(current_time)*100 + minute(current_time) and hour(endtime)*100 + minute(endtime) >= hour(current_time)*100 + minute(current_time) 
+and users.id = notes.uid");
+		//print_r($result2);
+		$count2 = count($result2);
+		$i = 0;
+		$look_note = null;
+		$look_note_id = null;
+		$look_latitude = null;
+		$look_longitude = null;
+		$look_first_name = null;
+		$com = '<$=>';
+		for($i=0; $i<$count2; $i++){
+			$look_note = $look_note.$result2[$i]['0']['note'].$com;
+			$look_latitude = $look_latitude.$result2[$i]['0']['nloc_y'].$com;
+			$look_longitude = $look_longitude.$result2[$i]['0']['nloc_x'].$com;
+			$look_note_id = $look_note_id.$result2[$i]['0']['nid'].$com;
+			$look_first_name = $look_first_name.$result2[$i]['0']['first_name'].$com;
+		}
+		$j = 0;
+		$m = 0;
+		for($j = 0;$j<$count2;$j++){
+			$nid = $result2[$j]['0']['nid'];
+			$look_temp_tag[$m] = $this->Tag->query("SELECT * FROM `tags` WHERE tags.nid = $nid");
+			$m++;			
+		}
+		//print_r($note_id);
+		$look_num_tag = count($look_temp_tag);
+		$k = 0;
+		$l = 0;
+		$flag = ',';
+		for($k=0;$k<$count2;$k++){
+		 	$result2[$k]['0']['tag'] = null;
+		 	for($l = 0;$l<$look_num_tag;$l++){
+		 		if($result2[$k]['0']['nid'] == $look_temp_tag[$l]['0']['tags']['nid']){
+		 			foreach($look_temp_tag[$l] as $look_tag){
+		 				$result2[$k]['0']['tag'] = $result2[$k]['0']['tag'].$look_tag['tags']['tag'];
+		 			}
+		 		}
+		 	}
+		}
+		$l = 0;
+		$look_note_tag = null;
+		for($l = 0;$l<$look_num_tag;$l++){
+			$look_note_tag = $look_note_tag.$result2[$l]['0']['tag'].$com;
+		}
+		//print_r($look_note.$look_latitude.$look_note_id.$look_first_name.$look_note_tag);
+
+		$this->set('look_message_id',$look_note_id);
+		$this->set('num2',$count2);
+		$this->set('look_message',$look_note);
+		$this->set('look_message_tag',$look_note_tag);
+		$this->set('look_latitude',$look_latitude);
+		$this->set('look_longitude',$look_longitude);
+		$this->set('look_first_name',$look_first_name);
 
 
 
