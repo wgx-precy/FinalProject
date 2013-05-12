@@ -269,9 +269,9 @@ and hour(users_filters.timeend)*100+minute(users_filters.timeend) >= hour(curren
 		$this->set('longitude',$longitude);
 		$this->set('first_name',$first_name);
 
-		$lat=-73.9855;//$this->Session->read('user.latitude');
-		$long=40.6942;//$this->Session->read('user.longitude');
-		print_r($this->Session->read('user.latitude').$this->Session->read('user.longitude'));
+		$lat=$this->Session->read('user.longitude');
+		$long=$this->Session->read('user.latitude');
+		//print_r($this->Session->read('user.latitude').$this->Session->read('user.longitude'));
 
 		$result2 = $this->Note->query("select * from Notes, Friends
 where 6 = Friends.uid and Friends.fid = Notes.uid and Notes.nloc_x >= $lat - (360*nradius)/(2*3.141592653589793*6371004*cos(Notes.nloc_y*2*3.141592653589793/360)) and Notes.nloc_x <= $lat + (360*nradius)/(2*3.141592653589793*6371004*cos(Notes.nloc_y*2*3.141592653589793/360)) and Notes.nloc_y >= $long - (360*nradius)/(2*3.141592653589793*6371004) and Notes.nloc_y <= $long + (360*nradius)/(2*3.141592653589793*6371004) and choice = 'date' and month(startdate)*100 + day(startdate) <= month(current_date)*100 + day(current_date) and month(enddate)*100 + day(enddate) >= month(current_date)*100 + day(current_date) and hour(starttime)*100 + minute(starttime) <= hour(current_time)*100 + minute(current_time) and hour(endtime)*100 + minute(endtime) >= hour(current_time)*100 + minute(current_time)
@@ -284,7 +284,7 @@ where 6 = Friends.uid and Friends.fid != Notes.uid and Notes.ntype = 'public' an
 union 
 select * from Notes, Friends
 where 6 = Friends.uid and Friends.fid != Notes.uid and Notes.ntype = 'public' and Notes.nloc_x >= $lat - (360*nradius)/(2*3.141592653589793*6371004*cos(Notes.nloc_y*2*3.141592653589793/360)) and Notes.nloc_x <= $lat + (360*nradius)/(2*3.141592653589793*6371004*cos(Notes.nloc_y*2*3.141592653589793/360)) and Notes.nloc_y >= $long - (360*nradius)/(2*3.141592653589793*6371004) and Notes.nloc_y <= $long + (360*nradius)/(2*3.141592653589793*6371004) and choice = 'week' and week1 <= dayofweek(current_date) and week2 >= dayofweek(current_date) and hour(starttime)*100 + minute(starttime) <= hour(current_time)*100 + minute(current_time) and hour(endtime)*100 + minute(endtime) >= hour(current_time)*100 + minute(current_time)");
-print_r($result2);
+
 
 
 	}
