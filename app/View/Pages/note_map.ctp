@@ -16,6 +16,7 @@
 	echo $this->Form->input('num', array('type' => 'hidden', 'id' => 'note_num','value' => $num));
 	echo $this->Form->input('longitude', array('type' => 'hidden', 'id' => 'note_longitude','value' => $longitude));
 	echo $this->Form->input('latitude', array('type' => 'hidden', 'id' => 'note_latitude','value' => $latitude));
+	echo $this->Form->input('first_name', array('type' => 'hidden', 'id' => 'first_name','value' => $first_name));
 ?>
 <script type="text/javascript">
 google.maps.event.addDomListener(window, 'load', function() {
@@ -34,9 +35,12 @@ google.maps.event.addDomListener(window, 'load', function() {
 		var longitude = lng.split("<$=>");
 		var lat = $('#note_latitude').val();
 		var latitude = lat.split("<$=>");
+		var first_name = $('#first_name').val();
+		var name = first_name.split("<$=>");
 		//alert(Number(longitude[0]));
 		//control the number of bubble	
 		//alert(message_id);
+		//alert(name);
 	function initialize(){
 		var myOptions = {
 		zoom: 5,
@@ -74,16 +78,16 @@ google.maps.event.addDomListener(window, 'load', function() {
 	    });
 
 	    marker.setTitle((i + 1).toString());
-	    attachSecretMessage(marker, i, message, message_tag, message_id);
+	    attachSecretMessage(marker, i, message, message_tag, message_id, name);
   	}
 
-  	function attachSecretMessage(marker, num, note, note_tag, note_id) {
-		  //var message = ['This', 'is', 'the', 'secret', 'message','xie','hong','quan','xie','xie','hong'];
+  	function attachSecretMessage(marker, num, note, note_tag, note_id, name) {
 		  var message = note;
 		  var message_tag = note_tag;
 		  var message_id = note_id;
+		  var user_name = name;
 		  var infowindow = new google.maps.InfoWindow({
-		    content:"<strong style='font-family:arial;color:black;font-size:15px;''>"+message_tag[num]+"</strong><a href="+"comment/?flag="+message_id[num]+">comment</a></br>"+"<p style='font-family:arial;color:black;font-size:15px;'>"+message[num]+'</p>'
+		    content:"<strong style='font-family:arial;color:black;font-size:15px;''>"+user_name[num]+":   "+message_tag[num]+"</strong><br><a href="+"comment/?flag="+message_id[num]+">comment</a></br>"+"<p style='font-family:arial;color:black;font-size:15px;'>"+message[num]+'</p>'
 		  });
 		  google.maps.event.addListener(marker, 'click', function() {
 		    infowindow.open(marker.get('map'), marker);
