@@ -3,11 +3,33 @@
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js"></script>
 <?php $this->Html->css('default', null, array('inline' => false)); ?>
 <style type="text/css">
-#user_gmap{ width:800px;height:500px; margin: 0px auto 0px; border:solid 1px #111; }
-#user_glink {width:600px; text-align:right; font-size:10px; font-weight:normal; padding:0px; height:20px; margin:0px auto;}
+#user_gmap{ width:800px;height:500px; /*margin: 0px auto 0px;*/margin-top:180px;margin-left: auto;margin-right: auto; border:solid 1px #111; }
+#buttons_2{position: absolute;top: 25%;left: 10%;}
+/*#user_glink {width:600px; text-align:right; font-size:10px; font-weight:normal; padding:0px; height:20px; margin:0px auto;}*/
+	<?php $this->Html->css('style_tagPages',null,array('inline'=>false));?>
 </style>
-<input type="submit" name="submit" value="Show Note" class="button" id="ShowNote"/>
-<input type="submit" name="submit" value="Look Around" class="button" id="LookAround"/>
+
+<div>
+		<header>
+			<nav>
+				<ul id="menu">
+					<li><a href="profile">Profile</a></li>
+					<li><a href="filter">Filter</a></li>
+					<li><a href="search">Search</a></li>
+					<li id="menu_active"><a href="note_map">NoteMap</a></li>
+					<li><a href="postnote">PostNote</a></li>
+					<li><a href="friends">Friends</a></li>
+					<li><a href="requests">Requests</a></li>
+				</ul>
+			</nav>
+		</header>
+	</div>
+
+</br>
+<div id='buttons_2'>
+<input type="submit" name="submit" value="Show Note"  id="ShowNote"/>
+<input type="submit" name="submit" value="Look Around"  id="LookAround"/>
+</div>
 <?php
 	echo $this->Form->input('lat', array('type' => 'hidden', 'id' => 'note_lat','value' => $mylatitude));
 	echo $this->Form->input('lng', array('type' => 'hidden', 'id' => 'note_lng','value' => $mylongitude));
