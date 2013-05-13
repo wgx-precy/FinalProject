@@ -61,7 +61,7 @@
 				$num++;
 				endforeach;
 			?>
-			<form name="comment-form" class="comment-form" action="/FinalProject/Users/comment/?flag=<?=$nid?>" method="post">
+			<form name="comment-form" class="comment-form" action="/FinalProject/Pages/comment/?flag=<?=$nid?>" method="post">
 				<tr>
 				<th></th>
 				<th></th>
@@ -70,7 +70,7 @@
 				</tr>
 				<tr>
 				<td>Comment</td>
-				<td><?=$note['0']['notes']['like_value']?> people liked </br>this note, <a href="comment/?like=add&flag=5">like</a> it?</td>		
+				<td><?=$note['0']['notes']['like_value']?> people liked </br>this note, <a href="comment/?like=add&flag=<?=$note['0']['notes']['nid']?>">like</a> it?</td>		
 				<td><input name="username" type="textarea" class="input username" id="username_input" value="Type here to make comments" onfocus="this.value=''" /></td>
 				<td><center><input type="submit" name="submit" value="Submit" class="button" id="login_button"/></center></td>
 				</tr>

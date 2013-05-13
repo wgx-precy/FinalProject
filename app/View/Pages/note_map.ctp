@@ -75,14 +75,14 @@ google.maps.event.addDomListener(window, 'load', function() {
 		//alert(name);
 		function initialize(){
 			var myOptions = {
-			zoom: 7,
+			zoom: 3,
 			center: new google.maps.LatLng(note_lat,note_lng),
 			mapTypeId: google.maps.MapTypeId.ROADMAP,
 			scaleControl: true
 			};
 		}
 		var myOptions = {
-			zoom: 5,
+			zoom: 3,
 			center: new google.maps.LatLng(note_lat,note_lng),
 			mapTypeId: google.maps.MapTypeId.ROADMAP,
 			scaleControl: true
@@ -149,14 +149,14 @@ google.maps.event.addDomListener(window, 'load', function() {
 		//alert(name);
 		function initialize(){
 			var myOptions = {
-			zoom: 5,
+			zoom: 3,
 			center: new google.maps.LatLng(note_lat,note_lng),
 			mapTypeId: google.maps.MapTypeId.ROADMAP,
 			scaleControl: true
 			};
 		}
 		var myOptions = {
-			zoom: 5,
+			zoom: 3,
 			center: new google.maps.LatLng(note_lat,note_lng),
 			mapTypeId: google.maps.MapTypeId.ROADMAP,
 			scaleControl: true
