@@ -204,7 +204,12 @@ function HS_setDate(inputObj){
 					<option value="followed">followed</option>
 					<option value="friends">friends</option>
 				</select>
-			
+			</br>allow&nbspcomment:&nbsp
+			<select name="allowComment">
+					<option value="0">Yes</option>
+					<option value="1">No</option>
+				</select>
+
 
 
 			</br>EffectiveRange: <input type="text" name="range" id="range">(meters)</br></br>
