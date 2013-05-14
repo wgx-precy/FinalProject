@@ -38,14 +38,14 @@
 	</div>
 
 	<div id="search">
-		<form action="submitSearch" method="post">
+		<form action="/FinalProject/Pages/search" method="post">
 			<pre>keyWords: <input type="text" name="keyWords"></pre>
 			<b>SelectByArea:&nbsp</b>
 			<ul>
 				<li><input type="radio" name="ifByArea" value="yes" id="ifByArea1">Yes&nbsp</li>
 				<li><input type="radio" name="ifByArea" value="no" id="ifByArea2">No&nbsp</li>
 			</ul>
-			<select name="selectByArea" id="selectArea" style='display:none'>
+			<select name="selectArea" id="selectArea" style='display:none'>
 
 				<option value="Fort Greene">Fort Greene</option>
 				<option value="Downtown Brooklyn">Downtown Brooklyn</option>
