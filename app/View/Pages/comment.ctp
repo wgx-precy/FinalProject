@@ -72,7 +72,14 @@
 				<td>Comment</td>
 				<td><?=$note['0']['notes']['like_value']?> people liked </br>this note, <a href="comment/?like=add&flag=<?=$note['0']['notes']['nid']?>">like</a> it?</td>		
 				<td><input name="username" type="textarea" class="input username" id="username_input" value="Type here to make comments" onfocus="this.value=''" /></td>
-				<td><center><input type="submit" name="submit" value="Submit" class="button" id="login_button"/></center></td>
+				<td>
+				<?php
+					if($note['0']['notes']['ncomment'] == 1):
+				?>
+					<center><input type="submit" name="submit" value="Submit" class="button" id="login_button"/></center></td>
+				<?php
+					endif;
+				?>
 				</tr>
 			</tbody>
 		</table>
