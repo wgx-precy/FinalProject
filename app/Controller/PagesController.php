@@ -170,7 +170,36 @@ function beforeFilter() {
 		if($login != 'true'){
 			$this->redirect(array('controller'=>'Users','action'=>'login'));
 		}
+		if($this->request->is('post')){
+		$keyWords = $this->request->data('kayWords');
+		$ifByArea = $this->request->data('ifByArea');
+		$selectArea = $this->request->data('selectArea');
+		//print_r($ifByArea);
+		if($ifByArea == 'yes'){
+			$searchresult = $this->Note->query("select  distinct notes.nid, notes.uid, notes.time, notes.note, notes.like_value, notes.nloc_x, notes.nloc_y, users.first_name from  zips, notes,tags, users
+where notes.uid = users.id and notes.nid = tags.nid and zips.district = '$selectArea' and notes.choice = 'date' and (notes.note like '%$keyWords%' or tags.tag like '%$keyWords%')
+and month(notes.startdate)*100+day(notes.startdate) <= month(current_date())*100+day(current_date()) and month(notes.enddate)*100+day(notes.enddate) >= month(current_date())*100+day(current_date) and zips.z_x1<=notes.nloc_x and zips.z_x2>=notes.nloc_x and zips.z_y2<=notes.nloc_y and zips.z_y1>=notes.nloc_y and hour(notes.endtime)*100+minute(notes.endtime) >= hour(current_time())*100+minute(current_time()) and notes.ntype = 'public'
+union
+select  distinct notes.nid, notes.uid, notes.time, notes.note, notes.like_value, notes.nloc_x, notes.nloc_y, users.first_name from  zips, notes,tags, users
+where notes.uid = users.id and notes.nid = tags.nid and zips.district = '$selectArea' and notes.choice = 'week' and (notes.note like '%$keyWords%' or tags.tag like '%$keyWords%')
+and notes.week1 <= dayofweek(current_date()) and notes.week2 >= dayofweek(current_date()) and zips.z_x1<=notes.nloc_x and zips.z_x2>=notes.nloc_x and zips.z_y2<=notes.nloc_y and zips.z_y1>=notes.nloc_y and hour(notes.endtime)*100+minute(notes.endtime) >= hour(current_time())*100+minute(current_time()) and notes.ntype = 'public'"
+				);
+		}
+		if($ifByArea != 'yes'){
+			//print_r($ifByArea);
+			$searchresult = $this->Note->query("select  distinct notes.nid, notes.uid, notes.time, notes.note, notes.like_value, notes.nloc_x, notes.nloc_y, users.first_name from  notes,tags, users
+where notes.uid = users.id and notes.nid = tags.nid and notes.choice = 'date' and (notes.note like '%$keyWords%' or tags.tag like '%$keyWords%')
+and month(notes.startdate)*100+day(notes.startdate) <= month(current_date())*100+day(current_date()) and month(notes.enddate)*100+day(notes.enddate) >= month(current_date())*100+day(current_date) and hour(notes.endtime)*100+minute(notes.endtime) >= hour(current_time())*100+minute(current_time()) and notes.ntype = 'public'
+union
+select  distinct notes.nid, notes.uid, notes.time, notes.note, notes.like_value, notes.nloc_x, notes.nloc_y, users.first_name from  notes,tags, users
+where notes.uid = users.id and notes.nid = tags.nid and notes.choice = 'week' and (notes.note like '%$keyWords%' or tags.tag like '%$keyWords%')
+and notes.week1 <= dayofweek(current_date()) and notes.week2 >= dayofweek(current_date()) and hour(notes.endtime)*100+minute(notes.endtime) >= hour(current_time())*100+minute(current_time()) and notes.ntype = 'public'"
+				);
 
+		}
+		print_r($searchresult);
+		
+		}
 	}
 
 	public function note_map(){
