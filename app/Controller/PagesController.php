@@ -179,6 +179,7 @@ function beforeFilter() {
 		$this->set('mylatitude',$this->Session->read('user.latitude'));
 		$this->set('mylongitude',$this->Session->read('user.longitude'));
 
+
 		$result = $this->Note->query("/*f-date,n-date*/
 select  distinct notes.nid, notes.uid, notes.time, notes.note, notes.like_value, notes.nloc_x, notes.nloc_y, users.first_name from users_filters, zips, filters_tags,notes,tags,users  
 where users_filters.uid = $id and  users_filters.district = zips.district and users_filters.fid = filters_tags.fid and users.id = notes.uid
