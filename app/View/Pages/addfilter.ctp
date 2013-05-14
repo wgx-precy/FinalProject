@@ -233,10 +233,11 @@ xmlhttp.send();
 			<b>State: &nbsp</b>
 		
 			<select name="state">
-				<option value="atHome">at home</option>
-				<option value="atWork">at work</option>
+				<option value="at home">at home</option>
+				<option value="at work">at work</option>
 				<option value="lunch break">lunch break</option>
 				<option value="shopping">shopping</option>
+				<option value="at school">at school</option>
 			</select>
 			</div>
 	<!--

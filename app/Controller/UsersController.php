@@ -71,14 +71,18 @@ class UsersController extends AppController {
 		if($this->request->is('post')){
 			$ulat =$this->request->data('userlat');
 			$ulng =$this->request->data('userlng');
+			$state = $this->request->data('state');
+			//print_r($state);exit();
 				$this->UserLocation->set(array(
 					'uid' => $id,
 					'location_x' => $ulat,
 					'location_y' => $ulng,
+					'state' => $state
 				));
 			$this->UserLocation->save(null,false);
 			$this->Session->write('user.latitude',$ulat);
 			$this->Session->write('user.longitude',$ulng);
+			$this->Session->write('user.state',$state);
 			$this->redirect(array('controller'=>'Pages','action'=>'profile'));
 		}
 	}

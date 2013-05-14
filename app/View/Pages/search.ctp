@@ -1,10 +1,24 @@
 <?php $this->Html->css('default', null, array('inline' => false)); ?>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 <head>
 	<title>Search</title>
 
 	<?php $this->Html->css('style_tagPages',null,array('inline'=>false));?>
 	<script src="/tagPage/timeForm.js"></script>
 </head>
+
+
+<script>
+				$(document).ready(function(){
+					$("#ifByArea1").click(function(){
+							$("#selectArea").css("display","block");			
+					});
+					$("#ifByArea2").click(function(){
+							$("#selectArea").css("display","none");			
+					});
+				});
+			</script>
+
 
 <body>
 	<div>
@@ -25,18 +39,24 @@
 
 	<div id="search">
 		<form action="submitSearch" method="post">
-			<pre>Location: <input type="text" name="searchLocation"></pre>
-			
-			<b>State:&nbsp</b>
-				<select name="state">
-					<option value="atHome">at home</option>
-					<option value="atWork">at work</option>
-					<option value="lunchTime">lunch time</option>
-					<option value="shopping">shopping</option>
-					</select>
-			<pre>Tags: <input type="text" name="searchTags"></pre>
+			<pre>keyWords: <input type="text" name="keyWords"></pre>
+			<b>SelectByArea:&nbsp</b>
+			<ul>
+				<li><input type="radio" name="ifByArea" value="yes" id="ifByArea1">Yes&nbsp</li>
+				<li><input type="radio" name="ifByArea" value="no" id="ifByArea2">No&nbsp</li>
+			</ul>
+			<select name="selectByArea" id="selectArea" style='display:none'>
 
-			<input type="submit" name="search" value="search" id="filterSubmit">
+				<option value="Fort Greene">Fort Greene</option>
+				<option value="Downtown Brooklyn">Downtown Brooklyn</option>
+				<option value="ChinaTown">ChinaTown</option>
+				<option value="Time Square">Time Square</option>
+				<option value="East Village">East Village</option>
+				<option value="Soho">Soho</option>		
+			</select>
+			
+
+			</br></br><input type="submit" name="search" value="search" id="filterSubmit">
 		</form>
 	</div>
 	
