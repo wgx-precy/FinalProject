@@ -58,6 +58,25 @@
 
 			</br></br><input type="submit" name="search" value="search" id="filterSubmit">
 		</form>
+	
+	<?php if(isset($searchresult)):?>
+			<table border="1">
+				<tr>
+				<th><center>User Name</center></th>
+				<th><center>Note</center></th>
+				<th><center>Post Time</center></th>
+				<th><center>Comment</center></th>
+				</tr>
+			<tbody>
+				<?php foreach($searchresult as $result):?>
+				<tr>
+				<td><center><?=$result['0']['first_name']?></center></td>
+				<td><center><?=$result['0']['note']?></center></td>
+				<td><center><?=$result['0']['time']?></center></td>
+				<td><center><a href ='comment/?flag=<?=$result['0']['nid']?>'>Comment</a></center></td>
+				</tr>
+				<?php endforeach;?>
+	<?php endif;?>
 	</div>
 	
 </body>
