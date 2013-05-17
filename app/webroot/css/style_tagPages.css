@@ -63,6 +63,11 @@
     white-space:nowrap;
 }
 
+#zxc{
+	position: absolute;
+	left: 30%;
+	top: 25%;
+}
 
 #filter p {
 	color:white;

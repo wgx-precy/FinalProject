@@ -5,6 +5,7 @@
 </head>
 
 <body>
+	<!-- <div id="zxc"><a href="http://localhost/FinalProject/Users/logout">logout</a></div> -->
 	<div>
 		<header>
 			<nav>
