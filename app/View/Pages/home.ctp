@@ -21,7 +21,7 @@ if (!Configure::read('debug')):
 endif;
 App::uses('Debugger', 'Utility');
 ?>
-<h5>xiehongquan,nimei</h5>
+<h1>Jingo</h1>
 
 <a href="/FinalProject/Users/login">Login</a>
 

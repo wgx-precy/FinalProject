@@ -197,7 +197,7 @@ and notes.week1 <= dayofweek(current_date()) and notes.week2 >= dayofweek(curren
 				);
 
 		}
-		print_r($searchresult);
+		//print_r($searchresult);
 		if(isset($searchresult)){
 			$this->set('searchresult',$searchresult);
 		}

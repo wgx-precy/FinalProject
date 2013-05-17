@@ -256,6 +256,7 @@ xmlhttp.send();
 			</select>
 	-->		
 			<div>
+			<?php echo "Schedule:";?>
 			<ul class="timeChoice">
 				<li><input type="radio" name="filterTimeType" value="date" id="filterTimeType1">by date</li>
 				<li><input type="radio" name="filterTimeType" value="week" id="filterTimeType2">by week</li>

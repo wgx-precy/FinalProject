@@ -206,8 +206,8 @@ function HS_setDate(inputObj){
 				</select>
 			</br>allow&nbspcomment:&nbsp
 			<select name="allowComment">
-					<option value="0">Yes</option>
-					<option value="1">No</option>
+					<option value="1">Yes</option>
+					<option value="0">No</option>
 				</select>
 
 
