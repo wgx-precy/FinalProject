@@ -40,11 +40,13 @@
 	<div id="search">
 		<form action="/FinalProject/Pages/search" method="post">
 			<pre>keyWords: <input type="text" name="keyWords"></pre>
+			<div>
 			<b>SelectByArea:&nbsp</b>
-			<ul>
+			<ul id="ifByAreaList">
 				<li><input type="radio" name="ifByArea" value="yes" id="ifByArea1">Yes&nbsp</li>
 				<li><input type="radio" name="ifByArea" value="no" id="ifByArea2">No&nbsp</li>
 			</ul>
+			<input type="submit" name="search" value="search" id="searchSubmit">
 			<select name="selectArea" id="selectArea" style='display:none'>
 
 				<option value="Fort Greene">Fort Greene</option>
@@ -53,10 +55,9 @@
 				<option value="Time Square">Time Square</option>
 				<option value="East Village">East Village</option>
 				<option value="Soho">Soho</option>		
-			</select>
+			</select>	
 			
-
-			</br></br><input type="submit" name="search" value="search" id="filterSubmit">
+			</div>
 		</form>
 	
 	<?php if(isset($searchresult)):?>

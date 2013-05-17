@@ -224,10 +224,16 @@ xmlhttp.send();
 
 	<div id="newFilter">
 		<form action="/FinalProject/Pages/addfilter" method="post">
+			<span>Add your new filter here</span></br>
 			<span>Location: &nbsp</span>
 			<!--	<input type="text" name="filterLocation" id="filterLocation"></pre>-->
 			<select name="filterLocation">
 				<option value="Soho">Soho</option>
+				<option value="Fort Greene">Fort Greene</option>
+				<option value="Downtown Brooklyn">Downtown Brooklyn</option>
+				<option value="ChinaTown">ChinaTown</option>
+				<option value="Times Square">Times Square</option>
+				<option value="East Village">East Village</option>
 			</select>
 			<div>			
 			<b>State: &nbsp</b>

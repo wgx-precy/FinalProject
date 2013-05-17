@@ -12,7 +12,7 @@
 
 .main {margin:0 auto;	width:900px;padding:0 10px}
 */
-#menu {float:left;padding-top:5%;margin-left:5%}
+#menu {position:absolute;float:left;padding-top:5%;left:10%}
 #menu li {float:left;padding-right:30px;background:url(/FinalProject/img/menu_line.gif) right no-repeat;margin-right:31px}
 #menu .bg_none {background:none}
 #menu li a {display:block;font-size:24px;color:#363636;text-decoration:none;line-height:37px}
@@ -22,68 +22,99 @@
 /*--profile--*/
 #userInfor {
 	position: absolute;
-	top:30%;
-	left:12%;
+	top:35%;
+	left:10%;
 	height:1000px;
-	width:1000px;
+	width:1200px;
 	font-size:16px;
 	font-style: italic;
 	font-weight: bold;
-	}
+}
 
 /*--about filter--*/
 #filter {
 	position:absolute;
 	top:35%;
-	left:3%;
+	left:10%;
 	height:1000px;
 	width:1300px;
 	font-size:16px;
 	font-style: italic;
 	font-weight: bold;
-	}
+}
 
+#filter_table {
+	width: 1200px;
+	table-layout: fixed;
+}
+#yId{width: 3%}
+#yArea{width: 15%}
+#yTag{width: 10%;}
+#xArea{
+	width: 15%;
+	text-overflow:ellipsis;
+    overflow:auto;
+    white-space:nowrap;
+}
+#xTag {
+	width: 10%;
+	text-overflow:ellipsis;
+    overflow:auto;
+    white-space:nowrap;
+}
 
 
 #filter p {
 	color:white;
-	}
+}
 
 #addFilterButton {
 	position: absolute;
 	top: 30%;
-	right: 10%;
-	}
+	left: 10%;
+}
 
 #newFilter {
 	position:absolute;
 	top:30%;
 	left:12%;
 	height:1000px;
-	width:1000px;
+	width:1200px;
 	font-size:16px;
 	font-style: italic;
 	font-weight: bold;
-	}
+}
 #newFilter b {
 	color:white;
-	}
+}
 
 /*--about search--*/
 #search {
 	position:absolute;
-	top:30%;
-	left:12%;
+	top:35%;
+	left:10%;
 	height:1000px;
-	width:1000px;
+	width:1200px;
 	font-size:16px;
 	font-style: italic;
 	font-weight: bold;
-	}
+}
 
 #search b {
 	color: white;
-	}
+}
+
+#ifByAreaList li {float:left;}
+
+#selectArea{
+	position:absolute;
+	top:15%;
+}
+#searchSubmit {
+	position: absolute;
+	left: 20%
+}
+
 
 /*about touchmap*/
 #map {
@@ -95,49 +126,81 @@
 	font-size:16px;
 	font-style: italic;
 	font-weight: bold;
-	}
+}
+
+
+#commentList{
+	position:absolute;
+	top:35%;
+	left:10%;
+	height:1000px;
+	width:1200px;
+	font-size:16px;
+	font-style: italic;
+	font-weight: bold;
+}
+#commentTable {
+	width: 1100px;
+	table-layout: fixed;
+}
+#comment1stColume{width: 8%}
+#comment2ndColume{width: 20%}
+#comment3stColume{width: 70%}
+#commentContent{
+	width: 70%;
+	overflow:ellipsis;
+    overflow:auto;
+    white-space:nowrap;
+}
+#username_input {
+	overflow:ellipsis;
+    overflow:auto;
+    white-space:nowrap;
+}
+
+
 
 /*about note*/
 #newNote {
 	position:absolute;
 	top:30%;
-	left:12%;
+	left:10%;
 	height:1000px;
-	width:1000px;
+	width:1200px;
 	font-size:16px;
 	font-style: italic;
 	font-weight: bold;
-	}
+}
 #range {
 	width: 100px;
-	}
+}
 
 /*about friend*/
 #friendList {
 	position: absolute;
-	top:32%;
-	left:12%;
+	top:35%;
+	left:10%;
 	height:1000px;
-	width:1000px;
+	width:1200px;
 	font-size:16px;
 	font-style: italic;
 	font-weight: bold;
-	}
+}
 
 #addFriendButton {
 	position: absolute;
 	top:27%;
-	right:18%;
-	}
+	left:10%;
+}
 
 /*about request*/
 #requestList {
 	position: absolute;
-	top:30%;
-	left:12%;
+	top:35%;
+	left:10%;
 	height:1000px;
-	width:1000px;
+	width:1200px;
 	font-size:16px;
 	font-style: italic;
 	font-weight: bold;
-	}
+}
