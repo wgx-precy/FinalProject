@@ -278,8 +278,8 @@ and hour(users_filters.timeend)*100+minute(users_filters.timeend) >= hour(curren
 			$temp_tag[$m] = $this->Tag->query("SELECT * FROM `tags` WHERE tags.nid = $nid");
 			$m++;			
 		}
-		//print_r($note_id);
-		$num_tag = count($temp_tag);
+		if(isset($result)){
+		$num_tag = count($result);
 		$k = 0;
 		$l = 0;
 		$flag = ',';
@@ -301,14 +301,14 @@ and hour(users_filters.timeend)*100+minute(users_filters.timeend) >= hour(curren
 		//print_r($result);
 		//print_r($temp_tag);
 		//print_r($note_tag);
-		$this->set('message_id',$note_id);
-		$this->set('num',$count);
-		$this->set('message',$note);
 		$this->set('message_tag',$note_tag);
+	}
 		$this->set('latitude',$latitude);
 		$this->set('longitude',$longitude);
 		$this->set('first_name',$first_name);
-
+		$this->set('message_id',$note_id);
+		$this->set('num',$count);
+		$this->set('message',$note);
 
 		$long=floatval($this->Session->read('user.latitude'));
 		$lat=floatval($this->Session->read('user.longitude'));
