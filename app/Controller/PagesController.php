@@ -370,6 +370,8 @@ and users.id = notes.uid");
 			$m++;			
 		}
 		//print_r($note_id);
+		$look_note_tag = null;
+		if(isset($look_temp_tag)){
 		$look_num_tag = count($look_temp_tag);
 		$k = 0;
 		$l = 0;
@@ -385,16 +387,15 @@ and users.id = notes.uid");
 		 	}
 		}
 		$l = 0;
-		$look_note_tag = null;
 		for($l = 0;$l<$look_num_tag;$l++){
 			$look_note_tag = $look_note_tag.$result2[$l]['0']['tag'].$com;
 		}
-		//print_r($look_note.$look_latitude.$look_note_id.$look_first_name.$look_note_tag);
-
+		//print_r($look_note.$look_latitude.$look_note_id.$look_first_name.$look_note_tag);				
+		}
+		$this->set('look_message_tag',$look_note_tag);
 		$this->set('look_message_id',$look_note_id);
 		$this->set('num2',$count2);
 		$this->set('look_message',$look_note);
-		$this->set('look_message_tag',$look_note_tag);
 		$this->set('look_latitude',$look_latitude);
 		$this->set('look_longitude',$look_longitude);
 		$this->set('look_first_name',$look_first_name);
@@ -466,12 +467,28 @@ and users.id = notes.uid");
 			$state = $this->request->data('state');
 			$range = $this->request->data('range');
 			$noteTimeType = $this->request->data('noteTimeType');
-			$startDate = $this->request->data('startDate');
-			if($startDate==null) $startDate = '0000-00-00';
-			$endDate = $this->request->data('endDate');
-			if($endDate==null) $endDate = '0000-00-00';
-			$startWeek = $this->request->data('startWeek');
-			$endWeek = $this->request->data('endWeek');
+			$startDate = '0000-00-00';
+			if($noteTimeType=='date'){
+				$startDate = $this->request->data('startDate');
+			}		
+			$endDate = '0000-00-00';
+			if($noteTimeType=='date'){
+				$endDate = $this->request->data('endDate');
+			}		
+				
+			//$startDate = $this->request->data('startDate');	
+			//$endDate = $this->request->data('endDate');
+			// $startDate = $this->request->data('startDate');
+			// if($startDate==null) $startDate = '0000-00-00';
+			// $endDate = $this->request->data('endDate');
+			// if($endDate==null) $endDate = '0000-00-00';
+			// $startWeek = $this->request->data('startWeek');
+			if($noteTimeType=='week'){$startWeek = $this->request->data('startWeek');}
+			else{$startWeek = '0';}
+			if($noteTimeType=='week'){$endWeek = $this->request->data('endWeek');}		
+			else{$endWeek = '0';}		
+			//$startWeek = $this->request->data('startWeek');
+			//$endWeek = $this->request->data('endWeek');
 			$startHour = $this->request->data('startHour');
 			$startMinute = $this->request->data('startMinute');
 			$endHour = $this->request->data('endHour');
@@ -489,15 +506,15 @@ and users.id = notes.uid");
 					'ncomment' => $allowComment,
 					'nradius' => $range,
 					'choice' => $noteTimeType,
-					'datestart' => $startDate,
-					'dateend' => $endDate,
+					'startdate' => $startDate,
+					'enddate' => $endDate,
 					'week1' => $startWeek,
 					'week2' => $endWeek,
 					'starttime' => $starttime,
 					'endtime' => $endtime
 			));
 			$this->Note->save(null,false);
-			//print_r($starttime.$endtime);exit();
+			//print_r($startDate.$endDate.$noteTimeType.$startWeek.$endWeek);exit();
 			$tag_nid = $this->Note->query("select max(notes.nid) from notes");
 			//print_r($tag_nid);exit();
 			$tagContent = $this->request->data('noteTags');
@@ -550,6 +567,11 @@ and users.id = notes.uid");
 			$this->Request->set(array(
 					'uid' => $fid,
 					'fid' => $id,
+				));
+			$this->Request->save(null,false);
+			$this->Request->set(array(
+					'uid' => $id,
+					'fid' => $fid,
 				));
 			$this->Request->save(null,false);
 			echo '<script>parent.window.location.reload(true);</script>';
