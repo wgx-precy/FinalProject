@@ -135,6 +135,8 @@ function beforeFilter() {
 		}
 		//print_r($user_filters);
 		$this->set('user_filters',$user_filters);
+		
+
 		if($this->request->is('post')){
 			$fid = $this->request->data('filter_id');
 			$this->UserFilter->query("DELETE FROM `users_filters`WHERE users_filters.fid = $fid");

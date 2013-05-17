@@ -7,7 +7,7 @@
 	echo "welcome to Jingo!		";
 	echo $this->Form->input('userid', array('type' => 'hidden', 'value' => $id));
 ?>
-<a href="/FinalProject/pages/home">home</a></br>
+<!-- <a href="/FinalProject/pages/home">home</a></br> -->
 <p id="demo">Click the button to get your coordinates:</p>
 <button onclick="getLocation()">Do It</button>
 </br>

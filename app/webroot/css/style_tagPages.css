@@ -150,7 +150,13 @@
 }
 #comment1stColume{width: 8%}
 #comment2ndColume{width: 20%}
-#comment3stColume{width: 70%}
+#comment3stColume{width: 70%;}
+#commentNote{
+	width: 70%;
+	overflow: ellipsis;
+	overflow: auto;
+	white-space:nowrap;
+}
 #commentContent{
 	width: 70%;
 	overflow:ellipsis;
@@ -208,4 +214,11 @@
 	font-size:16px;
 	font-style: italic;
 	font-weight: bold;
+}
+
+
+#registerB{
+	position: absolute;
+	top:50%;
+	left:50%;
 }
