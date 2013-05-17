@@ -118,7 +118,7 @@
 						<td class="xxx"><center><?=$content_item['users_filters']['timeend'];?></center></td>
 						<td class="xxx"><center><?=$content_item['users_filters']['state'];?></center></td>
 						<td id="xArea"><center><?=$content_item['users_filters']['district'];?></center></td>
-						<td id="xTag"><center>isldkjljjjjjjjjjjjjjjjjjjjjj</td>
+						<td id="xTag"><center><?=$content_item['users_filters']['tags']?></td>
 						<td><center><input name="deletenote" type="submit"id="delete_note" value="Delete"/></center></td>
 					</tr>
 				</form>

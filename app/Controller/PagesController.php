@@ -115,8 +115,25 @@ function beforeFilter() {
 		$conditions = array('userfilter.uid'=>$id);
 		//$user_filters = $this->UserFilter->find('all',array('conditions'=>$conditions));
 		$user_filters =$this->UserFilter->query("SELECT * FROM `users_filters` WHERE uid = $id");
+		$fid = $user_filters['0']['users_filters']['fid'];
+		//$filters_tags = $this->FilterTag->query("SELECT * FROM `filters_tags` WHERE filters_tags.fid = ")
+		$num = count($user_filters);
+		$i = 0;
+		for($i=0;$i<$num;$i++){
+			$fid[$i] = $user_filters[$i]['users_filters']['fid'];
+			$filters_tags[$i] = $this->FilterTag->query("SELECT * FROM `filters_tags` WHERE filters_tags.fid = $fid[$i]");
+		}
+		$no = count($filters_tags);
+		$k = 0;	
+		//print_r($filters_tags);
+		for($i=0;$i<$num;$i++){
+			$user_filters[$i]['users_filters']['tags'] = null;
+			for($k=0;$k<$no;$k++){
+				if($user_filters[$i]['users_filters']['fid'] == $filters_tags[$k]['0']['filters_tags']['fid'])
+					$user_filters[$i]['users_filters']['tags'] = $user_filters[$i]['users_filters']['tags'].$filters_tags[$k]['0']['filters_tags']['tag'];
+			}
+		}
 		//print_r($user_filters);
-		//print_r("JINGO");
 		$this->set('user_filters',$user_filters);
 		if($this->request->is('post')){
 			$fid = $this->request->data('filter_id');
