@@ -83,9 +83,16 @@ function beforeFilter() {
 	public function front(){
 		
 	}
-	public function index(){
-		
-	}
+	// public function logout(){
+	// 	$id = $this->Session->read('user.id');
+	// 	$login = $this->Session->read('user.login');
+	// 	if($login != 'true'){
+	// 		$this->redirect(array('controller'=>'Users','action'=>'login'));
+	// 	}
+	// 	$this->Session->write('user.login','false');
+	// 	echo '<script>parent.window.location.reload(true);</script>';
+
+	// }
 
 	//user profile pages
 	public function profile(){

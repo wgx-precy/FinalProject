@@ -18,6 +18,8 @@
  */
 
 $cakeDescription = __d('cake_dev', 'Jingo -- powered by Precy and Chuan He');
+$logout = __d('cake_dev', 'logout');
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -40,8 +42,10 @@ $cakeDescription = __d('cake_dev', 'Jingo -- powered by Precy and Chuan He');
 <body>
 	<div id="container">
 		<div id="header">
-			<h1><?php echo $this->Html->link($cakeDescription, 'http://www.project.com/FinalProject/'); ?></h1>
+			<h1><?php echo $this->Html->link($cakeDescription, 'http://www.project.com/FinalProject/')."    "; echo $this->Html->link($logout, '/Users/logout');?></h1>
+			
 		</div>
+
 		<!--
 		<div id="content">
 			<?php echo $this->Session->flash(); ?>

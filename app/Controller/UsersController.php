@@ -68,6 +68,9 @@ class UsersController extends AppController {
 		if($login != 'true'){
 			$this->redirect(array('controller'=>'Users','action'=>'login'));
 		}
+		if(!isset($id)){
+			$this->redirect(array('controller'=>'Users','action'=>'login'));
+		}
 		if($this->request->is('post')){
 			$ulat =$this->request->data('userlat');
 			$ulng =$this->request->data('userlng');
@@ -139,13 +142,20 @@ class UsersController extends AppController {
 
 	}
 	public function incorrect_login(){
-
+		$this->Session->write('user.login','false');
 	}
 	public function incorrect_password(){
 
 	}
 	public function logout(){
-
+		$id = $this->Session->read('user.id');
+		$login = $this->Session->read('user.login');
+		if($login != 'true'){
+			$this->redirect(array('controller'=>'Users','action'=>'login'));
+		}
+		//$this->Session->write('user.login','false');
+		$this->Session->destroy('user');
+		echo '<script>parent.window.location.reload(true);</script>';
 	}
 	public function geoname(){
 
