@@ -11,7 +11,7 @@
 					<li><a href="/FinalProject/Pages/profile">Profile</a></li>
 					<li><a href="/FinalProject/Pages/filter">Filter</a></li>
 					<li><a href="/FinalProject/Pages/search">Search</a></li>					
-					<li><a href="/FinalProject/Pages/note_map">NoteMap</a></li>
+					<li id="menu_active"><a href="/FinalProject/Pages/note_map">NoteMap</a></li>
 					<li><a href="/FinalProject/Pages/postnote">PostNote</a></li>
 					<li><a href="/FinalProject/Pages/friends">Friends</a></li>
 					<li><a href="/FinalProject/Pages/requests">Requests</a></li>
@@ -19,15 +19,15 @@
 			</nav>
 		</header>
 	</div>
-	<div id="requestList">
+	<div id="commentList">
 	<pre>
-		<table border="1">
-				<tr>
-				<th>#</th>
-				<th>User Name</th>
-				<th>Note</th>
+		<table id="commentTable" border="1">
+			<tr>
+				<th id="comment1stColume">#</th>
+				<th id="comment2ndColume">User Name</th>
+				<th id="comment3rdColume" >Note</th>
 				<th>Post Time</th>
-				</tr>
+			</tr>
 			<tbody>
 				<tr>
 				<td>Note</td>
@@ -36,12 +36,12 @@
 				<td><?=$note['0']['notes']['time']?></td>
 				</tr>
 			</tbody>
-				<tr>
+			<tr>
 				<th>#</th>
 				<th>User Name</th>
 				<th>Comments</th>
 				<th>Post Time</th>
-				</tr>
+			</tr>
 			<tbody>
 			<?php 
 				$num = 1;
@@ -53,7 +53,7 @@
 				<tr>
 				<td><?=$num;?></td>
 				<td><?=$comment['users']['username']?></td>
-				<td><?=$comment['comments']['cnote']?></td>
+				<td id="commentContent"><?=$comment['comments']['cnote']?></td>
 				<td><?=$comment['comments']['ctime']?></td>
 				</tr>
 			<?php 

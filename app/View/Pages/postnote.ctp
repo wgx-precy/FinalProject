@@ -192,8 +192,9 @@ function HS_setDate(inputObj){
 				<select name="state">
 					<option value="atHome">at home</option>
 					<option value="atWork">at work</option>
-					<option value="lunchTime">lunch time</option>
+					<option value="lunch break">lunch break</option>
 					<option value="shopping">shopping</option>
+					<option value="at school">at school</option>
 				</select>
 
 			<pre>Note: <input type="text" name="noteContent"></pre>
@@ -201,13 +202,12 @@ function HS_setDate(inputObj){
 			Who can see your idear:&nbsp
 				<select name="visibility">
 					<option value="public">public</option>
-					<option value="followed">followed</option>
 					<option value="friends">friends</option>
 				</select>
 			</br>allow&nbspcomment:&nbsp
 			<select name="allowComment">
-					<option value="0">Yes</option>
-					<option value="1">No</option>
+					<option value="1">Yes</option>
+					<option value="0">No</option>
 				</select>
 
 

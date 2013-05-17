@@ -109,7 +109,7 @@ function beforeFilter() {
 		//$user_filters = $this->UserFilter->find('all',array('conditions'=>$conditions));
 		$user_filters =$this->UserFilter->query("SELECT * FROM `users_filters` WHERE uid = $id");
 		//print_r($user_filters);
-		print_r("JINGO");
+		//print_r("JINGO");
 		$this->set('user_filters',$user_filters);
 		if($this->request->is('post')){
 			$fid = $this->request->data('filter_id');
