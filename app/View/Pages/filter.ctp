@@ -61,25 +61,25 @@
 						<td><center><?php
 								if($content_item['users_filters']['datestart'] == '0000-00-00'){
 									if($content_item['users_filters']['week1'] == '1'){
-										echo 'Monday';
+										echo 'Sunday';
 									}
 									if($content_item['users_filters']['week1'] == '2'){
-										echo 'Tuesday';
+										echo 'Monday';
 									}
 									if($content_item['users_filters']['week1'] == '3'){
-										echo 'Wednesday';
+										echo 'Tuesday';
 									}
 									if($content_item['users_filters']['week1'] == '4'){
-										echo 'Thursday';
+										echo 'Wednesday';
 									}
 									if($content_item['users_filters']['week1'] == '5'){
-										echo 'Friday';
+										echo 'Thursday';
 									}
 									if($content_item['users_filters']['week1'] == '6'){
-										echo 'Saturday';
+										echo 'Friday';
 									}
 									if($content_item['users_filters']['week1'] == '7'){
-										echo 'Sunday';
+										echo 'Saturday';
 									}
 								}
 								else{
@@ -89,25 +89,25 @@
 						<td style=" align:center"><center><?php
 								if($content_item['users_filters']['dateend'] == '0000-00-00'){
 									if($content_item['users_filters']['week2'] == '1'){
-										echo 'Monday';
+										echo 'Sunday';
 									}
 									if($content_item['users_filters']['week2'] == '2'){
-										echo 'Tuesday';
+										echo 'Monday';
 									}
 									if($content_item['users_filters']['week2'] == '3'){
-										echo 'Wednesday';
+										echo 'Tuesday';
 									}
 									if($content_item['users_filters']['week2'] == '4'){
-										echo 'Thursday';
+										echo 'Wednesday';
 									}
 									if($content_item['users_filters']['week2'] == '5'){
-										echo 'Friday';
+										echo 'Thursday';
 									}
 									if($content_item['users_filters']['week2'] == '6'){
-										echo 'Saturday';
+										echo 'Friday';
 									}
 									if($content_item['users_filters']['week2'] == '7'){
-										echo 'Sunday';
+										echo 'Saturday';
 									}
 								}
 								else{
@@ -118,7 +118,7 @@
 						<td class="xxx"><center><?=$content_item['users_filters']['timeend'];?></center></td>
 						<td class="xxx"><center><?=$content_item['users_filters']['state'];?></center></td>
 						<td id="xArea"><center><?=$content_item['users_filters']['district'];?></center></td>
-						<td id="xTag"><center>isldkjljjjjjjjjjjjjjjjjjjjjj</td>
+						<td id="xTag"><center>#me,#lunch break</td>
 						<td><center><input name="deletenote" type="submit"id="delete_note" value="Delete"/></center></td>
 					</tr>
 				</form>
