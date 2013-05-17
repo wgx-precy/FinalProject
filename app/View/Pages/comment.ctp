@@ -32,7 +32,7 @@
 				<tr>
 				<td>Note</td>
 				<td><?=$note['0']['users']['username']?></td>
-				<td><?=$note['0']['notes']['note']?></td>
+				<td id="commentNote"><?=$note['0']['notes']['note']?></td>
 				<td><?=$note['0']['notes']['time']?></td>
 				</tr>
 			</tbody>

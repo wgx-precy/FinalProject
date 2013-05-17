@@ -87,7 +87,7 @@ $(document).ready(function() {
 
 </div>
 <!--END WRAPPER-->
-
+</br></br><a href="http://localhost/FinalProject/Users/register"><input type="submit" name="submit" value="Register" class="button" id="registerB" /></a>
 <!--GRADIENT--><div class="gradient"></div><!--END GRADIENT-->
 </body>
 </html>
