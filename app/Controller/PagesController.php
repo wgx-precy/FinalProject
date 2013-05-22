@@ -156,6 +156,7 @@ function beforeFilter() {
 		if($this->request->is('post')){
 			$location = $this->request->data('filterLocation');
 			$state = $this->request->data('state');
+			$filterTags = $this->request->data('filterTags');
 			$filterTimeType = $this->request->data('filterTimeType');
 			$startDate = $this->request->data('startDate');
 			if($startDate==null) $startDate = '0000-00-00';
@@ -182,6 +183,23 @@ function beforeFilter() {
 					'timeend' => $endtime
 			));
 			$this->UserFilter->save(null,false);
+//
+
+			$tag_nid = $this->UserFilter->query("select max(users_filters.fid) from users_filters");
+			//print_r($tag_nid);exit();
+			$tagContent = $this->request->data('filterTags');
+			$tag_array = split(',', $tagContent);
+			$i = 0;
+			$tagnum = count($tag_array);
+			for($i=0;$i<$tagnum;$i++){
+			 	$this->FilterTag->set(array(
+			 		'nid' => $tag_nid['0']['0']['max(users_filters.fid)'],
+			 		'tag' => $tag_array[$i]
+			 		));
+			 	$this->FilterTag->save(null,false);
+			}
+			// print_r($tag_array[0]);exit();
+//
 			//print_r($startHour.":".$startMinute.":00");
 			//print_r($endHour.":".$endMinute.":00");exit();
 			echo '<script>parent.window.location.reload(true);</script>';

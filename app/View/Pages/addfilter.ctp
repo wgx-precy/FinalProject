@@ -225,6 +225,7 @@ xmlhttp.send();
 	<div id="newFilter">
 		<form action="/FinalProject/Pages/addfilter" method="post">
 			<span>Add your new filter here</span></br>
+			<pre>Tags: <input type="text" name="filterTags"></pre>
 			<span>Location: &nbsp</span>
 			<!--	<input type="text" name="filterLocation" id="filterLocation"></pre>-->
 			<select name="filterLocation">
